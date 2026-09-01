@@ -6,32 +6,13 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/01 16:40:03 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/01 17:16:44 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-static int	cb_count_lines(char *map_path)
-{
-	char	*line;
-	int		count;
-	int		fd;
 
-	fd = open(map_path, O_RDONLY);
-	if (fd < 3)
-		cb_fail(1, 2, "Failed to "BBY"f_open "PUR"map file on "BWI"COUNT");
-	count = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		count++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (count);
-}
 
 char	**cb_scene_to_map(char *map_path)
 {

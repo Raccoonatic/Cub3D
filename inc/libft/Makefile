@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+         #
+#    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 21:11:45 by lde-san-          #+#    #+#              #
-#    Updated: 2025/10/16 14:02:13 by lde-san-         ###   ########.fr        #
+#    Updated: 2026/09/01 23:49:35 by lde-san-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ FILE += ft_memchr.c
 FILE += ft_memcmp.c
 FILE += ft_strnstr.c
 FILE += ft_atoi.c
+FILE += ft_atoll.c
 FILE += ft_calloc.c
 FILE += ft_strdup.c
 FILE += ft_substr.c
@@ -70,18 +71,18 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	$(COMPILE) -c $< -o $@
-	
+
 all: $(NAME)
 
 bonus: $(OBJ) $(OBJ_BONUS)
 	ar -rcs $(NAME) $(OBJ) $(OBJ_BONUS)
-	
+
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
-	
+
 fclean: clean
 	rm -f $(NAME)
-	
+
 re: fclean all
 
 .PHONY: all bonus re clean fclean
