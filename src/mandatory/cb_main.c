@@ -16,7 +16,7 @@ int main(int ac, char **av)
     //cheecking if the file can be opened
     if (open(av[1], O_RDONLY) == -1)
     {
-        printf("Error\nCould't open thhhe file\n");
+        printf("Error\nCould't open the file\n");
         return(1);
     }
     //i've put this check in the main but it is better to have a function for that. the main function is going to be 25+lines if we do everything here
