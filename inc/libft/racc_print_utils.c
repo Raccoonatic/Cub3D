@@ -3,18 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   racc_print_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 22:02:56 by lde-san-          #+#    #+#             */
-/*   Updated: 2025/10/16 14:41:16 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/01 16:40:07 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-static	int	racc_strcmp(char *s, char *icon);
+static int	racc_strcmp(const char *s, const char *icon)
+{
+	size_t	guide;
 
-void	racc_putchar(int fd, char c, int *counter)
+	guide = 0;
+	while (s[guide] && icon[guide] && s[guide] == icon[guide])
+		guide++;
+	if (!s[guide] && !icon[guide])
+		return (1);
+	return (0);
+}
+
+void	racc_putchar(int fd, const char c, int *counter)
 {
 	int	ret;
 
@@ -25,7 +35,7 @@ void	racc_putchar(int fd, char c, int *counter)
 		*counter = -1;
 }
 
-void	racc_putstr(int fd, char *s, int mode, int *counter)
+void	racc_putstr(int fd, const char *s, int mode, int *counter)
 {
 	if (!s)
 	{
@@ -50,19 +60,7 @@ void	racc_putstr(int fd, char *s, int mode, int *counter)
 	}
 }
 
-static int	racc_strcmp(char *s, char *icon)
-{
-	size_t	guide;
-
-	guide = 0;
-	while (s[guide] && icon[guide] && s[guide] == icon[guide])
-		guide++;
-	if (!s[guide] && !icon[guide])
-		return (1);
-	return (0);
-}
-
-void	racc_putadrs(int fd, uintptr_t n, int *counter, char *base)
+void	racc_putadrs(int fd, uintptr_t n, int *counter, const char *base)
 {
 	uintptr_t	encrypter;
 
@@ -78,7 +76,7 @@ void	racc_putadrs(int fd, uintptr_t n, int *counter, char *base)
 		racc_putchar(fd, base[n], counter);
 }
 
-void	racc_putnbs(int fd, unsigned int n, int *counter, char *base)
+void	racc_putnbs(int fd, unsigned int n, int *counter, const char *base)
 {
 	unsigned int	encrypter;
 

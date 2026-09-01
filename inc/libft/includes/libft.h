@@ -3,17 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 22:29:41 by lde-san-          #+#    #+#             */
-/*   Updated: 2025/10/18 20:09:34 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/01 16:40:07 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <strings.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
+
+# include <fcntl.h>
 # include <ctype.h>
 # include <unistd.h>
 # include <stddef.h>
@@ -23,6 +31,20 @@
 # include <string.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include <strings.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+typedef struct s_lst
+{
+	char			letter;
+	struct s_lst	*tail;
+	struct s_lst	*next;
+}	t_lst;
 
 int		ft_isalpha(int c);
 int		ft_atoi(const char *str);
@@ -58,27 +80,32 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-// Printf
-int		racc_print(int fd, const char *format, ...);
-void	racc_putchar(int fd, char c, int *counter);
-void	racc_putstr(int fd, char *s, int mode, int *counter);
-void	racc_putadrs(int fd, uintptr_t n, int *counter, char *base);
-void	racc_putnbs(int fd, unsigned int n, int *counter, char *base);
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *n);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *n);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// Printf
+int		rprint(int fd, const char *format, ...);
+void	racc_putchar(int fd, const char c, int *counter);
+void	racc_putstr(int fd, const char *s, int mode, int *counter);
+void	racc_putadrs(int fd, uintptr_t n, int *counter, const char *base);
+void	racc_putnbs(int fd, unsigned int n, int *counter, const char *base);
+
+// Get_next_line
+char	*get_next_line(int fd);
+int		extract_buffer(t_lst **head, int fd);
+char	*get_lines(t_lst **head);
+t_lst	*racc_lstnew(char c);
+size_t	racc_linesize(t_lst *lst);
+int		racc_findend(t_lst **lst);
+void	racc_delnode(t_lst **lst, int clear_all);
+int		racc_lstadd(t_lst **lst, t_lst *n);
 
 #endif
