@@ -76,4 +76,6 @@ int main(int ac, char **av)
         return(1);
     }
     //i've put this check in the main but it is better to have a function for that. the main function is going to be 25+lines if we do everything here
+
+	
 }

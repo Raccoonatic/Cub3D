@@ -68,4 +68,12 @@ void	cb_null_ptrs(t_img *i);
 void	cb_zero_ints(t_img *i);
 void	cb_zeroing(t_game *game);
 
+// ---- cb_map_pars_utils.c
+int		cb_map_height(char **map);
+int		cb_map_width(char **map);
+int		cb_check_surr(char **map, int i, int j);
+
+// ---- cb_map_pars.c
+int 	cb_validate_map(char **map, t_game *game);
+
 #endif
