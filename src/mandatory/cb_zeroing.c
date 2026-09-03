@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -78,6 +79,8 @@ void	cb_zero_ints(t_img *i)
 	return ;
 }
 =======
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -86,7 +89,11 @@ void	cb_zero_ints(t_img *i)
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:54:56 by lde-san-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/09/01 16:40:03 by lde-san-         ###   ########.fr       */
+=======
+/*   Updated: 2026/09/02 19:45:19 by lde-san-         ###   ########.fr       */
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +111,11 @@ void	cb_zeroing(t_game *game)
 	game->map = NULL;
 	game->h = 0;
 	game->w = 0;
+<<<<<<< HEAD
+=======
+	game->flor_c = -1;
+	game->ceil_c = -1;
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 	game->tstamp = cb_now();
 	cb_zero_img(game);
 	return ;
@@ -154,4 +166,7 @@ void	cb_zero_ints(t_img *i)
 	i->crnt_frm = 0;
 	return ;
 }
+<<<<<<< HEAD
 >>>>>>> origin/rdeimaos
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95

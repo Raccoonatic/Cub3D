@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -86,6 +87,8 @@ static void	cb_free_img_matrix(t_game *g, void **matrix)
 	free(matrix);
 }
 =======
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -94,7 +97,11 @@ static void	cb_free_img_matrix(t_game *g, void **matrix)
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:37:02 by lde-san-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/09/01 16:40:04 by lde-san-         ###   ########.fr       */
+=======
+/*   Updated: 2026/09/02 19:45:09 by lde-san-         ###   ########.fr       */
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +156,18 @@ static void	cb_imgdata_wipe(t_game *g, t_img *i)
 		cb_free_img_matrix(g, i->frm);
 	if (i->frad)
 		free(i->frad);
+<<<<<<< HEAD
 	i->main = NULL;
 	i->frm = NULL;
 	i->frad = NULL;
+=======
+	if (i->path)
+		free(i->path);
+	i->main = NULL;
+	i->frm = NULL;
+	i->frad = NULL;
+	i->path = NULL;
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 	return ;
 }
 
@@ -169,4 +185,7 @@ static void	cb_free_img_matrix(t_game *g, void **matrix)
 	}
 	free(matrix);
 }
+<<<<<<< HEAD
 >>>>>>> origin/rdeimaos
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95

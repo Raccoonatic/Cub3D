@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -90,15 +91,24 @@ re: fclean all
 
 .PHONY: all bonus re clean fclean
 =======
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 21:11:45 by lde-san-          #+#    #+#              #
 #    Updated: 2025/10/16 14:02:13 by lde-san-         ###   ########.fr        #
+=======
+#    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/04/12 21:11:45 by lde-san-          #+#    #+#              #
+#    Updated: 2026/09/02 13:46:47 by lde-san-         ###   ########.fr        #
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +123,10 @@ FILE += ft_isdigit.c
 FILE += ft_isalnum.c
 FILE += ft_isascii.c
 FILE += ft_isprint.c
+<<<<<<< HEAD
+=======
+FILE += ft_isspace.c
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 FILE += ft_strlen.c
 FILE += ft_memset.c
 FILE += ft_bzero.c
@@ -129,11 +143,19 @@ FILE += ft_memchr.c
 FILE += ft_memcmp.c
 FILE += ft_strnstr.c
 FILE += ft_atoi.c
+<<<<<<< HEAD
+=======
+FILE += ft_atoll.c
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 FILE += ft_calloc.c
 FILE += ft_strdup.c
 FILE += ft_substr.c
 FILE += ft_strjoin.c
 FILE += ft_strtrim.c
+<<<<<<< HEAD
+=======
+FILE += ft_filterset.c
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 FILE += ft_split.c
 FILE += ft_itoa.c
 FILE += ft_strmapi.c
@@ -162,11 +184,16 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	$(COMPILE) -c $< -o $@
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 all: $(NAME)
 
 bonus: $(OBJ) $(OBJ_BONUS)
 	ar -rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+<<<<<<< HEAD
 	
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
@@ -178,3 +205,15 @@ re: fclean all
 
 .PHONY: all bonus re clean fclean
 >>>>>>> origin/rdeimaos
+=======
+
+clean:
+	rm -f $(OBJ) $(OBJ_BONUS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all bonus re clean fclean
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -57,6 +58,8 @@ typedef struct s_game
 
 #endif
 =======
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -65,7 +68,11 @@ typedef struct s_game
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:39:40 by lde-san-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/09/01 16:40:05 by lde-san-         ###   ########.fr       */
+=======
+/*   Updated: 2026/09/02 19:45:19 by lde-san-         ###   ########.fr       */
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +105,11 @@ typedef struct s_game
 	char		**map;
 	int			h;
 	int			w;
+<<<<<<< HEAD
+=======
+	int			flor_c;
+	int 		ceil_c;
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 
 	t_img		buf;
 	t_img		flor;
@@ -112,4 +124,7 @@ typedef struct s_game
 }	t_game;
 
 #endif
+<<<<<<< HEAD
 >>>>>>> origin/rdeimaos
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95

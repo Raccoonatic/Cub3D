@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -35,6 +36,17 @@ lst is a part of, and returns a pointer to it*/
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:02:17 by lde-san-          #+#    #+#             */
 /*   Updated: 2025/04/21 20:10:35 by lde-san-         ###   ########.fr       */
+=======
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/21 20:02:17 by lde-san-          #+#    #+#             */
+/*   Updated: 2026/09/02 13:48:54 by lde-san-         ###   ########.fr       */
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +62,11 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (NULL);
 }
+<<<<<<< HEAD
 /*Looks for the last node of the list that 
 lst is a part of, and returns a pointer to it*/
 >>>>>>> origin/rdeimaos
+=======
+/*Looks for the last node of the list that
+lst is a part of, and returns a pointer to it*/
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95

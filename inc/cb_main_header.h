@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -97,6 +98,8 @@ int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
 
 #endif
 =======
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -105,7 +108,11 @@ int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 13:47:46 by lde-san-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/09/01 16:40:05 by lde-san-         ###   ########.fr       */
+=======
+/*   Updated: 2026/09/03 11:44:46 by lde-san-         ###   ########.fr       */
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,13 +159,20 @@ typedef enum e_kys
 // Prototypes:
 
 // ----	cb_exit.c
+<<<<<<< HEAD
 void	cb_fail(int errn, int code, const char *msg);
 void	cb_kill_the_game(t_game *gm, int flag, int errn, int code);
+=======
+void		cb_fail(int errn, int code, const char *msg);
+void		cb_kill_the_game(t_game *gm, int flag, int errn, int code);
+void		cb_frexit(t_game *g, char *str, char **mtrx, const char *msg);
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 
 // ----	cb_time.c
 long long	cb_now(void);
 
 // ----	cb_destroy.c
+<<<<<<< HEAD
 void	cb_frink(t_game *g);
 void	cb_free_matrix(char **matrix);
 
@@ -177,3 +191,39 @@ int 	cb_validate_map(char **map, t_game *game);
 
 #endif
 >>>>>>> origin/rdeimaos
+=======
+void		cb_frink(t_game *g);
+void		cb_free_matrix(char **matrix);
+
+// ---- cb_zeroing.c
+void		cb_null_ptrs(t_img *i);
+void		cb_zero_ints(t_img *i);
+void		cb_zeroing(t_game *game);
+
+// ---- cb_getcolors.c
+int			cb_get_flor(t_game *game, char *cursor, char *line, int fd);
+int			cb_get_ceil(t_game *game, char *cursor, char *line, int fd);
+
+// ---- cb_getpaths.c
+int			cb_get_north(t_game *g, char *cursor, char *line, int fd);
+int			cb_get_south(t_game *g, char *cursor, char *line, int fd);
+int			cb_get_westh(t_game *g, char *cursor, char *line, int fd);
+int			cb_get_easth(t_game *g, char *cursor, char *line, int fd);
+
+// ---- cb_scenetomap.c
+char		**cb_scene_to_map(t_game *g, char *map_path);
+
+// ---- cb_scenetomap_utils_alpha.c
+char		*cb_skip_blank(char *line);
+char		**cb_addline(char **raw_map, char *line);
+int			cb_scene_data_fill(t_game *g,char *line, int fd);
+
+// ---- cb_scenetomap_utils_beta.c
+char		**cb_matrixalloc(int columns, int rows);
+void		cb_map_populate(char **raw, char **dest, int miny, int maxy);
+
+// ---- cb_getborders.c
+int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
+
+#endif
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95

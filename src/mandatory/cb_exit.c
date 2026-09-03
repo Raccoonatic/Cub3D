@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -67,6 +68,8 @@ void	cb_kill_the_game(t_game *gm, int flag, int errn, int code)
 	return ;
 }
 =======
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -75,7 +78,11 @@ void	cb_kill_the_game(t_game *gm, int flag, int errn, int code)
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:13:48 by lde-san-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/09/01 16:40:04 by lde-san-         ###   ########.fr       */
+=======
+/*   Updated: 2026/09/03 10:54:29 by lde-san-         ###   ########.fr       */
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +90,10 @@ void	cb_kill_the_game(t_game *gm, int flag, int errn, int code)
 
 void	cb_fail(int errn, int code, const char *msg);
 void	cb_kill_the_game(t_game *gm, int flag, int errn, int code);
+<<<<<<< HEAD
+=======
+void	cb_frexit(t_game *g, char *str, char **mtrx, const char *msg);
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 
 void	cb_fail(int errn, int code, const char *msg)
 {
@@ -101,6 +112,19 @@ void	cb_fail(int errn, int code, const char *msg)
 	exit(code);
 }
 
+<<<<<<< HEAD
+=======
+void	cb_frexit(t_game *g, char *str, char **mtrx, const char *msg)
+{
+	cb_frink(g);
+	if (str)
+		free(str);
+	if (mtrx)
+		cb_free_matrix(mtrx);
+	cb_fail(1, 1, msg);
+}
+
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
 void	cb_kill_the_game(t_game *gm, int flag, int errn, int code)
 {
 	if (!gm->mlx)
@@ -123,4 +147,7 @@ void	cb_kill_the_game(t_game *gm, int flag, int errn, int code)
 	cb_fail(1, code, "Memory allocation error"RST);
 	return ;
 }
+<<<<<<< HEAD
 >>>>>>> origin/rdeimaos
+=======
+>>>>>>> 024ec7ff1bbcb68fabeee1d251413eb19ed6ba95
