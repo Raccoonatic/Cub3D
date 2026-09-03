@@ -11,7 +11,8 @@ static int cb_check_content(char **map)
         j = 0;
         while(map[i][j])
         {
-            if(map[i][j] != '1'&& map[i][j] != 'B' && map[i][j] != '0' && map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W')
+            if(map[i][j] != '1'&& map[i][j] != 'B' && map[i][j] != '0'
+                    && map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W')
                 return (0);
             j++;
         }
@@ -103,19 +104,19 @@ int cb_validate_map(char **map, t_game *game)
     len = cb_map_width(map);
     if(!cb_check_content(map))
     {
-        cb_fail(1, 2, "Map contains invalid characters");
+        cb_fail(1, 1, "Map contains invalid characters");
         return (0);
     }
     if(!cb_check_walls(map, size, len) || !cb_validate_content(map))
     {
-        cb_fail(1, 2, "Map is not surrounded by walls");
+        cb_fail(1, 1, "Map is not surrounded by walls");
         return (0);
     }
     if(!cb_validate_player(map))
     {
-        cb_fail(1, 2, "Map must contain exactly one player starting position");
+        cb_fail(1, 1, "Map must contain exactly one player starting position");
         return (0);
     }
-    printf("Map validation successful\n");
+    printf("Map validation successful");
     return (1);
 }
