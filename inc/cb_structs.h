@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:39:40 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/01 16:40:05 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/02 19:45:19 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_game
 	char		**map;
 	int			h;
 	int			w;
+	int			flor_c;
+	int 		ceil_c;
 
 	t_img		buf;
 	t_img		flor;

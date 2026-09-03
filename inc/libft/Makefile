@@ -6,7 +6,7 @@
 #    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 21:11:45 by lde-san-          #+#    #+#              #
-#    Updated: 2026/09/01 23:49:35 by lde-san-         ###   ########.fr        #
+#    Updated: 2026/09/02 13:46:47 by lde-san-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FILE += ft_isdigit.c
 FILE += ft_isalnum.c
 FILE += ft_isascii.c
 FILE += ft_isprint.c
+FILE += ft_isspace.c
 FILE += ft_strlen.c
 FILE += ft_memset.c
 FILE += ft_bzero.c
@@ -43,6 +44,7 @@ FILE += ft_strdup.c
 FILE += ft_substr.c
 FILE += ft_strjoin.c
 FILE += ft_strtrim.c
+FILE += ft_filterset.c
 FILE += ft_split.c
 FILE += ft_itoa.c
 FILE += ft_strmapi.c

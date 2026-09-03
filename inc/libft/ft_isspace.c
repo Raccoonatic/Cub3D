@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cb_main.c                                          :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/02 19:45:17 by lde-san-         ###   ########.fr       */
+/*   Created: 2026/09/02 11:49:37 by lde-san-          #+#    #+#             */
+/*   Updated: 2026/09/02 13:49:25 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
-
-int main(int ac, char **av)
+int	ft_isspace(int c)
 {
-	t_game game;
-
-    if (ac != 2)
-		cb_fail(2, 2, "Incorrect argument count.");
-	cb_zeroing(&game);
-	if (cb_check_map(&game, cb_scene_to_map(&game, av[1]), &game));
-
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	if (c == '\v' || c == '\f' || c == '\r')
+		return (1);
 	return (0);
 }

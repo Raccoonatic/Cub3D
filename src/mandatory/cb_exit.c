@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:13:48 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/01 16:40:04 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/03 10:54:29 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	cb_fail(int errn, int code, const char *msg);
 void	cb_kill_the_game(t_game *gm, int flag, int errn, int code);
+void	cb_frexit(t_game *g, char *str, char **mtrx, const char *msg);
 
 void	cb_fail(int errn, int code, const char *msg)
 {
@@ -30,6 +31,16 @@ void	cb_fail(int errn, int code, const char *msg)
 		rprint(2, LME"%e The Verdant Veil Perseveres! %s\n"RST, "yep", msg);
 	rprint(1, RST);
 	exit(code);
+}
+
+void	cb_frexit(t_game *g, char *str, char **mtrx, const char *msg)
+{
+	cb_frink(g);
+	if (str)
+		free(str);
+	if (mtrx)
+		cb_free_matrix(mtrx);
+	cb_fail(1, 1, msg);
 }
 
 void	cb_kill_the_game(t_game *gm, int flag, int errn, int code)
