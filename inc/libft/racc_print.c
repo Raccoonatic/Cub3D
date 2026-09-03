@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   racc_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 22:00:55 by lde-san-          #+#    #+#             */
-/*   Updated: 2025/10/16 14:40:47 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/01 16:40:06 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static unsigned int	vibechek(int fd, int n, int *counter);
 static void			ptr(int fd, va_list arg, int *counter);
 static void			racc_format_check(int fd, va_list arg, char c, int *cnt);
 
-int	racc_print(int fd, const char *format, ...)
+int	rprint(int fd, const char *format, ...)
 {
 	va_list	arg;
 	int		counter;
@@ -84,7 +84,7 @@ static void	ptr(int fd, va_list arg, int *counter)
 	racc_putadrs(fd, address, counter, "0123456789abcdef");
 }
 /*This modfied version of the printf function, has fewer functionalities in
-regards  to  formatting  options, but adds the option to print to different 
+regards  to  formatting  options, but adds the option to print to different
 file descriptors, and the %e format specifier. Who's sole purpose is to hard
 code a couple emojis that may add readability when testing code. These emojis
 may be called by adding the strings "racc", "yes" and "nope" respectively*/

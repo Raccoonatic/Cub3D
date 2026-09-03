@@ -1,23 +1,42 @@
-#include <fcntl.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cb_main.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
+/*   Updated: 2026/09/03 19:46:28 by lde-san-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/cb_main_header.h"
+
+static void dispmap(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while (game->map[i])
+	{
+		printf("%s\n", game->map[i]);
+		i++;
+	}
+	return ;
+}
 
 int main(int ac, char **av)
 {
+	t_game game;
+
     if (ac != 2)
-    {
-       printf("Error\nInvalid number of arguments\n");
-       return (1);
-    }
-    //just checking if the file in the parameter is a .cub or not 
-    if(!ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4))
-    {
-        printf("Error\nPlease provide a .cub file\n");
-        return (1);
-    }
-    //cheecking if the file can be opened
-    if (open(av[1], O_RDONLY) == -1)
-    {
-        printf("Error\nCould't open the file\n");
-        return(1);
-    }
-    //i've put this check in the main but it is better to have a function for that. the main function is going to be 25+lines if we do everything here
+		cb_fail(2, 1, "Incorrect argument count.");
+	cb_zeroing(&game);
+	if (!cb_validate_map(cb_scene_to_map(&game, av[1]), &game))
+		cb_fail(1, 1, "Invalid map.");
+	if (!game.map)
+		cb_fail(1, 1, "Failed to create map.");
+	dispmap(&game);
+	cb_frexit(&game, NULL, NULL, "Exiting program.");
+	return (0);
 }

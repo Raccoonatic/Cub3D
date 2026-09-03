@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 22:38:33 by lde-san-          #+#    #+#             */
-/*   Updated: 2025/06/03 12:25:07 by lde-san-         ###   ########.fr       */
+/*   Created: 2026/09/03 13:09:32 by lde-san-          #+#    #+#             */
+/*   Updated: 2026/09/03 13:10:05 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/get_next_line_bonus.h"
+#include "./includes/libft.h"
 
 t_lst	*racc_lstnew(char c)
 {
@@ -73,16 +73,16 @@ void	racc_delnode(t_lst **lst, int clear_all)
 	return ;
 }
 
-int	racc_lstadd(t_lst **lst, t_lst *new)
+int	racc_lstadd(t_lst **lst, t_lst *n)
 {
 	t_lst	*last;
 
-	if (!lst || !new)
+	if (!lst || !n)
 		return (-1);
 	if (!*lst)
 	{
-		*lst = new;
-		(*lst)-> tail = new;
+		*lst = n;
+		(*lst)-> tail = n;
 		return (0);
 	}
 	if (!(*lst)->tail)
@@ -96,7 +96,7 @@ int	racc_lstadd(t_lst **lst, t_lst *new)
 		}
 		(*lst)-> tail = last;
 	}
-	(*lst)-> tail -> next = new;
-	(*lst)-> tail = new;
+	(*lst)-> tail -> next = n;
+	(*lst)-> tail = n;
 	return (0);
 }

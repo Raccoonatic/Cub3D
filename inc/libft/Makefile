@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+         #
+#    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/12 21:11:45 by lde-san-          #+#    #+#              #
-#    Updated: 2025/10/16 14:02:13 by lde-san-         ###   ########.fr        #
+#    Created: 2026/09/03 12:45:39 by lde-san-          #+#    #+#              #
+#    Updated: 2026/09/03 12:45:42 by lde-san-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FILE += ft_isdigit.c
 FILE += ft_isalnum.c
 FILE += ft_isascii.c
 FILE += ft_isprint.c
+FILE += ft_isspace.c
 FILE += ft_strlen.c
 FILE += ft_memset.c
 FILE += ft_bzero.c
@@ -37,11 +38,13 @@ FILE += ft_memchr.c
 FILE += ft_memcmp.c
 FILE += ft_strnstr.c
 FILE += ft_atoi.c
+FILE += ft_atoll.c
 FILE += ft_calloc.c
 FILE += ft_strdup.c
 FILE += ft_substr.c
 FILE += ft_strjoin.c
 FILE += ft_strtrim.c
+FILE += ft_filterset.c
 FILE += ft_split.c
 FILE += ft_itoa.c
 FILE += ft_strmapi.c
@@ -70,18 +73,18 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	$(COMPILE) -c $< -o $@
-	
+
 all: $(NAME)
 
 bonus: $(OBJ) $(OBJ_BONUS)
 	ar -rcs $(NAME) $(OBJ) $(OBJ_BONUS)
-	
+
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
-	
+
 fclean: clean
 	rm -f $(NAME)
-	
+
 re: fclean all
 
 .PHONY: all bonus re clean fclean

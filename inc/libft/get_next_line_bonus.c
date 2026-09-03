@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 22:38:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2025/06/03 12:24:51 by lde-san-         ###   ########.fr       */
+/*   Created: 2026/09/03 13:08:14 by lde-san-          #+#    #+#             */
+/*   Updated: 2026/09/03 13:10:05 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/get_next_line_bonus.h"
+#include "./includes/libft.h"
 
 char	*get_lines(t_lst **head)
 {

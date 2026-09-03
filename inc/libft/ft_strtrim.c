@@ -32,7 +32,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = (char *)(s1 + ft_strlen(s1));
 	while (ft_strchr(set, *end))
 		end--;
-	return (ft_substr(s1, start, ((size_t)end - (size_t) & s1[start]) + 1));
+	return (ft_substr(s1, start, ((size_t)end - (size_t) &s1[start]) + 1));
 }
 /*Trims away the leading and tailing characters "set" from the original
 string s1 and allocates memory to paste the remaining substring into it*/
