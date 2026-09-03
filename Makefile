@@ -5,7 +5,7 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/09/03 12:55:42 by lde-san-          #+#    #+#              #
+#    Cr#    Created: 2026/09/03 12:55:42 by lde-san-          #+#    #+#              #
 #    Updated: 2026/09/03 12:55:42 by lde-san-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -155,7 +155,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re leaks mlx_dependencies
+.PHONY: all clean fclean re leaks wipe mlx_dependencies
 
 # /////////////////////// -- * Functionalities * -- ////////////////////// #
 
@@ -202,13 +202,6 @@ wipe: fclean
 	@make ./inc/mlx_linux
 	@make -C ./inc/mlx_linux
 	@rm -rf ./inc/mlx_linux/Makefile
-
-mlx_dependencies:
-	@printf "$(MINT)\n\t\t🦝 Loading up the goodies! 🦝\n\n"
-	@sleep 0.5
-	@printf "$(NEOR)Upgrading current packages... \n\n"
-	@sleep 1
-	@printf "$(LIME)"
 	@sudo apt-get update || true
 	@sudo apt-get upgrade || true
 	@printf "$(RSET)\n\n"
