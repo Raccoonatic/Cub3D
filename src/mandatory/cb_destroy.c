@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:37:02 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/01 16:40:04 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/02 19:45:09 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,12 @@ static void	cb_imgdata_wipe(t_game *g, t_img *i)
 		cb_free_img_matrix(g, i->frm);
 	if (i->frad)
 		free(i->frad);
+	if (i->path)
+		free(i->path);
 	i->main = NULL;
 	i->frm = NULL;
 	i->frad = NULL;
+	i->path = NULL;
 	return ;
 }
 
