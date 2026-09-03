@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cb_map_pars.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/03 12:53:03 by lde-san-          #+#    #+#             */
+/*   Updated: 2026/09/03 12:53:03 by lde-san-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cb_main_header.h"
 
 static int cb_check_content(char **map)
@@ -118,5 +130,6 @@ int cb_validate_map(char **map, t_game *game)
         return (0);
     }
     printf("Map validation successful");
+	game->map = map;
     return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:15:26 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/03 11:17:42 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/03 18:35:12 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	**cb_read_the_scene(t_game *g, int fd)
 		get_next_line(fd);
 		cb_fail(1, 1, "Can't read secene file "BWI"gnl"NOR" Failed.");
 	}
-	if (cb_scene_data_fill(g, line, fd))
+	if (cb_scene_data_fill(g, &line, fd))
 	{
 		if (line)
 			free(line);
@@ -77,7 +77,7 @@ char	**cb_get_raw_map(t_game *g, int fd, char *line)
 		{
 			close(fd);
 			get_next_line(fd);
-			return (NULL);
+			cb_frexit(g, NULL, NULL, "cb_addline failed. "NOR"Can't get map.");
 		}
 		line = get_next_line(fd);
 	}

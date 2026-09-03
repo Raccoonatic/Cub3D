@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/08/27 19:01:27 by lde-san-          #+#    #+#              #
-#    Updated: 2026/08/27 20:27:21 by lde-san-         ###   ########.fr        #
+#    Created: 2026/09/03 12:55:42 by lde-san-          #+#    #+#              #
+#    Updated: 2026/09/03 12:55:42 by lde-san-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME = cub3D
 BONO = cub3D_bonus
 
 LIBFT = ./inc/libft/libft.a
+CUB_LIB_MAN = ./inc/libcub.a
+CUB_LIB_BON = ./inc/libcubon.a
 
 NEOR	= \033[3m\033[38;2;255;153;51m
 MINT	= \033[1;38;2;55;250;133m
@@ -34,15 +36,18 @@ SRC_DIR_BON = src/bonus/
 OBJ_DIR_MAN = obj/mandatory/
 OBJ_DIR_BON = obj/bonus/
 
-MANDA = cb_template.c
-# MANDA =
-# MANDA =
-# MANDA =
-# MANDA =
-# MANDA =
-# MANDA =
-# MANDA =
-# MANDA =
+MANDA = cb_destroy.c
+MANDA += cb_exit.c
+MANDA += cb_getborders.c
+MANDA += cb_getcolors.c
+MANDA += cb_getpaths.c
+MANDA += cb_map_pars_utils.c
+MANDA += cb_map_pars.c
+MANDA += cb_scenetomap.c
+MANDA += cb_scenetomap_utils_alpha.c
+MANDA += cb_scenetomap_utils_beta.c
+MANDA += cb_time.c
+MANDA += cb_zeroing.c
 
 BONUS = cb_template_bonus.c
 # BONUS +=
@@ -52,6 +57,9 @@ BONUS = cb_template_bonus.c
 # BONUS +=
 # BONUS +=
 # BONUS +=
+
+INC_MAN = ./inc/cb_main_header.h ./inc/cb_structs.h
+INC_BON =
 
 SRC_MAN = $(addprefix $(SRC_DIR_MAN),$(MANDA))
 OBJ_MAN = $(SRC_MAN:$(SRC_DIR_MAN)%.c=$(OBJ_DIR_MAN)%.o)
@@ -67,50 +75,60 @@ all: $(NAME)
 
 bonus: $(BONO)
 
-$(NAME): $(LIBFT) ./inc/mlx_linux ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(OBJ_MAN) ./inc/cub3d.h
+$(NAME): $(LIBFT) ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(CUB_LIB_MAN) $(INC_MAN)
 	@printf "$(BABY)"
-	$(COMPILE) $(MAIN_MAN) $(OBJ_MAN) $(LIBFT) -L./inc/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+	$(COMPILE) $(MAIN_MAN) $(CUB_LIB_MAN) $(LIBFT) -L./inc/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 	@printf "$(MINT)"
 	@ls -la
 	@printf "$(RSET)"
 
-$(BONO): $(LIBFT) ./inc/mlx_linux ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(OBJ_BON) ./inc/cub3d_bonus.h
+$(BONO): $(LIBFT) ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(CUB_LIB_BON) $(INC_BON)
 	@printf "$(BABY)"
-	$(COMPILE) $(MAIN_BON) $(OBJ_BON) $(LIBFT) -L./inc/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+	$(COMPILE) $(MAIN_BON) $(CUB_LIB_BON) $(LIBFT) -L./inc/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(BONO)
 	@mv $(BONO) $(NAME)
 	@printf "$(MINT)"
 	@ls -la
 	@printf "$(RSET)"
 
-$(OBJ_DIR_MAN)%.o: $(SRC_DIR_MAN)%.c | $(OBJ_DIR_MAN)
+$(OBJ_DIR_MAN)%.o: $(SRC_DIR_MAN)%.c $(INC_MAN) | $(OBJ_DIR_MAN)
 	@printf "$(PURP)"
 	$(COMPILE) -I/usr/include -I./inc/mlx_linux -c $< -o $@
 	@printf "$(RSET)"
 
-$(OBJ_DIR_BON)%.o: $(SRC_DIR_BON)%.c | $(OBJ_DIR_BON)
+$(OBJ_DIR_BON)%.o: $(SRC_DIR_BON)%.c $(INC_BON) | $(OBJ_DIR_BON)
 	@printf "$(PURP)"
 	$(COMPILE) -I/usr/include -I./inc/mlx_linux -c $< -o $@
 	@printf "$(RSET)"
 
 $(SRC_DIR_MAN):
-	@mkdir src
-	@mkdir $@
+	@mkdir -p src
+	@mkdir -p $(SRC_DIR_MAN)
 
 $(SRC_DIR_BON):
-	@mkdir src
-	@mkdir $@
+	@mkdir -p src
+	@mkdir -p $(SRC_DIR_BON)
 
 $(OBJ_DIR_MAN):
-	@mkdir obj
-	@mkdir $@
+	@mkdir -p obj
+	@mkdir -p $(OBJ_DIR_MAN)
 
 $(OBJ_DIR_BON):
-	@mkdir obj
-	@mkdir $@
+	@mkdir -p obj
+	@mkdir -p $(OBJ_DIR_BON)
 
 $(LIBFT):
 	@printf "$(NEOR)"
 	@make -C ./inc/libft
+	@printf "$(RSET)"
+
+$(CUB_LIB_MAN): $(OBJ_MAN)
+	@printf "$(PINK)"
+	ar -rcs $@ $^
+	@printf "$(RSET)"
+
+$(CUB_LIB_BON): $(OBJ_BON)
+	@printf "$(PINK)"
+	ar -rcs $@ $^
 	@printf "$(RSET)"
 
 clean:
@@ -118,8 +136,9 @@ clean:
 	@make -C ./inc/libft clean
 	@sleep 0.3
 	@printf "$(BLOD)"
-	rm -rf $(OBJ_DIR_MAN)
-	rm -rf $(OBJ_DIR_BON)
+	rm -rf obj
+	rm -rf $(CUB_LIB_MAN)
+	rm -rf $(CUB_LIB_BON)
 	@sleep 0.3
 	@printf "$(RSET)"
 
@@ -136,7 +155,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re leaks ./inc/mlx_linux ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a mlx_dependencies
+.PHONY: all clean fclean re leaks mlx_dependencies
 
 # /////////////////////// -- * Functionalities * -- ////////////////////// #
 
@@ -146,7 +165,13 @@ leaks: $(NAME)
 	@valgrind $(LEAK_FLAGS) ./$(NAME)
 	@sleep 0.3
 
+wipe: fclean
+	@printf "$(BLOD)"
+	rm -rf ./inc/mlx_linux
+	@printf "$(RSET)\n"
+
 ./inc/mlx_linux:
+	@rm -rf ./inc/mlx_linux
 	@printf "$(MINT)\n\t\t🦝 Looks like you don't have the library yet... 🦝\n"
 	@sleep 0.5
 	@printf "\t\t\t\t Let's get it!\n\n"
@@ -168,11 +193,15 @@ leaks: $(NAME)
 	@sleep 1
 	@printf "$(MINT)\n\t\t  🦝 There u go <3! 🦝\n\n"
 
-./inc/mlx_linux/libmlx.a: ./inc/mlx_linux
+./inc/mlx_linux/libmlx.a:
+	@make ./inc/mlx_linux
 	@make -C ./inc/mlx_linux
+	@rm -rf ./inc/mlx_linux/Makefile
 
-./inc/mlx_linux/libmlx_Linux.a: ./inc/mlx_linux
+./inc/mlx_linux/libmlx_Linux.a:
+	@make ./inc/mlx_linux
 	@make -C ./inc/mlx_linux
+	@rm -rf ./inc/mlx_linux/Makefile
 
 mlx_dependencies:
 	@printf "$(MINT)\n\t\t🦝 Loading up the goodies! 🦝\n\n"

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:38:18 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/03 11:21:13 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/03 18:38:02 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char		*cb_skip_blank(char *line);
 static int	cb_check_missing_data(t_game *g);
-static int	cb_get_data(t_game *g, char *cursor);
 char		**cb_addline(char **raw_map, char *line);
-int			cb_scene_data_fill(t_game *g,char *line, int fd);
+int			cb_scene_data_fill(t_game *g,char **line, int fd);
+static int	cb_get_data(t_game *g, char *cursor, char *line, int fd);
 
 char **cb_addline(char **raw_map, char *line)
 {
@@ -35,6 +35,7 @@ char **cb_addline(char **raw_map, char *line)
 		while (raw_map[guide])
 		{
 			ret[guide] = ft_strdup(raw_map[guide]);
+// TODO: check if strdup fails
 			guide++;
 		}
 	}
@@ -43,21 +44,21 @@ char **cb_addline(char **raw_map, char *line)
 	return(ret);
 }
 
-int	cb_scene_data_fill(t_game *g,char *line, int fd)
+int	cb_scene_data_fill(t_game *g, char **line, int fd)
 {
 	char *cursor;
 
 	cursor = NULL;
-	while (line)
+	while (line && *line)
 	{
-		cursor = cb_skip_blank(line);
-		if (cursor || *cursor)
+		cursor = cb_skip_blank(*line);
+		if (cursor && *cursor)
 		{
-			if(cb_get_data(g, cursor, line, fd))
+			if(cb_get_data(g, cursor, *line, fd))
 				break;
 		}
-		free(line);
-		line = get_next_line(fd);
+		free(*line);
+		*line = get_next_line(fd);
 	}
 	return (cb_check_missing_data(g));
 }
