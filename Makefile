@@ -168,6 +168,7 @@ leaks: $(NAME)
 wipe: fclean
 	@printf "$(BLOD)"
 	rm -rf ./inc/mlx_linux
+	rm -rf ./inc/minilibx-linux
 	@printf "$(RSET)\n"
 
 ./inc/mlx_linux:
@@ -217,6 +218,99 @@ wipe: fclean
 	@sleep 1
 	@printf "$(MINT)\t\t🦝 All requirements should be installed! 🦝\n\n"
 	@printf "$(RSET)"
+
+parse_tests: all
+	@printf "$(MINT)\n\t\t🦝 Initiating tests! 🦝\n"
+	@printf "$(NEOR)\tHit enter after every test to continue... \n\n$(RSET)"
+	@read dummy
+	@printf "$(BABY)\tNo arguments: \n$(RSET)"
+	! ./$(NAME)
+	@read dummy
+	@printf "$(BABY)\tToo many arguments: \n$(RSET)"
+	! ./$(NAME) arg1 arg2
+	@read dummy
+	@printf "$(BABY)\tValid minimalistic scene: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/minimalistic.cub
+	@read dummy
+	@printf "$(BABY)\tScene with blank name: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/' '
+	@read dummy
+	@printf "$(BABY)\tScene with only .cub for name: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/.cub
+	@read dummy
+	@printf "$(BABY)\tScene with no .cub extension: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/nocub
+	@read dummy
+	@printf "$(BABY)\tScene with invalid extension: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/invalid.txt
+	@read dummy
+	@printf "$(BABY)\tScene with no read permissions: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/no_permissions.cub
+	@read dummy
+	@printf "$(BABY)\tScene with missing texture path: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/missing_path.cub
+	@read dummy
+	@printf "$(BABY)\tScene with missing tile: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/missing_tile.cub
+	@read dummy
+	@printf "$(BABY)\tScene without colors: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/no_color.cub
+	@read dummy
+	@printf "$(BABY)\tScene with impossible color values: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/impossible_color.cub
+	@read dummy
+	@printf "$(BABY)\tScene with non_numeric color values: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/non_numeric_color.cub
+	@read dummy
+	@printf "$(BABY)\tScene with no map: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/nomap.cub
+	@read dummy
+	@printf "$(BABY)\tScene with non-existent texture: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/non_existent_texture.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a texture with no read permissions: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/no_permit_texture.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a texture in a directory with no execute permissions: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/texture_in_dir_with_no_permit.cub
+	@read dummy
+	@printf "$(BABY)\tScene in a directory with no execute permissions: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/no_permit/in_no_permit_folder.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map that has blank padding around it: \n$(RSET)" // TODO: Fix this test, coredump
+	! ./$(NAME) ./maps/tests/blank_padding_around_map.cub
+	@read dummy
+	@printf "$(BABY)\tScene with blank padding between informations: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/blank_padding_between_info.cub
+	@read dummy
+	@printf "$(BABY)\tScene with blank padding in color information: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/blank_padding_num.cub
+	@read dummy
+	@printf "$(BABY)\tScene without extra blank spaces: \n$(RSET)"  // TODO: Fix this test, coredump
+	! ./$(NAME) ./maps/tests/compressed.cub
+	@read dummy
+	@printf "$(BABY)\tScene with map not surrounded by walls: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/broken.cub
+	@read dummy
+	@printf "$(BABY)\tScene with various maps separated by blank lines: \n$(RSET)"  // TODO: Fix this test, coredump
+	! ./$(NAME) ./maps/tests/islands.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map that has more than one player start: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/multiplayer.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map that has no player start: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/missing_tile.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map with no air: \n$(RSET)"  // TODO: Fix this test, coredump
+	! ./$(NAME) ./maps/tests/prison.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map with an unexpected character: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/unexpected_character.cub
+	@read dummy
+	@printf "$(BABY)\tScene with multiple definitions of the same texture: \n$(RSET)"
+	! ./$(NAME) ./maps/tests/repeat.cub
+	@read dummy
+	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n"
 
 # path_of_gluttony: $(NAME)
 # 	@printf "🦝 \001\033[3m\033[38;2;255;153;51m\002Building path_of_gluttony.sh... 🦝\\n"

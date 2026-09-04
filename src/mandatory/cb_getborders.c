@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 15:51:16 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/02 19:45:18 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/04 01:04:56 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static void	cb_find_maxx(char **raw, int miny, int maxy, int *maxx)
 	int column;
 
 	column = 0;
-	while(ft_isspace(raw[miny][column]))
+	while(raw[miny][column] && ft_isspace(raw[miny][column]))
 		column++;
-	while(!ft_isspace(raw[miny][column]))
+	while(raw[miny][column] && !ft_isspace(raw[miny][column]))
 		column++;
 	*maxx = column;
 	while (++miny <= maxy)
 	{
 		column = 0;
-		while(ft_isspace(raw[miny][column]))
+		while(raw[miny][column] && ft_isspace(raw[miny][column]))
 			column++;
-		while(!ft_isspace(raw[miny][column]))
+		while(raw[miny][column] && !ft_isspace(raw[miny][column]))
 			column++;
 		if (column > *maxx)
 			*maxx = column;
@@ -40,13 +40,13 @@ static void	cb_find_minx(char **raw, int miny, int maxy, int *minx)
 	int column;
 
 	column = 0;
-	while(ft_isspace(raw[miny][column]))
+	while(raw[miny][column] && ft_isspace(raw[miny][column]))
 		column++;
 	*minx = column;
 	while (++miny <= maxy)
 	{
 		column = 0;
-		while(ft_isspace(raw[miny][column]))
+		while(raw[miny][column] && ft_isspace(raw[miny][column]))
 			column++;
 		if (column < *minx)
 			*minx = column;
@@ -88,5 +88,5 @@ int	cb_define_borders(char **raw, int *maxy, int *minx, int *maxx)
 	cb_find_maxy(raw, miny, maxy);
 	cb_find_minx(raw, miny, *maxy, minx);
 	cb_find_maxx(raw, miny, *maxy, maxx);
-	return (0);
+	return (miny);
 }

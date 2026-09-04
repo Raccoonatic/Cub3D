@@ -1,0 +1,9 @@
+inc/mlx_linux/
+inc/minilibx-linux/
+obj/
+inc/libcub.a
+inc/libcubon.a
+cub3D
+cub3D_bonus
+inc/libft/libft.a
+inc/libft/*.o

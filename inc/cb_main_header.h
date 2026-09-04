@@ -44,6 +44,7 @@ typedef enum e_kys
 // Text Color:
 # define RST	"\033[0m"
 # define BWI	"\033[1;37m"
+# define NAV	"\033[38;2;0;2;31m"
 # define LME	"\033[38;2;0;255;0m"
 # define BBY	"\033[1;38;2;0;255;247m"
 # define BLD	"\033[1;38;2;255;0;0m"

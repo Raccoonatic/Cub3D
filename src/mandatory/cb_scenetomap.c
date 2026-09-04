@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:15:26 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/03 20:09:12 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/04 01:04:56 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ char	**cb_get_raw_map(t_game *g, int fd, char *line)
 
 static char	**cb_refine_map(t_game *g, char **raw)
 {
-	int mny;
-	int	mxy;
-	int mnx;
-	int mxx;
-	char **destilled;
+	int		mny;
+	int		mxy;
+	int		mnx;
+	int		mxx;
+	char	**destilled;
 
 	mxy = 0;
 	mnx = 0;

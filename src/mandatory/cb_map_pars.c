@@ -129,7 +129,7 @@ int cb_validate_map(char **map, t_game *game)
         cb_fail(1, 1, "Map must contain exactly one player starting position");
         return (0);
     }
-    printf("Map validation successful");
+    printf("Map validation successful\n");
 	game->map = map;
     return (1);
 }
