@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/04 01:04:55 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/04 01:26:08 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	**cb_matrixalloc(int columns, int rows);
 void	cb_remove_trailing_blanks(t_game *g, char **map);
-void	cb_map_populate(char **raw, char **dest, int miny, int maxy);
+void	cb_map_populate(char **raw, char **dest, int miny, int minx);
 
 char	**cb_matrixalloc(int columns, int rows)
 {
@@ -43,19 +43,19 @@ char	**cb_matrixalloc(int columns, int rows)
 	return (ret);
 }
 
-void	cb_map_populate(char **raw, char **dest, int miny, int maxy)
+void	cb_map_populate(char **raw, char **dest, int miny, int minx)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while ((miny + i) <= maxy)
+	while (dest[i] && raw[miny + i])
 	{
 		j = 0;
-		while (raw[miny + i][j])
+		while (dest[i][j] && raw[miny + i][minx + j])
 		{
-			if (!ft_strchr("\n\r ", raw[miny + i][j]))
-				dest[i][j] = raw[miny + i][j];
+			if (!ft_strchr("\n\r ", raw[miny + i][minx + j]))
+				dest[i][j] = raw[miny + i][minx + j];
 			j++;
 		}
 		i++;

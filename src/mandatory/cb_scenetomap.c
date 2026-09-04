@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:15:26 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/04 01:04:56 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/04 01:26:07 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ static char	**cb_refine_map(t_game *g, char **raw)
 	destilled = cb_matrixalloc(mxy - mny, mxx - mnx);
 	if (!destilled)
 		cb_frexit(g, NULL, raw, "Couldn't load scene file. "NOR"calloc error.");
-	cb_map_populate(raw, destilled, mny, mxy);
+	cb_map_populate(raw, destilled, mny, mnx);
 	return (destilled);
 }

@@ -99,7 +99,7 @@ int			cb_scene_data_fill(t_game *g, char **line, int fd);
 
 // ---- cb_scenetomap_utils_beta.c
 char		**cb_matrixalloc(int columns, int rows);
-void		cb_map_populate(char **raw, char **dest, int miny, int maxy);
+void		cb_map_populate(char **raw, char **dest, int miny, int minx);
 
 // ---- cb_getborders.c
 int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);

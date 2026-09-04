@@ -277,7 +277,7 @@ parse_tests: all
 	@printf "$(BABY)\tScene in a directory with no execute permissions: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/no_permit/in_no_permit_folder.cub
 	@read dummy
-	@printf "$(BABY)\tScene with a map that has blank padding around it: \n$(RSET)" // TODO: Fix this test, coredump
+	@printf "$(BABY)\tScene with a map that has blank padding around it: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/blank_padding_around_map.cub
 	@read dummy
 	@printf "$(BABY)\tScene with blank padding between informations: \n$(RSET)"
@@ -310,7 +310,7 @@ parse_tests: all
 	@printf "$(BABY)\tScene with multiple definitions of the same texture: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/repeat.cub
 	@read dummy
-	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n"
+	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n\n$(RSET)"
 
 # path_of_gluttony: $(NAME)
 # 	@printf "🦝 \001\033[3m\033[38;2;255;153;51m\002Building path_of_gluttony.sh... 🦝\\n"
