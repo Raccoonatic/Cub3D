@@ -7,5 +7,3 @@ cub3D
 cub3D_bonus
 inc/libft/libft.a
 inc/libft/*.o
-maps/tests/no_permit/
-textures/tests/no_permit/
