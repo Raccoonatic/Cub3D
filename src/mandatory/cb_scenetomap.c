@@ -98,7 +98,7 @@ static char	**cb_refine_map(t_game *g, char **raw)
 	mny = cb_define_borders(raw, &mxy, &mnx, &mxx);
 	if (mny == -1)
 		cb_frexit(g, NULL, raw, "Invalid scene file. "NOR"Empty map.");
-	destilled = cb_matrixalloc(mxy - mny, mxx - mnx);
+	destilled = cb_matrixalloc(mxy - mny + 1, mxx - mnx); //just added +1 to mxx-mnx becuase the last line was missing 
 	if (!destilled)
 		cb_frexit(g, NULL, raw, "Couldn't load scene file. "NOR"calloc error.");
 	cb_map_populate(raw, destilled, mny, mnx);

@@ -24,7 +24,7 @@ char	**cb_matrixalloc(int columns, int rows)
 
 	ret = ft_calloc(columns + 1, sizeof(char *));
 	guide = 0;
-	while (guide <= columns)
+	while (guide < columns) // changed <= to < to leave the last row for NULL termination
 	{
 		ret[guide] = ft_calloc(rows + 1, sizeof(char));
 		if (!ret[guide])
@@ -40,6 +40,7 @@ char	**cb_matrixalloc(int columns, int rows)
 		ft_memset(ret[guide], 'B', rows);
 		guide++;
 	}
+	ret[columns] = NULL; // to ensure the last idx in NULL
 	return (ret);
 }
 

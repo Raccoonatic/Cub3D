@@ -51,7 +51,10 @@ int main(int ac, char **av)
 		cb_fail(2, 1, "Incorrect argument count.");
 	cb_zeroing(&game);
 	map = cb_scene_to_map(&game, av[1]);
+	printf("Map loaded successfully\n");
 	dispmap(map);
+	printf("Map displayed successfully\n");
+	printf("validating map...\n");
 	if (!cb_validate_map(map, &game))
 		cb_fail(1, 1, "Invalid map.");
 	if (!game.map)
