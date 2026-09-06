@@ -233,11 +233,11 @@ add_parse_test_permit:
 	@chmod -x ./maps/tests/no_permit
 
 rm_parse_test_permit:
-	@chmod +r ./textures/tests/a_texture_with_no_permissions.xpm
-	@chmod +x ./textures/tests/no_permit
-	@chmod +r ./textures/tests/no_permit/no_permit.xpm
-	@chmod +r ./maps/tests/no_permissions.cub
-	@chmod +x ./maps/tests/no_permit
+	@chmod +r ./textures/tests/a_texture_with_no_permissions.xpm || true
+	@chmod +x ./textures/tests/no_permit || true
+	@chmod +r ./textures/tests/no_permit/no_permit.xpm || true
+	@chmod +r ./maps/tests/no_permissions.cub || true
+	@chmod +x ./maps/tests/no_permit || true
 	@rm -rf ./textures/tests/a_texture_with_no_permissions.xpm
 	@rm -rf ./textures/tests/no_permit
 	@rm -rf ./textures/tests/no_permit/no_permit.xpm
