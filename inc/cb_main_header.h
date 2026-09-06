@@ -94,7 +94,7 @@ char		**cb_scene_to_map(t_game *g, char *map_path);
 
 // ---- cb_scenetomap_utils_alpha.c
 char		*cb_skip_blank(char *line);
-char		**cb_addline(char **raw_map, char *line);
+char		**cb_addline(char **raw_map, char **line);
 int			cb_scene_data_fill(t_game *g, char **line, int fd);
 
 // ---- cb_scenetomap_utils_beta.c

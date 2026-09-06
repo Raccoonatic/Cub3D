@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/04 01:26:08 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/06 14:05:59 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**cb_matrixalloc(int columns, int rows)
 
 	ret = ft_calloc(columns + 1, sizeof(char *));
 	guide = 0;
-	while (guide <= columns)
+	while (guide < columns)
 	{
 		ret[guide] = ft_calloc(rows + 1, sizeof(char));
 		if (!ret[guide])
@@ -40,6 +40,7 @@ char	**cb_matrixalloc(int columns, int rows)
 		ft_memset(ret[guide], 'B', rows);
 		guide++;
 	}
+	ret[guide] = NULL;
 	return (ret);
 }
 

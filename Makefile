@@ -286,13 +286,13 @@ parse_tests: all
 	@printf "$(BABY)\tScene with blank padding in color information: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/blank_padding_num.cub
 	@read dummy
-	@printf "$(BABY)\tScene without extra blank spaces: \n$(RSET)"  // TODO: Fix this test, coredump
+	@printf "$(BABY)\tScene without extra blank spaces: \n$(RSET)"  // TODO: Fix this test, coredump Rafa
 	! ./$(NAME) ./maps/tests/compressed.cub
 	@read dummy
 	@printf "$(BABY)\tScene with map not surrounded by walls: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/broken.cub
 	@read dummy
-	@printf "$(BABY)\tScene with various maps separated by blank lines: \n$(RSET)"  // TODO: Fix this test, coredump
+	@printf "$(BABY)\tScene with various maps separated by blank lines: \n$(RSET)"  // TODO: Fix this test, coredump Mapache
 	! ./$(NAME) ./maps/tests/islands.cub
 	@read dummy
 	@printf "$(BABY)\tScene with a map that has more than one player start: \n$(RSET)"
@@ -301,7 +301,7 @@ parse_tests: all
 	@printf "$(BABY)\tScene with a map that has no player start: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/missing_tile.cub
 	@read dummy
-	@printf "$(BABY)\tScene with a map with no air: \n$(RSET)"  // TODO: Fix this test, coredump
+	@printf "$(BABY)\tScene with a map with no air: \n$(RSET)"  // TODO: Fix this test, coredump Rafa
 	! ./$(NAME) ./maps/tests/prison.cub
 	@read dummy
 	@printf "$(BABY)\tScene with a map with an unexpected character: \n$(RSET)"
