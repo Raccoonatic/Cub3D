@@ -54,4 +54,14 @@ typedef struct s_game
 	long long	tstamp;
 }	t_game;
 
+typedef struct s_player
+{
+	int			x;
+	int			y;
+	double		ren_x;
+	double		ren_y;
+	char		dir;
+	double		acel;
+}
+
 #endif

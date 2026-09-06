@@ -76,3 +76,13 @@ void	cb_zero_ints(t_img *i)
 	i->crnt_frm = 0;
 	return ;
 }
+
+void cb_zero_player(t_player *player)
+{
+	player-> x = 0;
+	player-> y = 0;
+	plaer-> ren_x = 0.0;
+	player-> ren_y = 0.0;
+	player-> dir = NULL;
+	player-> acel = 0.05;
+}
