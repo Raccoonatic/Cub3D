@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/03 12:54:54 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/06 14:06:02 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,14 @@ void	cb_zero_ints(t_img *i)
 	i->mx_index = 0;
 	i->crnt_frm = 0;
 	return ;
+}
+
+void cb_zero_player(t_player *player)
+{
+	player-> x = 0;
+	player-> y = 0;
+	player-> ren_x = 0.0;
+	player-> ren_y = 0.0;
+	player-> dir = '\0';
+	player-> acel = 0.05;
 }

@@ -6,14 +6,15 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/03 12:55:09 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/06 16:13:42 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
 char	**cb_matrixalloc(int columns, int rows);
-void	cb_map_populate(char **raw, char **dest, int miny, int maxy);
+void	cb_remove_trailing_blanks(t_game *g, char **map);
+void	cb_map_populate(char **raw, char **dest, int miny, int minx);
 
 char	**cb_matrixalloc(int columns, int rows)
 {
@@ -22,8 +23,6 @@ char	**cb_matrixalloc(int columns, int rows)
 	int		death;
 
 	ret = ft_calloc(columns + 1, sizeof(char *));
-	if (!ret)
-		return (NULL);
 	guide = 0;
 	while (guide < columns)
 	{
@@ -41,22 +40,23 @@ char	**cb_matrixalloc(int columns, int rows)
 		ft_memset(ret[guide], 'B', rows);
 		guide++;
 	}
+	ret[guide] = NULL;
 	return (ret);
 }
 
-void	cb_map_populate(char **raw, char **dest, int miny, int maxy)
+void	cb_map_populate(char **raw, char **dest, int miny, int minx)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while ((miny + i) < maxy)
+	while (dest[i] && raw[miny + i])
 	{
 		j = 0;
-		while (raw[miny + i][j])
+		while (dest[i][j] && raw[miny + i][minx + j])
 		{
-			if (raw[miny + i][j] != ' ')
-				dest[i][j] = raw[miny + i][j];
+			if (!ft_strchr("\n\r ", raw[miny + i][minx + j]))
+				dest[i][j] = raw[miny + i][minx + j];
 			j++;
 		}
 		i++;

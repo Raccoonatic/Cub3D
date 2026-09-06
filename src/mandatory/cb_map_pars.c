@@ -14,6 +14,7 @@
 
 static int cb_check_content(char **map)
 {
+    printf("Checking map content...\n");
     int i;
     int j;
 
@@ -30,11 +31,13 @@ static int cb_check_content(char **map)
         }
         i++;
     }
+    printf("Map content is valid\n");
     return (1);
 }
 
 static int cb_check_walls(char **map, int size, int len)
 {
+    printf("Checking map walls...\n");
     int i;
     int j;
 
@@ -56,11 +59,13 @@ static int cb_check_walls(char **map, int size, int len)
         }
         i++;
     }
+     printf("Map walls are valid\n");
     return (1);
 }
 
 static int cb_validate_player(char **map)
 {
+    printf("Validating player position...\n");
     int i;
     int j;
     int player_count;
@@ -81,11 +86,13 @@ static int cb_validate_player(char **map)
     }
     if(player_count != 1)
         return (0);
+    printf("Player position is valid\n");
     return (1);
 }
 
 static int cb_validate_content(char **map)
 {
+    printf("Validating map content...\n");
     int i;
     int j;
 
@@ -104,6 +111,7 @@ static int cb_validate_content(char **map)
         }
         i++;
     }
+    printf("Map content is valid\n");
     return (1);
 }
 
@@ -116,20 +124,20 @@ int cb_validate_map(char **map, t_game *game)
     len = cb_map_width(map);
     if(!cb_check_content(map))
     {
-        cb_fail(1, 1, "Map contains invalid characters");
+		cb_frexit(game, NULL, map, "Map contains invalid characters");
         return (0);
     }
     if(!cb_check_walls(map, size, len) || !cb_validate_content(map))
     {
-        cb_fail(1, 1, "Map is not surrounded by walls");
+        cb_frexit(game, NULL, map, "Map is not surrounded by walls");
         return (0);
     }
     if(!cb_validate_player(map))
     {
-        cb_fail(1, 1, "Map must contain exactly one player starting position");
+        cb_frexit(game, NULL, map, "Map must contain exactly one player starting position");
         return (0);
     }
-    printf("Map validation successful");
+    printf("Map validation successful\n");
 	game->map = map;
     return (1);
 }

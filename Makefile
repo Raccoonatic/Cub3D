@@ -132,7 +132,7 @@ $(CUB_LIB_BON): $(OBJ_BON)
 	ar -rcs $@ $^
 	@printf "$(RSET)"
 
-clean:
+clean: rm_parse_test_permit
 	@printf "$(LIME)"
 	@make -C ./inc/libft clean
 	@sleep 0.3
@@ -220,7 +220,31 @@ wipe: fclean
 	@printf "$(MINT)\t\t🦝 All requirements should be installed! 🦝\n\n"
 	@printf "$(RSET)"
 
-parse_tests: all
+add_parse_test_permit:
+	@touch ./textures/tests/a_texture_with_no_permissions.xpm
+	@mkdir -p ./textures/tests/no_permit
+	@touch ./textures/tests/no_permit/no_permit.xpm
+	@touch ./maps/tests/no_permissions.cub
+	@mkdir -p ./maps/tests/no_permit
+	@touch ./maps/tests/no_permit/in_no_permit_folder.cub
+	@chmod -r ./textures/tests/a_texture_with_no_permissions.xpm
+	@chmod -x ./textures/tests/no_permit
+	@chmod -r ./maps/tests/no_permissions.cub
+	@chmod -x ./maps/tests/no_permit
+
+rm_parse_test_permit:
+	@chmod +r ./textures/tests/a_texture_with_no_permissions.xpm || true
+	@chmod +x ./textures/tests/no_permit || true
+	@chmod +r ./textures/tests/no_permit/no_permit.xpm || true
+	@chmod +r ./maps/tests/no_permissions.cub || true
+	@chmod +x ./maps/tests/no_permit || true
+	@rm -rf ./textures/tests/a_texture_with_no_permissions.xpm
+	@rm -rf ./textures/tests/no_permit
+	@rm -rf ./textures/tests/no_permit/no_permit.xpm
+	@rm -rf ./maps/tests/no_permissions.cub
+	@rm -rf ./maps/tests/no_permit
+
+parse_tests: all add_parse_test_permit
 	@printf "$(MINT)\n\t\t🦝 Initiating tests! 🦝\n"
 	@printf "$(NEOR)\tHit enter after every test to continue... \n\n$(RSET)"
 	@read dummy
@@ -311,9 +335,10 @@ parse_tests: all
 	@printf "$(BABY)\tScene with multiple definitions of the same texture: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/repeat.cub
 	@read dummy
+	@make rm_parse_test_permit
 	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n\n$(RSET)"
 
-val_parse_tests: all
+val_parse_tests: all add_parse_test_permit
 	@printf "$(MINT)\n\t\t🦝 Initiating tests! 🦝\n"
 	@printf "$(NEOR)\tHit enter after every test to continue... \n\n$(RSET)"
 	@read dummy
@@ -404,6 +429,7 @@ val_parse_tests: all
 	@printf "$(BABY)\tScene with multiple definitions of the same texture: \n$(PINK)"
 	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/repeat.cub
 	@read dummy
+	@make rm_parse_test_permit
 	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n\n$(RSET)"
 
 normloop:
