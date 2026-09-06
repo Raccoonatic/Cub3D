@@ -132,7 +132,7 @@ $(CUB_LIB_BON): $(OBJ_BON)
 	ar -rcs $@ $^
 	@printf "$(RSET)"
 
-clean:
+clean: rm_parse_test_permit
 	@printf "$(LIME)"
 	@make -C ./inc/libft clean
 	@sleep 0.3
@@ -229,7 +229,6 @@ add_parse_test_permit:
 	@touch ./maps/tests/no_permit/in_no_permit_folder.cub
 	@chmod -r ./textures/tests/a_texture_with_no_permissions.xpm
 	@chmod -x ./textures/tests/no_permit
-	@chmod -r ./textures/tests/no_permit/no_permit.xpm
 	@chmod -r ./maps/tests/no_permissions.cub
 	@chmod -x ./maps/tests/no_permit
 
@@ -245,7 +244,7 @@ rm_parse_test_permit:
 	@rm -rf ./maps/tests/no_permissions.cub
 	@rm -rf ./maps/tests/no_permit
 
-parse_tests: all rm_parse_test_permit
+parse_tests: all add_parse_test_permit
 	@printf "$(MINT)\n\t\t🦝 Initiating tests! 🦝\n"
 	@printf "$(NEOR)\tHit enter after every test to continue... \n\n$(RSET)"
 	@read dummy
@@ -336,10 +335,10 @@ parse_tests: all rm_parse_test_permit
 	@printf "$(BABY)\tScene with multiple definitions of the same texture: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/repeat.cub
 	@read dummy
-	@make add_parse_test_permit
+	@make rm_parse_test_permit
 	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n\n$(RSET)"
 
-val_parse_tests: all rm_parse_test_permit
+val_parse_tests: all add_parse_test_permit
 	@printf "$(MINT)\n\t\t🦝 Initiating tests! 🦝\n"
 	@printf "$(NEOR)\tHit enter after every test to continue... \n\n$(RSET)"
 	@read dummy
@@ -430,7 +429,7 @@ val_parse_tests: all rm_parse_test_permit
 	@printf "$(BABY)\tScene with multiple definitions of the same texture: \n$(PINK)"
 	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/repeat.cub
 	@read dummy
-	@make add_parse_test_permit
+	@make rm_parse_test_permit
 	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n\n$(RSET)"
 
 normloop:
