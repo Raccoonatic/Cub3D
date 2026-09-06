@@ -70,6 +70,7 @@ OBJ_BON = $(SRC_BON:$(SRC_DIR_BON)%.c=$(OBJ_DIR_BON)%.o)
 .PRECIOUS: $(BONUS) $(FILE) $(MAIN_MAN) $(MAIN_BON)
 
 COMPILE = cc -g -O0 -Wall -Werror -Wextra -I./inc -I./inc/mlx_linux
+LEAK_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
 
 all: $(NAME)
 
@@ -230,13 +231,13 @@ parse_tests: all
 	! ./$(NAME) arg1 arg2
 	@read dummy
 	@printf "$(BABY)\tValid minimalistic scene: \n$(RSET)"
-	! ./$(NAME) ./maps/tests/minimalistic.cub
+	./$(NAME) ./maps/tests/minimalistic.cub
 	@read dummy
 	@printf "$(BABY)\tScene with blank name: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/' '
 	@read dummy
 	@printf "$(BABY)\tScene with only .cub for name: \n$(RSET)"
-	! ./$(NAME) ./maps/tests/.cub
+	./$(NAME) ./maps/tests/.cub
 	@read dummy
 	@printf "$(BABY)\tScene with no .cub extension: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/nocub
@@ -278,22 +279,22 @@ parse_tests: all
 	! ./$(NAME) ./maps/tests/no_permit/in_no_permit_folder.cub
 	@read dummy
 	@printf "$(BABY)\tScene with a map that has blank padding around it: \n$(RSET)"
-	! ./$(NAME) ./maps/tests/blank_padding_around_map.cub
+	./$(NAME) ./maps/tests/blank_padding_around_map.cub
 	@read dummy
 	@printf "$(BABY)\tScene with blank padding between informations: \n$(RSET)"
-	! ./$(NAME) ./maps/tests/blank_padding_between_info.cub
+	./$(NAME) ./maps/tests/blank_padding_between_info.cub
 	@read dummy
 	@printf "$(BABY)\tScene with blank padding in color information: \n$(RSET)"
-	! ./$(NAME) ./maps/tests/blank_padding_num.cub
+	./$(NAME) ./maps/tests/blank_padding_num.cub
 	@read dummy
-	@printf "$(BABY)\tScene without extra blank spaces: \n$(RSET)"  // TODO: Fix this test, coredump Rafa
-	! ./$(NAME) ./maps/tests/compressed.cub
+	@printf "$(BABY)\tScene without extra blank spaces: \n$(RSET)"
+	./$(NAME) ./maps/tests/compressed.cub
 	@read dummy
 	@printf "$(BABY)\tScene with map not surrounded by walls: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/broken.cub
 	@read dummy
-	@printf "$(BABY)\tScene with various maps separated by blank lines: \n$(RSET)"  // TODO: Fix this test, coredump Mapache
-	! ./$(NAME) ./maps/tests/islands.cub
+	@printf "$(BABY)\tScene with various maps separated by blank lines: \n$(RSET)"
+	./$(NAME) ./maps/tests/islands.cub
 	@read dummy
 	@printf "$(BABY)\tScene with a map that has more than one player start: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/multiplayer.cub
@@ -301,8 +302,8 @@ parse_tests: all
 	@printf "$(BABY)\tScene with a map that has no player start: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/missing_tile.cub
 	@read dummy
-	@printf "$(BABY)\tScene with a map with no air: \n$(RSET)"  // TODO: Fix this test, coredump Rafa
-	! ./$(NAME) ./maps/tests/prison.cub
+	@printf "$(BABY)\tScene with a map with no air: \n$(RSET)"
+	./$(NAME) ./maps/tests/prison.cub
 	@read dummy
 	@printf "$(BABY)\tScene with a map with an unexpected character: \n$(RSET)"
 	! ./$(NAME) ./maps/tests/unexpected_character.cub
@@ -311,6 +312,152 @@ parse_tests: all
 	! ./$(NAME) ./maps/tests/repeat.cub
 	@read dummy
 	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n\n$(RSET)"
+
+val_parse_tests: all
+	@printf "$(MINT)\n\t\t🦝 Initiating tests! 🦝\n"
+	@printf "$(NEOR)\tHit enter after every test to continue... \n\n$(RSET)"
+	@read dummy
+	@printf "$(BABY)\tNo arguments: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME)
+	@read dummy
+	@printf "$(BABY)\tToo many arguments: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) arg1 arg2
+	@read dummy
+	@printf "$(BABY)\tValid minimalistic scene: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/minimalistic.cub
+	@read dummy
+	@printf "$(BABY)\tScene with blank name: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/' '
+	@read dummy
+	@printf "$(BABY)\tScene with only .cub for name: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/.cub
+	@read dummy
+	@printf "$(BABY)\tScene with no .cub extension: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/nocub
+	@read dummy
+	@printf "$(BABY)\tScene with invalid extension: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/invalid.txt
+	@read dummy
+	@printf "$(BABY)\tScene with no read permissions: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/no_permissions.cub
+	@read dummy
+	@printf "$(BABY)\tScene with missing texture path: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/missing_path.cub
+	@read dummy
+	@printf "$(BABY)\tScene with missing tile: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/missing_tile.cub
+	@read dummy
+	@printf "$(BABY)\tScene without colors: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/no_color.cub
+	@read dummy
+	@printf "$(BABY)\tScene with impossible color values: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/impossible_color.cub
+	@read dummy
+	@printf "$(BABY)\tScene with non_numeric color values: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/non_numeric_color.cub
+	@read dummy
+	@printf "$(BABY)\tScene with no map: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/nomap.cub
+	@read dummy
+	@printf "$(BABY)\tScene with non-existent texture: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/non_existent_texture.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a texture with no read permissions: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/no_permit_texture.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a texture in a directory with no execute permissions: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/texture_in_dir_with_no_permit.cub
+	@read dummy
+	@printf "$(BABY)\tScene in a directory with no execute permissions: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/no_permit/in_no_permit_folder.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map that has blank padding around it: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/blank_padding_around_map.cub
+	@read dummy
+	@printf "$(BABY)\tScene with blank padding between informations: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/blank_padding_between_info.cub
+	@read dummy
+	@printf "$(BABY)\tScene with blank padding in color information: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/blank_padding_num.cub
+	@read dummy
+	@printf "$(BABY)\tScene without extra blank spaces: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/compressed.cub
+	@read dummy
+	@printf "$(BABY)\tScene with map not surrounded by walls: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/broken.cub
+	@read dummy
+	@printf "$(BABY)\tScene with various maps separated by blank lines: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/islands.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map that has more than one player start: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/multiplayer.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map that has no player start: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/missing_tile.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map with no air: \n$(PINK)"
+	valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/prison.cub
+	@read dummy
+	@printf "$(BABY)\tScene with a map with an unexpected character: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/unexpected_character.cub
+	@read dummy
+	@printf "$(BABY)\tScene with multiple definitions of the same texture: \n$(PINK)"
+	! valgrind $(LEAK_FLAGS) ./$(NAME) ./maps/tests/repeat.cub
+	@read dummy
+	@printf "$(MINT)\t\t🦝 Tests completed! 🦝\n\n$(RSET)"
+
+normloop:
+	@printf "$(NEOR) Building normloop.sh... $(RESET)"
+	@sleep 0.5
+	@printf "$(MINT)🦝\n\n"
+	@printf "$(BABY)'# ************************************************************************ #'\n"
+	@printf "$(BABY)'#                                                                          #'\n"
+	@printf "$(BABY)'#                                                       :::      ::::::::  #'\n"
+	@printf "$(BABY)'#  normloop.sh                                        :+:      :+:    :+:  #'\n"
+	@printf "$(BABY)'#                                                   +:+ +:+         +:+    #'\n"
+	@printf "$(BABY)'#  By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+       #'\n"
+	@printf "$(BABY)'#                                               +#+#+#+#+#+   +#+          #'\n"
+	@printf "$(BABY)'#  Created: 2026/03/14 17:57:19 by lde-san-          #+#    #+#            #'\n"
+	@printf "$(BABY)'#  Updated: 2026/03/14 17:58:08 by lde-san-         ###   ########.fr      #'\n"
+	@printf "$(BABY)'#                                                                          #'\n"
+	@printf "$(BABY)'# ************************************************************************ #'\n"
+	@> normloop.sh
+	@printf "%s\n" '#!/bin/bash'>> normloop.sh
+	@printf "%s\n" '# **************************************************************************** #'>> normloop.sh
+	@printf "%s\n" '#                                                                              #'>> normloop.sh
+	@printf "%s\n" '#                                                         :::      ::::::::    #'>> normloop.sh
+	@printf "%s\n" '#    normloop.sh                                        :+:      :+:    :+:    #'>> normloop.sh
+	@printf "%s\n" '#                                                     +:+ +:+         +:+      #'>> normloop.sh
+	@printf "%s\n" '#    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #'>> normloop.sh
+	@printf "%s\n" '#                                                 +#+#+#+#+#+   +#+            #'>> normloop.sh
+	@printf "%s\n" '#    Created: 2026/03/14 17:57:19 by lde-san-          #+#    #+#              #'>> normloop.sh
+	@printf "%s\n" '#    Updated: 2026/03/14 17:58:08 by lde-san-         ###   ########.fr        #'>> normloop.sh
+	@printf "%s\n" '#                                                                              #'>> normloop.sh
+	@printf "%s\n" '# **************************************************************************** #'>> normloop.sh
+	@printf "%s\n" ''>> normloop.sh
+	@printf "%s\n" 'trap '\''rm -f tody.txt; exit'\'' INT'>> normloop.sh
+	@printf "%s\n" ''>> normloop.sh
+	@printf "%s\n" 'if [ -n '\"'$$1'\"' ]; then'>> normloop.sh
+	@printf "%s\n" '	FILE='\"'$$1'\"''>> normloop.sh
+	@printf "%s\n" ''>> normloop.sh
+	@printf "%s\n" '	while true'>> normloop.sh
+	@printf "%s\n" '	do'>> normloop.sh
+	@printf "%s\n" '		norminette -R CheckForbiddenSourceHeader '\"'$$FILE'\"' | grep Error | head -n 40 > tody.txt'>> normloop.sh
+	@printf "%s\n" '		clear && cat tody.txt'>> normloop.sh
+	@printf "%s\n" '		tput cup 0 0'>> normloop.sh
+	@printf "%s\n" '		sleep 1'>> normloop.sh
+	@printf "%s\n" '	done'>> normloop.sh
+	@printf "%s\n" 'else'>> normloop.sh
+	@printf "%s\n" '	while true'>> normloop.sh
+	@printf "%s\n" '	do'>> normloop.sh
+	@printf "%s\n" '		norminette -R CheckForbiddenSourceHeader *.c | grep Error | head -n 40 > tody.txt'>> normloop.sh
+	@printf "%s\n" '        clear && cat tody.txt'>> normloop.sh
+	@printf "%s\n" '		tput cup 0 0'>> normloop.sh
+	@printf "%s\n" '		sleep 1'>> normloop.sh
+	@printf "%s\n" '	done'>> normloop.sh
+	@printf "%s\n" 'fi'>> normloop.sh
+	@chmod 777 normloop.sh
+	@printf "$(RESET)\t\t\t🦝"
 
 # path_of_gluttony: $(NAME)
 # 	@printf "🦝 \001\033[3m\033[38;2;255;153;51m\002Building path_of_gluttony.sh... 🦝\\n"

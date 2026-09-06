@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 14:06:01 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/06 15:55:48 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int main(int ac, char **av)
 	if (!game.map)
 		cb_fail(1, 1, "Failed to create map.");
 	dispmap(game.map);
-	cb_frexit(&game, NULL, NULL, "Exiting program.");
+	cb_frink(&game);
+	cb_free_matrix(game.map);
+	cb_fail(0, 0, PUR"Exiting program.");
 	return (0);
 }

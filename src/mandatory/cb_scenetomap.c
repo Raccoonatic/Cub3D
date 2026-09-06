@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:15:26 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 14:06:00 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/06 15:55:45 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,21 @@ char	**cb_scene_to_map(t_game *g, char *map_path)
 static char	**cb_read_the_scene(t_game *g, int fd)
 {
 	char *line;
+	char *flush;
 
 	line = get_next_line(fd);
+	flush = NULL;
 	if (!line)
 	{
 		close(fd);
-		get_next_line(fd);
-		cb_fail(1, 1, "Can't read secene file "BWI"gnl"NOR" Failed.");
+		cb_frexit(g, NULL, NULL, "Can't read scene file "BWI"gnl"NOR" Failed.");
 	}
 	if (cb_scene_data_fill(g, &line, fd))
 	{
-		if (line)
-			free(line);
 		close(fd);
-		get_next_line(fd);
-		cb_fail(1, 1, "Can't read secene file "BWI"Texture/Color"NOR" Error.");
+		while ((flush = get_next_line(fd)))
+			free(flush);
+		cb_frexit(g, line, NULL, "Scene "BWI"Path/Color"NOR" Read Error.");
 	}
 	return (cb_get_raw_map(g, fd, &line));
 }
