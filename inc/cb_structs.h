@@ -62,6 +62,6 @@ typedef struct s_player
 	double		ren_y;
 	char		dir;
 	double		acel;
-}
+} t_player;
 
 #endif
