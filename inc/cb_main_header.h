@@ -44,6 +44,7 @@ typedef enum e_kys
 // Text Color:
 # define RST	"\033[0m"
 # define BWI	"\033[1;37m"
+# define NAV	"\033[38;2;0;2;31m"
 # define LME	"\033[38;2;0;255;0m"
 # define BBY	"\033[1;38;2;0;255;247m"
 # define BLD	"\033[1;38;2;255;0;0m"
@@ -93,12 +94,12 @@ char		**cb_scene_to_map(t_game *g, char *map_path);
 
 // ---- cb_scenetomap_utils_alpha.c
 char		*cb_skip_blank(char *line);
-char		**cb_addline(char **raw_map, char *line);
+char		**cb_addline(char **raw_map, char **line);
 int			cb_scene_data_fill(t_game *g, char **line, int fd);
 
 // ---- cb_scenetomap_utils_beta.c
 char		**cb_matrixalloc(int columns, int rows);
-void		cb_map_populate(char **raw, char **dest, int miny, int maxy);
+void		cb_map_populate(char **raw, char **dest, int miny, int minx);
 
 // ---- cb_getborders.c
 int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
