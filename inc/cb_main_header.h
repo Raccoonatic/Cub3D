@@ -70,6 +70,7 @@ void		cb_free_matrix(char **matrix);
 void		cb_null_ptrs(t_img *i);
 void		cb_zero_ints(t_img *i);
 void		cb_zeroing(t_game *game);
+void 		cb_zero_player(t_player *player);
 
 // ---- cb_map_pars_utils.c
 int			cb_map_height(char **map);
@@ -103,5 +104,8 @@ void		cb_map_populate(char **raw, char **dest, int miny, int minx);
 
 // ---- cb_getborders.c
 int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
+
+// ---- cb_player.c
+void    	cb_innit_player(t_game *game);
 
 #endif

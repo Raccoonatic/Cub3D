@@ -85,4 +85,5 @@ void cb_zero_player(t_player *player)
 	player-> ren_y = 0.0;
 	player-> dir = '\0';
 	player-> acel = 0.05;
+	return ;
 }

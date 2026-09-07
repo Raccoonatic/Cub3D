@@ -48,6 +48,7 @@ MANDA += cb_scenetomap_utils_alpha.c
 MANDA += cb_scenetomap_utils_beta.c
 MANDA += cb_time.c
 MANDA += cb_zeroing.c
+MANDA += cb_player.c
 
 BONUS = cb_template_bonus.c
 # BONUS +=
