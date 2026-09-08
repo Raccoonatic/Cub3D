@@ -42,7 +42,7 @@ typedef enum e_kys
 }	t_kys;
 
 // Macro Definitions:
-# define TSZ	20
+# define TSZ	50
 # define WH		720
 # define WW		1080
 # define MXMPH	150
