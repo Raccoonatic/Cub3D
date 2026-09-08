@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 17:37:38 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/07 17:16:40 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 18:41:21 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ void	cb_define_playable_map(t_game *g, char **map)
 	int	maxy;
 	int	maxx;
 	int	i;
+	char dir;
 
 	maxy = 0;
 	maxx = 0;
-	cb_flood_fill(map, g->ply.y, g->ply.x);
-	map[g->ply.y][g->ply.x] = g->ply.dir;
+	dir = g->map[g->player.y][g->player.x];
+	cb_flood_fill(map, g->player.y, g->player.x);
+	g->map[g->player.y][g->player.x] = dir;
 	cb_upgrade_border(map, &maxy, &maxx);
 	map = cb_allocate_playable_map(map, maxy, maxx);
 	if (!map)
@@ -91,7 +93,7 @@ static char	**cb_allocate_playable_map(char **map, int maxy, int maxx)
 		}
 		y++;
 	}
-	return (cb_matrixalloc((maxy - miny) + 1, (maxx - minx) + 1));
+	return (cb_matrixalloc((maxy - miny) + 1, (maxx - minx) + 1, '1'));
 }
 
 static int	cb_is_border(char **map, int y, int x)
