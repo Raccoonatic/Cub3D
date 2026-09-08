@@ -20,7 +20,7 @@ static void cb_get_player_pos(t_game *game, t_player *player)
                 player->y = i;
                 player->ren_x = j + 0.5;
                 player->ren_y = i + 0.5;
-                player->dir = map[i][j];
+                cb_get_player_dir(player, map[i][j]);
                 return ;
             }
             j++;
@@ -32,9 +32,31 @@ static void cb_get_player_pos(t_game *game, t_player *player)
 
 void    cb_innit_player(t_game *game)
 {
-    t_player *player;
-
-    cb_zero_player(player);
-    cb_get_player_pos(game, player);
+    cb_zero_player(&game->player);
+    cb_get_player_pos(game, &game->player);
     game->player = player;
+}
+
+static void cb_get_player_dir(t_player *player, char dir)
+{
+    if (dir == 'N')
+    {
+        player->dir_x = 0;
+        player->dir_y = -1;
+    }
+    else if (dir == 'S')
+    {
+        player->dir_x = 0;
+        player->dir_y = 1;
+    }
+    else if (dir == 'E')
+    {
+        player->dir_x = 1;
+        player->dir_y = 0;
+    }
+    else if (dir == 'W')
+    {
+        player->dir_x = -1;
+        player->dir_y = 0;
+    }
 }

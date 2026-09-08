@@ -51,6 +51,7 @@ typedef struct s_game
 	t_img		ewall;
 	t_img		wwall;
 
+	t_player	player;
 	long long	tstamp;
 }	t_game;
 
@@ -60,7 +61,8 @@ typedef struct s_player
 	int			y;
 	double		ren_x;
 	double		ren_y;
-	char		dir;
+	double		dir_x;
+	double		dir_y;
 	double		acel;
 } t_player;
 
