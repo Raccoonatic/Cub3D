@@ -6,7 +6,7 @@
 /*   By: rdeimaos <rdeimaos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 15:33:43 by rdeimaos         ###   ########.fr       */
+/*   Updated: 2026/09/08 15:43:23 by rdeimaos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ static void cb_zero_player(t_player *player)
 	player-> y = 0;
 	player-> ren_x = 0.0;
 	player-> ren_y = 0.0;
-	player-> dir = '\0';
+	player-> dir_x = 0.0;
+	player-> dir_y = 0.0;
 	player-> acel = 0.05;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: rdeimaos <rdeimaos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 15:30:59 by rdeimaos         ###   ########.fr       */
+/*   Updated: 2026/09/08 15:41:19 by rdeimaos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ typedef struct s_cord
 	int	x;
 	int	y;
 }	t_cord;
+
+typedef struct s_player
+{
+	int			x;
+	int			y;
+	double		ren_x;
+	double		ren_y;
+	double		dir_x;
+	double		dir_y;
+	double		acel;
+} t_player;
 
 typedef struct s_img
 {
@@ -67,7 +78,6 @@ typedef struct s_game
 	int			flor_c;
 	int 		ceil_c;
 
-	t_player	ply;
 	t_mp		mp;
 
 	t_img		bkg;
@@ -81,15 +91,5 @@ typedef struct s_game
 	long long	tstamp;
 }	t_game;
 
-typedef struct s_player
-{
-	int			x;
-	int			y;
-	double		ren_x;
-	double		ren_y;
-	double		dir_x;
-	double		dir_y;
-	double		acel;
-} t_player;
 
 #endif
