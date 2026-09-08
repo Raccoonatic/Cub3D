@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 14:06:02 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 00:28:32 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,40 @@
 void		cb_null_ptrs(t_img *i);
 void		cb_zero_ints(t_img *i);
 void		cb_zeroing(t_game *game);
+static void	cb_zero_mp(t_mp *mp);
 static void	cb_zero_img(t_game *game);
+static void	cb_zero_player(t_player *player);
 
 void	cb_zeroing(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
 	game->map = NULL;
-	game->h = 0;
-	game->w = 0;
+	game->h = WH;
+	game->w = WW;
 	game->flor_c = -1;
 	game->ceil_c = -1;
 	game->tstamp = cb_now();
 	cb_zero_img(game);
+	cb_zero_player(&(game->ply));
+	cb_zero_mp(&(game->mp));
 	return ;
 }
 
 static void	cb_zero_img(t_game *game)
 {
+	cb_null_ptrs(&game->bkg);
 	cb_null_ptrs(&game->buf);
-	cb_null_ptrs(&game->flor);
-	cb_null_ptrs(&game->ceil);
-	cb_null_ptrs(&game->minimap);
+	cb_null_ptrs(&game->mp.map);
+	cb_null_ptrs(&game->mp.ph);
 	cb_null_ptrs(&game->nwall);
 	cb_null_ptrs(&game->swall);
 	cb_null_ptrs(&game->ewall);
 	cb_null_ptrs(&game->wwall);
 	cb_zero_ints(&game->buf);
-	cb_zero_ints(&game->flor);
-	cb_zero_ints(&game->ceil);
-	cb_zero_ints(&game->minimap);
+	cb_zero_ints(&game->bkg);
+	cb_zero_ints(&game->mp.map);
+	cb_zero_ints(&game->mp.ph);
 	cb_zero_ints(&game->nwall);
 	cb_zero_ints(&game->swall);
 	cb_zero_ints(&game->ewall);
@@ -77,7 +81,7 @@ void	cb_zero_ints(t_img *i)
 	return ;
 }
 
-void cb_zero_player(t_player *player)
+static void cb_zero_player(t_player *player)
 {
 	player-> x = 0;
 	player-> y = 0;
@@ -85,4 +89,19 @@ void cb_zero_player(t_player *player)
 	player-> ren_y = 0.0;
 	player-> dir = '\0';
 	player-> acel = 0.05;
+}
+
+static void	cb_zero_mp(t_mp *mp)
+{
+	mp->pov = NULL;
+	mp->addr = NULL;
+	mp->bpr = 0;
+	mp->bpx = 0;
+	mp->bpr = 0;
+	mp->e = 0;
+	mp->h = MXMPH;
+	mp->w = MXMPW;
+	mp->ph.path = ft_strdup("./textures/p_head.xpm");
+	if (!mp->ph.path)
+		cb_fail(1, 1, "Allocation Error"NOR" p_head sprite");
 }

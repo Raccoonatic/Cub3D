@@ -13,6 +13,8 @@
 NAME = cub3D
 BONO = cub3D_bonus
 
+LEAK_ARGS ?= ""
+
 LIBFT = ./inc/libft/libft.a
 CUB_LIB_MAN = ./inc/libcub.a
 CUB_LIB_BON = ./inc/libcubon.a
@@ -44,10 +46,16 @@ MANDA += cb_getpaths.c
 MANDA += cb_map_pars_utils.c
 MANDA += cb_map_pars.c
 MANDA += cb_scenetomap.c
+MANDA += cb_define_playable_map.c
 MANDA += cb_scenetomap_utils_alpha.c
 MANDA += cb_scenetomap_utils_beta.c
 MANDA += cb_time.c
 MANDA += cb_zeroing.c
+MANDA += cb_layer_init.c
+MANDA += cb_minimap.c
+MANDA += cb_render.c
+MANDA += cb_render_utils_alpha.c
+MANDA += cb_coordinate.c
 
 BONUS = cb_template_bonus.c
 # BONUS +=
@@ -163,7 +171,7 @@ re: fclean all
 leaks: $(NAME)
 	@printf "\n$(PINK)valgrind $(ORNG)$(LEAK_FLAGS) $(MINT)./$(NAME)"
 	@printf "$(RSET)\n"
-	@valgrind $(LEAK_FLAGS) ./$(NAME)
+	@valgrind $(LEAK_FLAGS) ./$(NAME) $(LEAK_ARGS)
 	@sleep 0.3
 
 wipe: fclean
@@ -191,7 +199,7 @@ wipe: fclean
 	rm -rf minilibx-linux.tgz
 	mv minilibx-linux ./inc/mlx_linux
 	@printf "$(RSET)\n\n"
-	@make -C ./inc/mlx_linux
+	@make -C ./inc/mlx_linux CC="gcc -std=gnu17"
 	@sleep 1
 	@printf "$(MINT)\n\t\t  🦝 There u go <3! 🦝\n\n"
 

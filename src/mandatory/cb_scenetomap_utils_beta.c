@@ -6,14 +6,14 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 16:13:42 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/07 00:20:20 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
+void	cb_flood_fill(char **map, int y, int x);
 char	**cb_matrixalloc(int columns, int rows);
-void	cb_remove_trailing_blanks(t_game *g, char **map);
 void	cb_map_populate(char **raw, char **dest, int miny, int minx);
 
 char	**cb_matrixalloc(int columns, int rows)
@@ -61,5 +61,17 @@ void	cb_map_populate(char **raw, char **dest, int miny, int minx)
 		}
 		i++;
 	}
+	return ;
+}
+
+void	cb_flood_fill(char **map, int y, int x)
+{
+	if (map[y][x] == '1' || map[y][x] == 'F')
+		return ;
+	map[y][x] = 'F';
+	cb_flood_fill(map, y, x + 1);
+	cb_flood_fill(map, y, x - 1);
+	cb_flood_fill(map, y + 1, x);
+	cb_flood_fill(map, y - 1, x);
 	return ;
 }
