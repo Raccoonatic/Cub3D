@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cb_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rdeimaos <rdeimaos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 00:38:19 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 15:30:59 by rdeimaos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CB_STRUCTS_H
 # define CB_STRUCTS_H
-
-typedef struct s_player
-{
-	int			x;
-	int			y;
-	double		ren_x;
-	double		ren_y;
-	char		dir;
-	double		acel;
-} t_player;
 
 typedef struct s_cord
 {
@@ -91,7 +81,6 @@ typedef struct s_game
 	long long	tstamp;
 }	t_game;
 
-<<<<<<< HEAD
 typedef struct s_player
 {
 	int			x;
@@ -103,6 +92,4 @@ typedef struct s_player
 	double		acel;
 } t_player;
 
-=======
->>>>>>> origin/mapache
 #endif

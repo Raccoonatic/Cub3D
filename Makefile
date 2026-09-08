@@ -51,15 +51,13 @@ MANDA += cb_scenetomap_utils_alpha.c
 MANDA += cb_scenetomap_utils_beta.c
 MANDA += cb_time.c
 MANDA += cb_zeroing.c
-<<<<<<< HEAD
 MANDA += cb_player.c
-=======
 MANDA += cb_layer_init.c
 MANDA += cb_minimap.c
 MANDA += cb_render.c
 MANDA += cb_render_utils_alpha.c
 MANDA += cb_coordinate.c
->>>>>>> origin/mapache
+MANDA += cb_movement.c
 
 BONUS = cb_template_bonus.c
 # BONUS +=

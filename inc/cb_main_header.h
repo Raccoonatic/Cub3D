@@ -115,10 +115,9 @@ void		cb_map_populate(char **raw, char **dest, int miny, int minx);
 // ----	cb_getborders.c
 int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
 
-<<<<<<< HEAD
 // ---- cb_player.c
 void    	cb_innit_player(t_game *game);
-=======
+
 // ----	cb_define_playable_map.c
 void		cb_define_playable_map(t_game *g, char **map);
 
@@ -140,6 +139,8 @@ void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
 
 // ----	cb_coordinate.c
 void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
->>>>>>> origin/mapache
+
+// ----	cb_movement.c
+void    	move_player(t_game *game, int key);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_zeroing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rdeimaos <rdeimaos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 00:28:32 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 15:33:43 by rdeimaos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,7 @@ static void cb_zero_player(t_player *player)
 	player-> ren_y = 0.0;
 	player-> dir = '\0';
 	player-> acel = 0.05;
-<<<<<<< HEAD
 	return ;
-}
-=======
 }
 
 static void	cb_zero_mp(t_mp *mp)
@@ -109,4 +106,3 @@ static void	cb_zero_mp(t_mp *mp)
 	if (!mp->ph.path)
 		cb_fail(1, 1, "Allocation Error"NOR" p_head sprite");
 }
->>>>>>> origin/mapache
