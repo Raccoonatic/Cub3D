@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../inc/cb_main_header.h"
 
-static void cb_get_player_pos(t_game *game, t_player *player)
+void    cb_innit_player(t_game *game);
+static void cb_get_player_dir(t_player *player, char dir);
+void cb_get_player_pos(t_game *game, t_player *player);
+
+void cb_get_player_pos(t_game *game, t_player *player)
 {
     char **map;
     int i;
@@ -46,7 +49,6 @@ void    cb_innit_player(t_game *game)
 {
     cb_zero_player(&game->player);
     cb_get_player_pos(game, &game->player);
-    game->player = player;
 }
 
 static void cb_get_player_dir(t_player *player, char dir)

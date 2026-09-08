@@ -43,8 +43,8 @@ typedef enum e_kys
 
 // Macro Definitions:
 # define TSZ	30
-# define WH		1080
-# define WW		1920
+# define WH		960
+# define WW		1080
 # define MXMPH	300
 # define MXMPW	400
 # define MNMWC	0xFFFFFFFF
@@ -117,6 +117,7 @@ int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
 
 // ---- cb_player.c
 void    	cb_innit_player(t_game *game);
+void		cb_get_player_pos(t_game *game, t_player *player);
 
 // ----	cb_define_playable_map.c
 void		cb_define_playable_map(t_game *g, char **map);

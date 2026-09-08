@@ -25,6 +25,11 @@ static void cb_move_foward(t_game *game, double move_speed, double *new_x, doubl
         *new_x = new_new_x;
         *new_y = new_new_y;
     }
+	else
+	{
+		*new_x = game->player.ren_x;
+		*new_y = game->player.ren_y;
+	}
     return ;
 }
 
@@ -41,6 +46,11 @@ static void cb_move_backward(t_game *game, double move_speed, double *new_x, dou
         *new_x = new_new_x;
         *new_y = new_new_y;
     }
+	else
+	{
+		*new_x = game->player.ren_x;
+		*new_y = game->player.ren_y;
+	}
     return ;
 }
 
@@ -57,6 +67,11 @@ static void cb_move_left(t_game *game, double move_speed, double *new_x, double 
         *new_x = new_new_x;
         *new_y = new_new_y;
     }
+	else
+	{
+		*new_x = game->player.ren_x;
+		*new_y = game->player.ren_y;
+	}
     return ;
 }
 
@@ -73,6 +88,11 @@ static void cb_move_right(t_game *game, double move_speed, double *new_x, double
         *new_x = new_new_x;
         *new_y = new_new_y;
     }
+	else
+	{
+		*new_x = game->player.ren_x;
+		*new_y = game->player.ren_y;
+	}
     return ;
 }
 
@@ -82,16 +102,16 @@ void    move_player(t_game *game, int key)
     double new_x;
     double new_y;
 
-    move_speed = 0.1;
+    move_speed = 1;
     new_x = game->player.ren_x;
     new_y = game->player.ren_y;
-    if (key == KEY_W)
+    if (key == K_W)
         cb_move_foward(game, move_speed, &new_x, &new_y);
-    else if (key == KEY_S)
+    else if (key == K_S)
         cb_move_backward(game, move_speed, &new_x, &new_y);
-    else if (key == KEY_A)
+    else if (key == K_A)
         cb_move_left(game, move_speed, &new_x, &new_y);
-    else if (key == KEY_D)
+    else if (key == K_D)
         cb_move_right(game, move_speed, &new_x, &new_y);
     game->player.ren_x = new_x;
     game->player.ren_y = new_y;
