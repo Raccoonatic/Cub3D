@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 17:37:38 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 16:37:35 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 18:41:21 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static char	**cb_allocate_playable_map(char **map, int maxy, int maxx)
 		}
 		y++;
 	}
-	return (cb_matrixalloc((maxy - miny) + 1, (maxx - minx) + 1));
+	return (cb_matrixalloc((maxy - miny) + 1, (maxx - minx) + 1, '1'));
 }
 
 static int	cb_is_border(char **map, int y, int x)

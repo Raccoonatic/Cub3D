@@ -102,7 +102,7 @@ void    move_player(t_game *game, int key)
     double new_x;
     double new_y;
 
-    move_speed = 1;
+    move_speed = 0.1;
     new_x = game->player.ren_x;
     new_y = game->player.ren_y;
     if (key == K_W)

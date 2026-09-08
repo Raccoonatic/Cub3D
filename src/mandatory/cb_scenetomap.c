@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:15:26 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 16:16:47 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 18:39:52 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static char	**cb_refine_map(t_game *g, char **raw)
 	mny = cb_define_borders(raw, &mxy, &mnx, &mxx);
 	if (mny == -1)
 		cb_frexit(g, NULL, raw, "Invalid scene file. "NOR"Empty map.");
-	destilled = cb_matrixalloc(mxy - mny + 1, mxx - mnx);
+	destilled = cb_matrixalloc(mxy - mny + 1, mxx - mnx, 'B');
 	if (!destilled)
 		cb_frexit(g, NULL, raw, "Couldn't load scene file. "NOR"calloc error.");
 	cb_map_populate(raw, destilled, mny, mnx);

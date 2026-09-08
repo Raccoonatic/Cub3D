@@ -42,12 +42,12 @@ typedef enum e_kys
 }	t_kys;
 
 // Macro Definitions:
-# define TSZ	30
-# define WH		960
+# define TSZ	20
+# define WH		720
 # define WW		1080
-# define MXMPH	300
-# define MXMPW	400
-# define MNMWC	0xFFFFFFFF
+# define MXMPH	150
+# define MXMPW	250
+# define MNMWC	0xFF00FFAA
 
 // Text Color:
 # define RST	"\033[0m"
@@ -109,7 +109,7 @@ int			cb_scene_data_fill(t_game *g, char **line, int fd);
 
 // ----	cb_scenetomap_utils_beta.c
 void		cb_flood_fill(char **map, int y, int x);
-char		**cb_matrixalloc(int columns, int rows);
+char		**cb_matrixalloc(int columns, int rows, int c);
 void		cb_map_populate(char **raw, char **dest, int miny, int minx);
 
 // ----	cb_getborders.c

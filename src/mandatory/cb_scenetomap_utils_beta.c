@@ -6,17 +6,17 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/07 00:20:20 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 18:40:22 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
 void	cb_flood_fill(char **map, int y, int x);
-char	**cb_matrixalloc(int columns, int rows);
+char	**cb_matrixalloc(int columns, int rows, int c);
 void	cb_map_populate(char **raw, char **dest, int miny, int minx);
 
-char	**cb_matrixalloc(int columns, int rows)
+char	**cb_matrixalloc(int columns, int rows, int c)
 {
 	char	**ret;
 	int		guide;
@@ -37,7 +37,7 @@ char	**cb_matrixalloc(int columns, int rows)
 			}
 			return (free(ret), NULL);
 		}
-		ft_memset(ret[guide], 'B', rows);
+		ft_memset(ret[guide], c, rows);
 		guide++;
 	}
 	ret[guide] = NULL;

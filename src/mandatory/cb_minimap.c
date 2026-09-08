@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 15:59:11 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 18:11:09 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	cb_minimap_compose(t_game *g, t_mp *m)
 	c.fw = g->w;
 	c.th = g->mp.ph.h;
 	c.tw = g->mp.ph.w;
-	c.x = 30 + (g->player.ren_x - g->mp.x) - (c.tw / 2);
-	c.y = (g->h - g->mp.h - 30) + (g->player.ren_y - g->mp.y) - (c.th / 2);
+	c.x = 30 + ((g->player.ren_x * TSZ) - g->mp.x) - (c.tw / 2);
+	c.y = (g->h - g->mp.h - 30) + ((g->player.ren_y * TSZ) - g->mp.y) - (c.th / 2);
 	cb_push_tile_to_frame(&g->buf, &m->ph, c, 'L');
 	return ;
 }
@@ -63,8 +63,8 @@ void	cb_minimap_init(t_game *g, t_mp *m)
 
 static void cb_clamp_pov(t_game *g)
 {
-	g->mp.x = g->player.ren_x - (g->mp.w / 2);
-	g->mp.y = g->player.ren_y - (g->mp.h / 2);
+	g->mp.x = g->player.ren_x - (g->mp.w / 2) + (TSZ / 2);
+	g->mp.y = g->player.ren_y - (g->mp.h / 2) + (TSZ / 2);
 	if (g->mp.x < 0)
 		g->mp.x = 0;
 	if (g->mp.y < 0)
