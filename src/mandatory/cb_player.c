@@ -36,6 +36,7 @@ void    cb_innit_player(t_game *game)
     cb_get_player_pos(game, &game->player);
     game->player = player;
 }
+<<<<<<< HEAD
 
 static void cb_get_player_dir(t_player *player, char dir)
 {
@@ -60,3 +61,5 @@ static void cb_get_player_dir(t_player *player, char dir)
         player->dir_y = 0;
     }
 }
+=======
+>>>>>>> origin/mapache

@@ -6,12 +6,32 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/04 01:04:58 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 00:38:19 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CB_STRUCTS_H
 # define CB_STRUCTS_H
+
+typedef struct s_player
+{
+	int			x;
+	int			y;
+	double		ren_x;
+	double		ren_y;
+	char		dir;
+	double		acel;
+} t_player;
+
+typedef struct s_cord
+{
+	int	fh;
+	int	fw;
+	int	th;
+	int	tw;
+	int	x;
+	int	y;
+}	t_cord;
 
 typedef struct s_img
 {
@@ -32,6 +52,21 @@ typedef struct s_img
 	int		crnt_frm;
 }	t_img;
 
+typedef struct s_mp
+{
+	void	*pov;
+	char    *addr;
+	t_img	map;
+	t_img	ph;
+	int     bpx;
+	int     bpr;
+	int     e;
+	int		h;
+	int		w;
+	int     x;
+	int     y;
+} 	t_mp;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -42,10 +77,11 @@ typedef struct s_game
 	int			flor_c;
 	int 		ceil_c;
 
+	t_player	ply;
+	t_mp		mp;
+
+	t_img		bkg;
 	t_img		buf;
-	t_img		flor;
-	t_img		ceil;
-	t_img		minimap;
 	t_img		nwall;
 	t_img		swall;
 	t_img		ewall;
@@ -55,6 +91,7 @@ typedef struct s_game
 	long long	tstamp;
 }	t_game;
 
+<<<<<<< HEAD
 typedef struct s_player
 {
 	int			x;
@@ -66,4 +103,6 @@ typedef struct s_player
 	double		acel;
 } t_player;
 
+=======
+>>>>>>> origin/mapache
 #endif

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:38:18 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/04 01:26:09 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/06 14:06:02 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char		*cb_skip_blank(char *line);
 static int	cb_check_missing_data(t_game *g);
-char		**cb_addline(char **raw_map, char *line);
+char		**cb_addline(char **raw_map, char **line);
 int			cb_scene_data_fill(t_game *g,char **line, int fd);
 static int	cb_get_data(t_game *g, char *cursor, char *line, int fd);
 
-char **cb_addline(char **raw_map, char *line)
+char **cb_addline(char **raw_map, char **line)
 {
 	static int	raw_lines = 0;
 	char		**ret;
@@ -28,18 +28,20 @@ char **cb_addline(char **raw_map, char *line)
 	ret = ft_calloc(raw_lines + 1, sizeof(char *));
 	if (!ret)
 		return (cb_free_matrix(raw_map), NULL);
-	ret[raw_lines] = NULL;
 	guide = 0;
 	if (raw_map)
 	{
 		while (raw_map[guide])
 		{
 			ret[guide] = ft_strdup(raw_map[guide]);
-// TODO: check if strdup fails
+			if (!ret[guide])
+				return (cb_free_matrix(ret), cb_free_matrix(raw_map), NULL);
 			guide++;
 		}
 	}
-	ret[guide] = ft_strdup(line);
+	ret[guide] = ft_strdup(*line);
+	if (!ret[guide])
+		return (cb_free_matrix(ret), cb_free_matrix(raw_map), NULL);
 	cb_free_matrix(raw_map);
 	return(ret);
 }

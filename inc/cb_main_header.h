@@ -41,6 +41,14 @@ typedef enum e_kys
 	K_DOW = 65364
 }	t_kys;
 
+// Macro Definitions:
+# define TSZ	30
+# define WH		1080
+# define WW		1920
+# define MXMPH	300
+# define MXMPW	400
+# define MNMWC	0xFFFFFFFF
+
 // Text Color:
 # define RST	"\033[0m"
 # define BWI	"\033[1;37m"
@@ -65,47 +73,73 @@ long long	cb_now(void);
 // ----	cb_destroy.c
 void		cb_frink(t_game *g);
 void		cb_free_matrix(char **matrix);
+void		cb_imgdata_wipe(t_game *g, t_img *i);
 
-// ---- cb_zeroing.c
+// ----	cb_zeroing.c
 void		cb_null_ptrs(t_img *i);
 void		cb_zero_ints(t_img *i);
 void		cb_zeroing(t_game *game);
 void 		cb_zero_player(t_player *player);
 
-// ---- cb_map_pars_utils.c
+// ----	cb_map_pars_utils.c
 int			cb_map_height(char **map);
 int			cb_map_width(char **map);
 int			cb_check_surr(char **map, int i, int j);
 
-// ---- cb_map_pars.c
+// ----	cb_map_pars.c
 int			cb_validate_map(char **map, t_game *game);
 
-// ---- cb_getcolors.c
+// ----	cb_getcolors.c
 int			cb_get_flor(t_game *game, char *cursor, char *line, int fd);
 int			cb_get_ceil(t_game *game, char *cursor, char *line, int fd);
 
-// ---- cb_getpaths.c
+// ----	cb_getpaths.c
 int			cb_get_north(t_game *g, char *cursor, char *line, int fd);
 int			cb_get_south(t_game *g, char *cursor, char *line, int fd);
 int			cb_get_westh(t_game *g, char *cursor, char *line, int fd);
 int			cb_get_easth(t_game *g, char *cursor, char *line, int fd);
 
-// ---- cb_scenetomap.c
+// ----	cb_scenetomap.c
 char		**cb_scene_to_map(t_game *g, char *map_path);
 
-// ---- cb_scenetomap_utils_alpha.c
+// ----	cb_scenetomap_utils_alpha.c
 char		*cb_skip_blank(char *line);
-char		**cb_addline(char **raw_map, char *line);
+char		**cb_addline(char **raw_map, char **line);
 int			cb_scene_data_fill(t_game *g, char **line, int fd);
 
-// ---- cb_scenetomap_utils_beta.c
+// ----	cb_scenetomap_utils_beta.c
+void		cb_flood_fill(char **map, int y, int x);
 char		**cb_matrixalloc(int columns, int rows);
 void		cb_map_populate(char **raw, char **dest, int miny, int minx);
 
-// ---- cb_getborders.c
+// ----	cb_getborders.c
 int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
 
+<<<<<<< HEAD
 // ---- cb_player.c
 void    	cb_innit_player(t_game *game);
+=======
+// ----	cb_define_playable_map.c
+void		cb_define_playable_map(t_game *g, char **map);
+
+// ----	cb_layer_init.c
+void		cb_imgmain_init(t_game *g, t_img *i, char *path);
+void		cb_layer_init(t_game *g, int *bpx, int *bpr, int *e);
+
+// ----	cb_minimap.c
+void		cb_minimap_init(t_game *g, t_mp *m);
+void		cb_minimap_compose(t_game *g, t_mp *m);
+
+// --- cb_render.c
+int			cb_render(t_game *g);
+
+// ----	cb_render_utils_alpha.c
+void		cb_blackpink(t_img *img, int h);
+void		cb_push_bkgrnd_to_frame(t_img *d, t_img *s);
+void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
+
+// ----	cb_coordinate.c
+void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
+>>>>>>> origin/mapache
 
 #endif

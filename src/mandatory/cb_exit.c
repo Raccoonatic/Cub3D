@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:48:46 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/03 12:54:57 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/07 15:59:26 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ void	cb_kill_the_game(t_game *gm, int flag, int errn, int code)
 	free(gm->mlx);
 	cb_free_matrix(gm->map);
 	if (flag == 1)
-		cb_fail(0, 69, BLD"Game Over. "NOR"You is dead boy"RST);
+		cb_fail(errn, code, MNT"Game Over. "NOR"Thanks 4 playing"RST);
 	else
 	{
 		if (errn == 2)
-			cb_fail(1, code, "Game didn't load. "NOR"mlx init Failed"RST);
-		if (errn == 2)
-			cb_fail(1, code, "Game didn't load. "NOR"mlx failed"RST);
+			cb_fail(1, code, "Game didn't load. "NOR"mlx_init Failed"RST);
+		if (errn == 3)
+			cb_fail(1, code, "Game didn't load. "NOR"mlx_img failed"RST);
 	}
 	cb_fail(1, code, "Memory allocation error"RST);
 	return ;

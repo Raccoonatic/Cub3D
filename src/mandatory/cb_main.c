@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/04 01:04:44 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 00:45:21 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,61 @@ static void dispmap(char **map)
 	return ;
 }
 
+
+static int	cb_handle_close(t_game *data)
+{
+	cb_kill_the_game(data, 1, 0, 0);
+	return (0);
+}
+
+static int	cb_handle_keypress(int keycode, t_game *data)
+{
+	if (keycode == K_ESC)
+		cb_kill_the_game(data, 1, 0, 0);
+	return (0);
+}
+
+static void cb_get_player_pos(t_game *game, t_player *player)
+{
+    char **map;
+    int i;
+    int j;
+
+    map = game->map;
+    i = 0;
+    while(map[i])
+    {
+        j = 0;
+        while(map[i][j])
+        {
+            if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+            {
+                player->x = j;
+                player->y = i;
+                player->ren_x = j + 0.5;
+                player->ren_y = i + 0.5;
+                player->dir = map[i][j];
+                return ;
+            }
+            j++;
+        }
+        i++;
+    }
+    return ;
+}
+
+static void	cb_game_init(t_game *g)
+{
+	g->mlx = mlx_init();
+	if (!g->mlx)
+		cb_kill_the_game(g, 0, 1, 1);
+	g->win = mlx_new_window(g->mlx, g->w, g->h, (char *)"Verdant Veil");
+	if (!g->win)
+		cb_kill_the_game(g, 0, 1, 1);
+	cb_layer_init(g, &g->buf.bpx, &g->buf.bpr, &g->buf.e);
+	return ;
+}
+
 int main(int ac, char **av)
 {
 	t_game game;
@@ -60,6 +115,20 @@ int main(int ac, char **av)
 	if (!game.map)
 		cb_fail(1, 1, "Failed to create map.");
 	dispmap(game.map);
-	cb_frexit(&game, NULL, NULL, "Exiting program.");
+	cb_get_player_pos(&game, &game.ply);
+	cb_define_playable_map(&game, map);
+	dispmap(game.map);
+	// -- Post map init:
+
+	cb_game_init(&game);
+	mlx_hook(game.win, 17, 1L << 0, cb_handle_close, &game);
+	mlx_hook(game.win, 2, 1L << 0, cb_handle_keypress, &game);
+	mlx_loop_hook(game.mlx, cb_render, &game);
+	mlx_loop(game.mlx);
+
+	// -- For testing:
+	cb_frink(&game);
+	cb_free_matrix(game.map);
+	cb_fail(0, 0, PUR"Exiting program.");
 	return (0);
 }
