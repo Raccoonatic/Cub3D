@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 15:59:09 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 20:06:56 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	cb_zeroing(t_game *game)
 	game->flor_c = -1;
 	game->ceil_c = -1;
 	game->tstamp = cb_now();
+	game->l = 'R';
 	cb_zero_img(game);
 	cb_zero_mp(&(game->mp));
 	return ;

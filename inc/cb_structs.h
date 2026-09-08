@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 19:21:59 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 20:06:58 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_game
 
 	t_player	player;
 	long long	tstamp;
+	char		l; // -- Just testing the different facing options for the player sprite
 }	t_game;
 
 
