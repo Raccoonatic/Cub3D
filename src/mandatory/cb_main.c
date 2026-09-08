@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 16:34:44 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 19:21:57 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int main(int ac, char **av)
 	dispmap(game.map);
 	cb_innit_player(&game);
 	cb_define_playable_map(&game, map);
-	cb_get_player_pos(&game, &game.player);
 	dispmap(game.map);
 	// -- Post map init:
 

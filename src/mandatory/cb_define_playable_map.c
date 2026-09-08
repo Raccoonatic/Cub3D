@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 17:37:38 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 18:41:21 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/08 19:31:05 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	cb_define_playable_map(t_game *g, char **map)
 	cb_mapdatafill(map, g->map, maxy - i + 1, maxx - ft_strlen(map[0]) + 1);
 	cb_free_matrix(g->map);
 	g->map = map;
+	cb_get_player_pos(g, &g->player);
+	g->map[g->player.y][g->player.x] = '0';
 	return ;
 }
 
