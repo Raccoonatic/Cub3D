@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cb_movement.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdeimaos <rdeimaos@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 15:34:30 by rdeimaos          #+#    #+#             */
+/*   Updated: 2026/09/08 15:34:30 by rdeimaos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cb_main_header.h"
 
 static void cb_move_foward(t_game *game, double move_speed, double *new_x, double *new_y)
