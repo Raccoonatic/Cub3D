@@ -144,4 +144,8 @@ void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
 // ----	cb_movement.c
 void    	move_player(t_game *game, int key);
 
+// ---- cb_rotate.c
+
+void 		cb_rotate_player(t_game *game, int key);
+
 #endif
