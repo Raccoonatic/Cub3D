@@ -80,7 +80,7 @@ OBJ_BON = $(SRC_BON:$(SRC_DIR_BON)%.c=$(OBJ_DIR_BON)%.o)
 
 .PRECIOUS: $(BONUS) $(FILE) $(MAIN_MAN) $(MAIN_BON)
 
-COMPILE = cc -g -O0 -Wall -Werror -Wextra -Wno-cast-function-type -I./inc -I./inc/mlx_linux
+COMPILE = cc -g -O0 -Wall -Werror -Wextra -I./inc -I./inc/mlx_linux
 LEAK_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
 
 all: $(NAME)

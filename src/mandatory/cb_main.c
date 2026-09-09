@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rdeimaos <rdeimaos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 19:21:57 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/09 14:24:47 by rdeimaos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	cb_handle_keypress(int keycode, t_game *data)
 	if (keycode == K_ESC)
 		cb_kill_the_game(data, 1, 0, 0);
 	move_player(data, keycode);
+	cb_rotate_player(data, keycode);
 	return (0);
 }
 
