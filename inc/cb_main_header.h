@@ -142,10 +142,10 @@ void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
 void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
 
 // ----	cb_movement.c
-void    	move_player(t_game *game, int key);
+void    	move_player(t_game *game);
 
 // ---- cb_rotate.c
 
-void 		cb_rotate_player(t_game *game, int key);
+void 		cb_rotate_player(t_game *game);
 
 #endif

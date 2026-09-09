@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:15:26 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 19:22:02 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/09 18:05:38 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ char	**cb_scene_to_map(t_game *g, char *map_path)
 	int		fd;
 
 	if (ft_strlen(map_path) <= 4)
-		cb_fail(1, 2, "Map name incomplete. "NOR"Is empty or without .cub");
+		cb_frexit(g, NULL, NULL, "Map name incomplete. "NOR"Empty or no .cub");
 	if (ft_strncmp(map_path + (ft_strlen(map_path) - 4), ".cub", 4))
-		cb_fail(1, 2, "Map extension must be "LME".cub");
+		cb_frexit(g, NULL, NULL, "Map extension must be "LME".cub");
 	fd = open(map_path, O_RDONLY);
 	if (fd < 3)
-		cb_fail(1, 2, "Failed to "BBY"open "PUR"map file on "BWI"READ");
+		cb_frexit(g, NULL, NULL, "Failed to "BBY"open "PUR"scene on "BWI"READ");
 	raw_map = cb_read_the_scene(g, fd);
 	close(fd);
 	if (!raw_map)

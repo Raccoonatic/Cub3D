@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/09 16:33:15 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/09 18:05:40 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,43 @@ static int	cb_handle_keypress(int keycode, t_game *data)
 {
 	if (keycode == K_ESC)
 		cb_kill_the_game(data, 1, 0, 0);
-	if (keycode == K_A)
+	else if (keycode == K_A)
+	{
+		data->ka = true;
 		data->l = 'L';
-	if (keycode == K_D)
+	}
+	else if (keycode == K_D)
+	{
+		data->kd = true;
 		data->l = 'R';
-	move_player(data, keycode);
-	cb_rotate_player(data, keycode);
+	}
+	else if (keycode == K_W)
+		data->kw = true;
+	else if (keycode == K_S)
+		data->ks = true;
+	else if (keycode == K_LFT)
+		data->klft = true;
+	else if (keycode == K_RGT)
+		data->krgt = true;
+	// move_player(data, keycode);	--	testing keypress and release :
+	// cb_rotate_player(data, keycode);	--	testing keypress and release :
+	return (0);
+}
+
+static int cb_handle_keyrelease(int keycode, t_game *data)
+{
+	if (keycode == K_W)
+		data->kw = false;
+	else if (keycode == K_S)
+		data->ks = false;
+	else if (keycode == K_A)
+		data->ka = false;
+	else if (keycode == K_D)
+		data->kd = false;
+	else if (keycode == K_LFT)
+		data->klft = false;
+	else if (keycode == K_RGT)
+		data->krgt = false;
 	return (0);
 }
 
@@ -99,7 +130,10 @@ int main(int ac, char **av)
 
 	cb_game_init(&game);
 	mlx_hook(game.win, 17, 1L << 0, cb_handle_close, &game);
-	mlx_hook(game.win, 2, 1L << 0, cb_handle_keypress, &game);
+	// mlx_hook(game.win, 2, 1L << 0, cb_handle_keypress, &game); -- Testing press and release:
+		mlx_hook(game.win, 2, 1L << 0, cb_handle_keypress, &game);
+		mlx_hook(game.win, 3, 1L << 1, cb_handle_keyrelease, &game);
+
 	mlx_loop_hook(game.mlx, cb_render, &game);
 	mlx_loop(game.mlx);
 

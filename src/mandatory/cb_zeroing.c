@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 20:06:56 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/09 18:05:41 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ void	cb_zeroing(t_game *game)
 	game->l = 'R';
 	cb_zero_img(game);
 	cb_zero_mp(&(game->mp));
+
+	// -- testing keypress and release
+	game->kw = false;
+	game->ka = false;
+	game->ks = false;
+	game->kd = false;
+	game->klft = false;
+	game->krgt = false;
+
 	return ;
 }
 
