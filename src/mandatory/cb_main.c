@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 20:06:57 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/09 16:32:48 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static int	cb_handle_keypress(int keycode, t_game *data)
 	if (keycode == K_D)
 		data->l = 'R';
 	move_player(data, keycode);
+	cb_rotate_player(data, keycode);
 	return (0);
 }
 
