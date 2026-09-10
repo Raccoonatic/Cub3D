@@ -48,6 +48,7 @@ typedef enum e_kys
 # define MXMPH	200
 # define MXMPW	300
 # define MNMWC	0xFFFFFFFF
+# define RAYMX	10
 
 // Text Color:
 # define RST	"\033[0m"
