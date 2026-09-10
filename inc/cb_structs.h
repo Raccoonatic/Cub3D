@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/09 16:57:29 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/10 14:37:45 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,23 @@ typedef struct s_cord
 	int	y;
 }	t_cord;
 
+typedef struct s_vd
+{
+	double	x;
+	double	y;
+}	t_vd;
+
+typedef struct s_vi
+{
+	int	x;
+	int	y;
+}	t_vi;
+
 typedef struct s_player
 {
-	int			x;
-	int			y;
-	double		ren_x;
-	double		ren_y;
-	double		dir_x;
-	double		dir_y;
+	t_vi		map;
+	t_vd		ren;
+	t_vd		dir;
 	double		acel;
 } t_player;
 

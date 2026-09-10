@@ -12,9 +12,9 @@
 
 #include "../../inc/cb_main_header.h"
 
-void    cb_innit_player(t_game *game);
-static void cb_get_player_dir(t_player *player, char dir);
-void cb_get_player_pos(t_game *game, t_player *player);
+void		cb_innit_player(t_game *game);
+static void	cb_get_player_dir(t_player *player, char dir);
+void		cb_get_player_pos(t_game *game, t_player *player);
 
 void cb_get_player_pos(t_game *game, t_player *player)
 {
@@ -31,10 +31,10 @@ void cb_get_player_pos(t_game *game, t_player *player)
         {
             if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
             {
-                player->x = j;
-                player->y = i;
-                player->ren_x = j + 0.5;
-                player->ren_y = i + 0.5;
+                player->map.x = j;
+                player->map.y = i;
+                player->ren.x = j + 0.5;
+                player->ren.y = i + 0.5;
                 cb_get_player_dir(player, map[i][j]);
                 return ;
             }
@@ -55,22 +55,22 @@ static void cb_get_player_dir(t_player *player, char dir)
 {
     if (dir == 'N')
     {
-        player->dir_x = 0;
-        player->dir_y = -1;
+        player->dir.x = 0;
+        player->dir.y = -1;
     }
     else if (dir == 'S')
     {
-        player->dir_x = 0;
-        player->dir_y = 1;
+        player->dir.x = 0;
+        player->dir.y = 1;
     }
     else if (dir == 'E')
     {
-        player->dir_x = 1;
-        player->dir_y = 0;
+        player->dir.x = 1;
+        player->dir.y = 0;
     }
     else if (dir == 'W')
     {
-        player->dir_x = -1;
-        player->dir_y = 0;
+        player->dir.x = -1;
+        player->dir.y = 0;
     }
 }

@@ -215,6 +215,8 @@ wipe: fclean
 	@make ./inc/mlx_linux
 	@make -C ./inc/mlx_linux
 	@rm -rf ./inc/mlx_linux/Makefile
+
+mlx_dependencies:
 	@sudo apt-get update || true
 	@sudo apt-get upgrade || true
 	@printf "$(RSET)\n\n"

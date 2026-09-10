@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/09 18:05:41 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/10 14:37:45 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void	cb_zero_ints(t_img *i)
 
 void cb_zero_player(t_player *player)
 {
-	player-> x = 0;
-	player-> y = 0;
-	player-> ren_x = 0.0;
-	player-> ren_y = 0.0;
-	player-> dir_x = 0.0;
-	player-> dir_y = 0.0;
-	player-> acel = 0.05;
+	player->map.x = 0;
+	player->map.y = 0;
+	player->ren.x = 0.0;
+	player->ren.y = 0.0;
+	player->dir.x = 0.0;
+	player->dir.y = 0.0;
+	player->acel = 0.05;
 	return ;
 }
 
