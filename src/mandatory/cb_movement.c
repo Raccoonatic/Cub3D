@@ -110,7 +110,7 @@ void    move_player(t_game *game)
 	double new_x;
 	double new_y;
 
-	move_speed = 0.01;
+	move_speed = 0.03;
 	new_x = game->player.ren_x;
 	new_y = game->player.ren_y;
 	cb_move_foward(game, move_speed, &new_x, &new_y);
