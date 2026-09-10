@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/10 14:37:43 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:50:49 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ static void cp_build_map(t_game *g, t_mp *m, t_img *sqr)
 		}
 		y++;
 	}
-	cb_blackpink(&m->map, m->map.h);
+	cb_blackpink(&m->map, m->map.h, g->flor_c);
 }
 
 static void	cb_get_mapsize(t_game *g, t_mp *mp)

@@ -42,12 +42,12 @@ typedef enum e_kys
 }	t_kys;
 
 // Macro Definitions:
-# define TSZ	50
-# define WH		720
-# define WW		1080
-# define MXMPH	150
-# define MXMPW	250
-# define MNMWC	0xFF00FFAA
+# define TSZ	35
+# define WH		900
+# define WW		1620
+# define MXMPH	200
+# define MXMPW	300
+# define MNMWC	0xFFFFFFFF
 
 // Text Color:
 # define RST	"\033[0m"
@@ -134,7 +134,7 @@ void		cb_minimap_compose(t_game *g, t_mp *m);
 int			cb_render(t_game *g);
 
 // ----	cb_render_utils_alpha.c
-void		cb_blackpink(t_img *img, int h);
+void		cb_blackpink(t_img *img, int h, int pink);
 void		cb_push_bkgrnd_to_frame(t_img *d, t_img *s);
 void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
 
