@@ -149,6 +149,13 @@ void    	move_player(t_game *game);
 void 		cb_rotate_player(t_game *game);
 
 // ----	cb_raycast.c
-bool		cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
+bool	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
+
+// ----	cb_vector_utils.c
+void	cb_ray_init(t_ray *ray);
+void	t_vd_equal(t_vd *v1, t_vd *v2);
+void	t_vi_equal(t_vi *v1, t_vi *v2);
+void	t_vd_toint(t_vi *v1, t_vd *v2);
+void	t_vi_tofloat(t_vd *v1, t_vi *v2);
 
 #endif
