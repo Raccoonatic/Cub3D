@@ -6,84 +6,85 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:11 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 14:44:28 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 19:39:28 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
 bool			cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
-static void		cb_get_step_dir(t_vd raystart, t_vd raydir, t_ray *ray);
-static double	cb_raydis(t_vi *vmap, t_vd *raylen, t_vi step_dir, t_vd steps);
+static void		cb_get_step_dir(t_game *g, t_vd rstart, t_vd rdir, t_ray *ray);
+static double	cb_raydis(t_ray *ray);
 
-static double	cb_raydis(t_vi *vmap, t_vd *raylen, t_vi step_dir, t_vd steps)
+static double	cb_raydis(t_ray *ray)
 {
 	double	distance;
 
 	distance = 0.0f;
-	if (raylen->x < raylen->y)
+	if (ray->raylen.x < ray->raylen.y)
 	{
-		vmap->x += step_dir.x;
-		distance = raylen->x;
-		raylen->x += steps.x;
+		ray->vmap.x += ray->stpdir.x;
+		distance = ray->raylen.x;
+		ray->raylen.x += ray->stps.x;
 	}
 	else
 	{
-		vmap->y += step_dir.y;
-		distance = raylen->y;
-		raylen->y += steps.y;
+		ray->vmap.y += ray->stpdir.y;
+		distance = ray->raylen.y;
+		ray->raylen.y += ray->stps.y;
 	}
 	return (distance);
 }
 
-static void	cb_get_step_dir(t_vd raystart, t_vd raydir, t_ray *ray)
+static void	cb_get_step_dir(t_game *g, t_vd rstart, t_vd rdir, t_ray *ray)
 {
-	if (raydir.x < 0)
+	if (rdir.x < 0)
 	{
 		ray->stpdir.x = -1;
-		ray->raylen.x = (raystart.x - (double)ray->vmap.x) * ray->stps.x;
+		g->l = 'L';
+		ray->raylen.x = (rstart.x - (double)ray->vmap.x) * ray->stps.x;
 	}
 	else
 	{
 		ray->stpdir.x = 1;
-		ray->raylen.x = ((double)(ray->vmap.x + 1) - raystart.x) * ray->stps.x;
+		g->l = 'R';
+		ray->raylen.x = ((double)(ray->vmap.x + 1) - rstart.x) * ray->stps.x;
 	}
-	if (raydir.y < 0)
+	if (rdir.y < 0)
 	{
 		ray->stpdir.y = -1;
-		ray->raylen.y = (raystart.y - (double)ray->vmap.y) * ray->stps.y;
+		ray->raylen.y = (rstart.y - (double)ray->vmap.y) * ray->stps.y;
 	}
 	else
 	{
 		ray->stpdir.y = 1;
-		ray->raylen.y = ((double)(ray->vmap.y + 1) - raystart.y) * ray->stps.y;
+		ray->raylen.y = ((double)(ray->vmap.y + 1) - rstart.y) * ray->stps.y;
 	}
 	return ;
 }
 
-// if (cb_castray(g, ply->ren, ply->dir, &hit))
 bool	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit)
 {
 	t_ray	ray;
 	bool	found;
 
 	cb_ray_init(&ray);
+	ray.g = g;
+	t_vd_equal(&ray.raylen, &ray_dir);
 	ray.stps.x = sqrt(1 + (ray_dir.y / ray_dir.x) * (ray_dir.y / ray_dir.x));
 	ray.stps.y = sqrt(1 + (ray_dir.x / ray_dir.y) * (ray_dir.x / ray_dir.y));
 	t_vd_toint(&g->player.map, &ray_start);
 	t_vi_equal(&ray.vmap, &g->player.map);
 	found = false;
-	cb_get_step_dir(ray_start, ray_dir, &ray);
+	cb_get_step_dir(g, ray_start, ray_dir, &ray);
 	while (!found && ray.distance < RAYMX)
 	{
-		ray.distance = cb_raydis(&ray.vmap, &ray.raylen, ray.stpdir, ray.stps);
-		if (g->map[ray.vmap.y][ray.vmap.x] == 1)
-			found = true;
-	}
-	if (found)
-	{
+		ray.distance = cb_raydis(&ray);
 		hit->x = ray_start.x + ray_dir.x * ray.distance;
 		hit->y = ray_start.y + ray_dir.y * ray.distance;
+		cb_draw_ray_minimap(ray.g, *hit);
+		if (g->map[ray.vmap.y][ray.vmap.x] == '1')
+			found = true;
 	}
 	return (found);
 }

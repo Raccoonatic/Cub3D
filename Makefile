@@ -61,6 +61,7 @@ MANDA += cb_movement.c
 MANDA += cb_rotate.c
 MANDA += cb_raycast.c
 MANDA += cb_vector_utils.c
+MANDA += cb_minimap_line.c
 
 BONUS = cb_template_bonus.c
 # BONUS +=

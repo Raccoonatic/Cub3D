@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:32:42 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 12:03:39 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 19:20:55 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	cb_colorshift(int c)
 	int b;
 	int v_shift;
 
-	v_shift = 10;
+	v_shift = 20;
 	if (c == 0x00FF00FF || c == (int)MNMWC || c < 0 )
 		return (0x00FF00FF);
 	r = ((c >> 16) & 0xFF) + v_shift;

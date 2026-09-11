@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 14:30:00 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 19:10:47 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ typedef struct s_vi
 	int	y;
 }	t_vi;
 
-typedef	struct s_ray
-{
-	t_vd	stps;
-	t_vi	stpdir;
-	t_vi	vmap;
-	t_vd	raylen;
-	double	distance;
-}	t_ray;
-
 typedef struct s_player
 {
 	t_vi		map;
@@ -51,6 +42,13 @@ typedef struct s_player
 	t_vd		dir;
 	double		acel;
 } t_player;
+
+typedef struct s_line
+{
+    t_vi	step;
+    t_vi	len;
+    int		err;
+}   t_line;
 
 typedef struct s_img
 {
@@ -118,5 +116,14 @@ typedef struct s_game
 
 }	t_game;
 
+typedef	struct s_ray
+{
+	t_vd	stps;
+	t_vi	stpdir;
+	t_vi	vmap;
+	t_vd	raylen;
+	double	distance;
+	t_game	*g;
+}	t_ray;
 
 #endif
