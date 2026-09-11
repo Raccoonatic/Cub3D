@@ -59,6 +59,7 @@ MANDA += cb_render_utils_alpha.c
 MANDA += cb_coordinate.c
 MANDA += cb_movement.c
 MANDA += cb_rotate.c
+MANDA += cb_raycast.c
 
 BONUS = cb_template_bonus.c
 # BONUS +=

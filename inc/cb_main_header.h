@@ -146,7 +146,9 @@ void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
 void    	move_player(t_game *game);
 
 // ---- cb_rotate.c
-
 void 		cb_rotate_player(t_game *game);
+
+// ----	cb_raycast.c
+bool		cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
 
 #endif

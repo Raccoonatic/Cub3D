@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:11 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/10 21:03:32 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 12:03:35 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ bool	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit)
 {
 	t_vd	steps;
 	t_vd	ray_len;
-	t_vd	hit;
 
 	steps.x = sqrt(1 + (ray_dir.y / ray_dir.x)) * (ray_dir.y / ray_dir.x);
 	steps.y = sqrt(1 + (ray_dir.x / ray_dir.y)) * (ray_dir.x / ray_dir.y);
