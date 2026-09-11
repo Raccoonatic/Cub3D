@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cb_raycast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rdeimaos <rdeimaos@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:11 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 12:03:35 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 13:14:58 by rdeimaos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-t_vd			cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir);
+bool			cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
 static t_vi		cb_get_step_dir(t_game *g, t_vd raydir, t_vd *stps, t_vd *rlen);
 static double	cb_raydis(t_vi *vmap, t_vd *raylen, t_vi step_dir, t_vd steps);
 static bool		cb_find_hit(t_game *g, t_vd *raylen, t_vd steps, t_vd *hit);
