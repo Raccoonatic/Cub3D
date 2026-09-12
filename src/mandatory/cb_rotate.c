@@ -4,9 +4,11 @@ static void cb_rotate_left(t_game *game, double rotate_speed)
 {
     double old_dir_x;
 
-    old_dir_x = game->player.dir_x;
-    game->player.dir_x = game->player.dir_x * cos(rotate_speed) - game->player.dir_y * sin(rotate_speed);
-    game->player.dir_y = old_dir_x * sin(rotate_speed) + game->player.dir_y * cos(rotate_speed);
+	if (!game->klft)
+		return ;
+    old_dir_x = game->player.dir.x;
+    game->player.dir.x = game->player.dir.x * cos(-rotate_speed) - game->player.dir.y * sin(-rotate_speed);
+    game->player.dir.y = old_dir_x * sin(-rotate_speed) + game->player.dir.y * cos(-rotate_speed);
     return ;
 }
 
@@ -14,21 +16,20 @@ static void cb_rotate_right(t_game *game, double rotate_speed)
 {
     double old_dir_x;
 
-    old_dir_x = game->player.dir_x;
-    game->player.dir_x = game->player.dir_x * cos(-rotate_speed) - game->player.dir_y * sin(-rotate_speed);
-    game->player.dir_y = old_dir_x * sin(-rotate_speed) + game->player.dir_y * cos(-rotate_speed);
+	if (!game->krgt)
+		return ;
+    old_dir_x = game->player.dir.x;
+    game->player.dir.x = game->player.dir.x * cos(rotate_speed) - game->player.dir.y * sin(rotate_speed);
+    game->player.dir.y = old_dir_x * sin(rotate_speed) + game->player.dir.y * cos(rotate_speed);
     return ;
 }
 
-void cb_rotate_player(t_game *game, int key)
+void cb_rotate_player(t_game *game)
 {
     double rotate_speed;
 
-    rotate_speed = 0.1;
-    if (key == K_LFT)
-        cb_rotate_left(game, rotate_speed);
-    else if (key == K_RGT)
-        cb_rotate_right(game, rotate_speed);
+    rotate_speed = 0.009;
+    cb_rotate_left(game, rotate_speed);
+    cb_rotate_right(game, rotate_speed);
     return ;
 }
-

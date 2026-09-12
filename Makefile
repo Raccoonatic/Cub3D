@@ -59,6 +59,8 @@ MANDA += cb_render_utils_alpha.c
 MANDA += cb_coordinate.c
 MANDA += cb_movement.c
 MANDA += cb_rotate.c
+MANDA += cb_raycast.c
+MANDA += cb_vector_utils.c
 
 BONUS = cb_template_bonus.c
 # BONUS +=
@@ -80,7 +82,7 @@ OBJ_BON = $(SRC_BON:$(SRC_DIR_BON)%.c=$(OBJ_DIR_BON)%.o)
 
 .PRECIOUS: $(BONUS) $(FILE) $(MAIN_MAN) $(MAIN_BON)
 
-COMPILE = cc -g -O0 -Wall -Werror -Wextra -Wno-cast-function-type -I./inc -I./inc/mlx_linux
+COMPILE = cc -g -O0 -Wall -Werror -Wextra -I./inc -I./inc/mlx_linux
 LEAK_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
 
 all: $(NAME)
@@ -215,6 +217,8 @@ wipe: fclean
 	@make ./inc/mlx_linux
 	@make -C ./inc/mlx_linux
 	@rm -rf ./inc/mlx_linux/Makefile
+
+mlx_dependencies:
 	@sudo apt-get update || true
 	@sudo apt-get upgrade || true
 	@printf "$(RSET)\n\n"

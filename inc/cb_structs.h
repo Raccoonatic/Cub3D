@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 15:59:06 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:30:00 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,32 @@ typedef struct s_cord
 	int	y;
 }	t_cord;
 
+typedef struct s_vd
+{
+	double	x;
+	double	y;
+}	t_vd;
+
+typedef struct s_vi
+{
+	int	x;
+	int	y;
+}	t_vi;
+
+typedef	struct s_ray
+{
+	t_vd	stps;
+	t_vi	stpdir;
+	t_vi	vmap;
+	t_vd	raylen;
+	double	distance;
+}	t_ray;
+
 typedef struct s_player
 {
-	int			x;
-	int			y;
-	double		ren_x;
-	double		ren_y;
-	double		dir_x;
-	double		dir_y;
+	t_vi		map;
+	t_vd		ren;
+	t_vd		dir;
 	double		acel;
 } t_player;
 
@@ -89,6 +107,15 @@ typedef struct s_game
 
 	t_player	player;
 	long long	tstamp;
+	char		l; // -- Just testing the different facing options for the player sprite
+
+	bool	kw;
+	bool	ka;
+	bool	ks;
+	bool	kd;
+	bool	klft;
+	bool	krgt;
+
 }	t_game;
 
 

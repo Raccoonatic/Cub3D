@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 19:03:09 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 12:03:37 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	cb_minimap_compose(t_game *g, t_mp *m)
 	c.fw = g->w;
 	c.th = g->mp.ph.h;
 	c.tw = g->mp.ph.w;
-	c.x = 30 + ((g->player.ren_x * TSZ) - g->mp.x) - (c.tw / 2);
+	c.x = 30 + ((g->player.ren.x * TSZ) - g->mp.x) - (c.tw / 2);
 	c.y = (g->h - g->mp.h - 30)
-		+ ((g->player.ren_y * TSZ) - g->mp.y) - (c.th / 2);
-	cb_push_tile_to_frame(&g->buf, &m->ph, c, 'L');
+		+ ((g->player.ren.y * TSZ) - g->mp.y) - (c.th / 2);
+	cb_push_tile_to_frame(&g->buf, &m->ph, c, g->l);
 	return ;
 }
 
@@ -64,8 +64,8 @@ void	cb_minimap_init(t_game *g, t_mp *m)
 
 static void cb_clamp_pov(t_game *g)
 {
-	g->mp.x = (g->player.ren_x * TSZ) - (g->mp.w / 2) + (TSZ / 2);
-	g->mp.y = (g->player.ren_y * TSZ) - (g->mp.h / 2) + (TSZ / 2);
+	g->mp.x = (g->player.ren.x * TSZ) - (g->mp.w / 2) + (TSZ / 2);
+	g->mp.y = (g->player.ren.y * TSZ) - (g->mp.h / 2) + (TSZ / 2);
 	if (g->mp.x < 0)
 		g->mp.x = 0;
 	if (g->mp.y < 0)
@@ -122,7 +122,7 @@ static void cp_build_map(t_game *g, t_mp *m, t_img *sqr)
 		}
 		y++;
 	}
-	cb_blackpink(&m->map, m->map.h);
+	cb_blackpink(&m->map, m->map.h, g->flor_c);
 }
 
 static void	cb_get_mapsize(t_game *g, t_mp *mp)

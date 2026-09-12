@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 15:59:09 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:14:57 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,18 @@ void	cb_zeroing(t_game *game)
 	game->flor_c = -1;
 	game->ceil_c = -1;
 	game->tstamp = cb_now();
+	game->l = 'R';
 	cb_zero_img(game);
 	cb_zero_mp(&(game->mp));
+
+	// -- testing keypress and release
+	game->kw = false;
+	game->ka = false;
+	game->ks = false;
+	game->kd = false;
+	game->klft = false;
+	game->krgt = false;
+
 	return ;
 }
 
@@ -82,13 +92,13 @@ void	cb_zero_ints(t_img *i)
 
 void cb_zero_player(t_player *player)
 {
-	player-> x = 0;
-	player-> y = 0;
-	player-> ren_x = 0.0;
-	player-> ren_y = 0.0;
-	player-> dir_x = 0.0;
-	player-> dir_y = 0.0;
-	player-> acel = 0.05;
+	player->map.x = 0;
+	player->map.y = 0;
+	player->ren.x = 0.0;
+	player->ren.y = 0.0;
+	player->dir.x = 0.0;
+	player->dir.y = 0.0;
+	player->acel = 0.05;
 	return ;
 }
 
