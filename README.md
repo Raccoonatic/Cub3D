@@ -1,7 +1,7 @@
 <p align="center"><i>This project has been created as part of the 42 curriculum by lde-san- & rdeimaos</i></p>
 
 <h1 align="center">🍃🧿 Cub3D - The Verdant Veil 🧿🍃</h1>
-<p align="center"><b><em>Sometimes courage, comes in small packages.</em></b></p>
+<p align="center"><b><em>Sometimes courage and wisdom, can come in the smallest package.</em></b></p>
 
 ---
 
