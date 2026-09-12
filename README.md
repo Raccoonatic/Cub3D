@@ -31,8 +31,7 @@ An homage to the legendary Wolfenstein 3D. Cub3D is a project that explores the 
 
 - Certified [42](https://42.fr/en/network-42/) methodology:
 	- 👉 Trial and Error.
-	> 🦝 *Break it. Fix it. Make it better.*
-	> ✨ *Repeat until enlightenment (or burnout). 💥*
+	> 🦝 *Break it. Fix it. Make it better.* <br>✨ *Repeat until enlightenment (or burnout). 💥*
 
 
  - Focus Boost:<br>
