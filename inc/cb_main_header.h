@@ -42,13 +42,13 @@ typedef enum e_kys
 }	t_kys;
 
 // Macro Definitions:
-# define TSZ	20
-# define WH		900
-# define WW		1620
-# define MXMPH	200
-# define MXMPW	300
+# define TSZ	50		// Tile Size at school: 20
+# define WH		2160	// Window Height at school: 900
+# define WW		3840	// Window Width at school: 1600
+# define MXMPH	600		// Max Minimap Height at school: 200
+# define MXMPW	900		// Max Minimap Width at school: 300
 # define MNMWC	0xFFFFFFFF
-# define RAYMX	10.0f
+# define RAYMX	100.0f
 # define ROTSPD	0.01f
 # define MVMSPD	0.02f
 
