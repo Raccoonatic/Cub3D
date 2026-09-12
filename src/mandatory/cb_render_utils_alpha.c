@@ -6,13 +6,13 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:32:42 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 19:53:43 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 15:46:31 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-static int	cb_colorshift(int c);
+int			cb_colorshift(int c);
 void		cb_blackpink(t_img *img, int h, int pink);
 void		cb_push_bkgrnd_to_frame(t_img *d, t_img *s);
 void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
@@ -73,7 +73,7 @@ void	cb_push_bkgrnd_to_frame(t_img *d, t_img *s)
 	}
 }
 
-static int	cb_colorshift(int c)
+int	cb_colorshift(int c)
 {
 	int r;
 	int g;

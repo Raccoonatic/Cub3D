@@ -39,9 +39,9 @@ An homage to the legendary Wolfenstein 3D. Cub3D is a project that explores the 
 	- [Foreground Noise](https://open.spotify.com/playlist/5O5q1xG6hNt7NDA8tmT2KJ?si=14d27a3440ee461b&pt=2d7cc61b518abad19be28b2c99cf7bd6)
 
 
-## 🧾 Final Notes 🦝🐆
+## 🧾 Final Notes 🐆🦝
 
-If yeou made it this far…
+If you made it this far…
 
 Merry Christmas.
 Take a break. Drink water. Maybe eat an alheira arepa.

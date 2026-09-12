@@ -137,6 +137,7 @@ void		cb_minimap_compose(t_game *g, t_mp *m);
 int			cb_render(t_game *g);
 
 // ----	cb_render_utils_alpha.c
+int			cb_colorshift(int c);
 void		cb_blackpink(t_img *img, int h, int pink);
 void		cb_push_bkgrnd_to_frame(t_img *d, t_img *s);
 void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
@@ -161,6 +162,7 @@ void		t_vd_toint(t_vi *v1, t_vd *v2);
 void		t_vi_tofloat(t_vd *v1, t_vi *v2);
 
 // ----	cb_minimap_line.c
+int			cb_get_ray_color(t_game *g);
 void		cb_draw_ray_minimap(t_game *g, t_vd hit);
 
 #endif

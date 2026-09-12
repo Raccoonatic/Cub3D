@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 19:10:47 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 15:36:18 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_mp
 	int		w;
 	int     x;
 	int     y;
+	int		ray_color;
 } 	t_mp;
 
 typedef struct s_game

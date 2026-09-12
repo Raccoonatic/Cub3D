@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 14:14:57 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 15:37:24 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ static void	cb_zero_mp(t_mp *mp)
 	mp->e = 0;
 	mp->h = MXMPH;
 	mp->w = MXMPW;
+	mp->x = 0;
+	mp->y = 0;
+	mp->ray_color = 0x00000000;
 	mp->ph.path = ft_strdup("./textures/p_head.xpm");
 	if (!mp->ph.path)
 		cb_fail(1, 1, "Allocation Error"NOR" p_head sprite");

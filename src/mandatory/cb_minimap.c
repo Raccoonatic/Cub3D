@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 19:53:43 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 15:39:16 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	cb_minimap_init(t_game *g, t_mp *m)
 	cp_build_map(g, m, &sqr);
 	cb_imgdata_wipe(g, &sqr);
 	cb_imgmain_init(g, &m->ph, m->ph.path);
+	m->ray_color = cb_get_ray_color(g);
 	return ;
 }
 
