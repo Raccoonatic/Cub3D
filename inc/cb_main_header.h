@@ -42,13 +42,15 @@ typedef enum e_kys
 }	t_kys;
 
 // Macro Definitions:
-# define TSZ	35
-# define WH		900
-# define WW		1620
-# define MXMPH	200
-# define MXMPW	300
+# define TSZ	50		// Tile Size at school: 20
+# define WH		2160	// Window Height at school: 900
+# define WW		3840	// Window Width at school: 1600
+# define MXMPH	600		// Max Minimap Height at school: 200
+# define MXMPW	900		// Max Minimap Width at school: 300
 # define MNMWC	0xFFFFFFFF
-# define RAYMX	10
+# define RAYMX	100.0f
+# define ROTSPD	0.01f
+# define MVMSPD	0.02f
 
 // Text Color:
 # define RST	"\033[0m"
@@ -135,6 +137,7 @@ void		cb_minimap_compose(t_game *g, t_mp *m);
 int			cb_render(t_game *g);
 
 // ----	cb_render_utils_alpha.c
+int			cb_colorshift(int c);
 void		cb_blackpink(t_img *img, int h, int pink);
 void		cb_push_bkgrnd_to_frame(t_img *d, t_img *s);
 void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
@@ -149,13 +152,17 @@ void    	move_player(t_game *game);
 void 		cb_rotate_player(t_game *game);
 
 // ----	cb_raycast.c
-bool	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
+bool		cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
 
 // ----	cb_vector_utils.c
-void	cb_ray_init(t_ray *ray);
-void	t_vd_equal(t_vd *v1, t_vd *v2);
-void	t_vi_equal(t_vi *v1, t_vi *v2);
-void	t_vd_toint(t_vi *v1, t_vd *v2);
-void	t_vi_tofloat(t_vd *v1, t_vi *v2);
+void		cb_ray_init(t_ray *ray);
+void		t_vd_equal(t_vd *v1, t_vd *v2);
+void		t_vi_equal(t_vi *v1, t_vi *v2);
+void		t_vd_toint(t_vi *v1, t_vd *v2);
+void		t_vi_tofloat(t_vd *v1, t_vi *v2);
+
+// ----	cb_minimap_line.c
+int			cb_get_ray_color(t_game *g);
+void		cb_draw_ray_minimap(t_game *g, t_vd hit);
 
 #endif

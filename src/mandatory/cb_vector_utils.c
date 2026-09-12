@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 13:47:41 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 14:30:01 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 19:53:44 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	cb_ray_init(t_ray *ray)
 	ray->raylen.x = 0.0f;
 	ray->raylen.y = 0.0f;
 	ray->distance = 0.0f;
+	ray->g = NULL;
 	return ;
 }

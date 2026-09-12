@@ -28,7 +28,7 @@ void cb_rotate_player(t_game *game)
 {
     double rotate_speed;
 
-    rotate_speed = 0.009;
+    rotate_speed = ROTSPD;
     cb_rotate_left(game, rotate_speed);
     cb_rotate_right(game, rotate_speed);
     return ;

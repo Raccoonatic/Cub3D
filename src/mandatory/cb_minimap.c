@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 12:03:37 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 15:39:16 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ static void	cb_apply_pov(t_game *g);
 void	cb_minimap_compose(t_game *g, t_mp *m)
 {
 	t_cord	c;
+	t_vd	hit;
 
 	cb_apply_pov(g);
+	cb_castray(g, g->player.ren, g->player.dir, &hit);	// TODO: Ideally, *if this function returns true,
+																				// * we'll print a column based on the hit coordinates.
 	c.fh = g->h;
 	c.fw = g->w;
 	c.th = g->mp.ph.h;
@@ -59,13 +62,14 @@ void	cb_minimap_init(t_game *g, t_mp *m)
 	cp_build_map(g, m, &sqr);
 	cb_imgdata_wipe(g, &sqr);
 	cb_imgmain_init(g, &m->ph, m->ph.path);
+	m->ray_color = cb_get_ray_color(g);
 	return ;
 }
 
 static void cb_clamp_pov(t_game *g)
 {
-	g->mp.x = (g->player.ren.x * TSZ) - (g->mp.w / 2) + (TSZ / 2);
-	g->mp.y = (g->player.ren.y * TSZ) - (g->mp.h / 2) + (TSZ / 2);
+	g->mp.x = (g->player.ren.x * TSZ) - (g->mp.w / 2) + ((float)TSZ / 2);
+	g->mp.y = (g->player.ren.y * TSZ) - (g->mp.h / 2) + ((float)TSZ / 2);
 	if (g->mp.x < 0)
 		g->mp.x = 0;
 	if (g->mp.y < 0)
@@ -74,6 +78,7 @@ static void cb_clamp_pov(t_game *g)
 		g->mp.x = g->mp.map.w - g->mp.w;
 	if (g->mp.y > g->mp.map.h - g->mp.h)
 		g->mp.y = g->mp.map.h - g->mp.h;
+	return ;
 }
 
 static void cb_apply_pov(t_game *g)

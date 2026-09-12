@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 12:03:35 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/11 19:53:45 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,9 @@ static int	cb_dokeydow(int keycode, t_game *data)
 	if (keycode == K_ESC)
 		cb_kill_the_game(data, 1, 0, 0);
 	else if (keycode == K_A)
-	{
 		data->ka = true;
-		data->l = 'L';
-	}
 	else if (keycode == K_D)
-	{
 		data->kd = true;
-		data->l = 'R';
-	}
 	else if (keycode == K_W)
 		data->kw = true;
 	else if (keycode == K_S)
