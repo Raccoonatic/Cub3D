@@ -50,18 +50,21 @@ MANDA += cb_define_playable_map.c
 MANDA += cb_scenetomap_utils_alpha.c
 MANDA += cb_scenetomap_utils_beta.c
 MANDA += cb_time.c
-MANDA += cb_zeroing.c
 MANDA += cb_player.c
 MANDA += cb_layer_init.c
 MANDA += cb_minimap.c
 MANDA += cb_render.c
 MANDA += cb_render_utils_alpha.c
+MANDA += cb_render_utils_beta.c
 MANDA += cb_coordinate.c
 MANDA += cb_movement.c
 MANDA += cb_rotate.c
 MANDA += cb_raycast.c
 MANDA += cb_vector_utils.c
 MANDA += cb_minimap_rays.c
+MANDA += cb_zeroing_alpha.c
+MANDA += cb_zeroing_beta.c
+
 
 BONUS = cb_template_bonus.c
 # BONUS +=
@@ -72,7 +75,7 @@ BONUS = cb_template_bonus.c
 # BONUS +=
 # BONUS +=
 
-INC_MAN = ./inc/cb_main_header.h ./inc/cb_structs.h
+INC_MAN = ./inc/cb_main_header.h ./inc/cb_structs.h ./inc/cb_settings.h
 INC_BON =
 
 SRC_MAN = $(addprefix $(SRC_DIR_MAN),$(MANDA))

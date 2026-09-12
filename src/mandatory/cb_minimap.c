@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 15:39:16 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 23:21:39 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,29 @@ static void	cb_apply_pov(t_game *g);
 
 void	cb_minimap_compose(t_game *g, t_mp *m)
 {
-	t_cord	c;
-	t_vd	hit;
+	t_cord			c;
+	unsigned int	i;
+	t_vd			ray_dir;
 
+	sl_clear_map_buffer(m);
+	i = 0;
+	cb_zero_hits(g->hits);
+	while (i < WW)
+	{
+		ray_dir.x = g->ply.dir.x + (g->ply.plne.x * ((i / (double)WW) * 2 - 1));
+		ray_dir.y = g->ply.dir.y + (g->ply.plne.y * ((i / (double)WW) * 2 - 1));
+		if(!cb_castray(g, g->ply.ren, ray_dir, &(g->hits[i])))
+			cb_zero_hit(&(g->hits[i]));
+		i++;
+	}
 	cb_apply_pov(g);
-	cb_castray(g, g->player.ren, g->player.dir, &hit);	// TODO: Ideally, *if this function returns true,
-																				// * we'll print a column based on the hit coordinates.
 	c.fh = g->h;
 	c.fw = g->w;
 	c.th = g->mp.ph.h;
 	c.tw = g->mp.ph.w;
-	c.x = 30 + ((g->player.ren.x * TSZ) - g->mp.x) - (c.tw / 2);
-	c.y = (g->h - g->mp.h - 30)
-		+ ((g->player.ren.y * TSZ) - g->mp.y) - (c.th / 2);
-	cb_push_tile_to_frame(&g->buf, &m->ph, c, g->l);
+	c.x = ((g->ply.ren.x * TSZ) - g->mp.x) - ((float)c.tw / 2);
+	c.y = ((g->ply.ren.y * TSZ) - g->mp.y) - ((float)c.th / 2);
+	cb_push_ph_to_map(&g->mp, &m->ph, c, g->l);
 	return ;
 }
 
@@ -68,8 +77,8 @@ void	cb_minimap_init(t_game *g, t_mp *m)
 
 static void cb_clamp_pov(t_game *g)
 {
-	g->mp.x = (g->player.ren.x * TSZ) - (g->mp.w / 2) + ((float)TSZ / 2);
-	g->mp.y = (g->player.ren.y * TSZ) - (g->mp.h / 2) + ((float)TSZ / 2);
+	g->mp.x = (g->ply.ren.x * TSZ) - ((float)g->mp.w / 2) + ((float)TSZ / 2);
+	g->mp.y = (g->ply.ren.y * TSZ) - ((float)g->mp.h / 2) + ((float)TSZ / 2);
 	if (g->mp.x < 0)
 		g->mp.x = 0;
 	if (g->mp.y < 0)
@@ -97,9 +106,8 @@ static void cb_apply_pov(t_game *g)
 		{
 			s = (unsigned int *)(g->mp.map.addr + ((g->mp.y + y)
 					* g->mp.map.bpr) + ((g->mp.x + x) * 4));
-			d = (unsigned int *)(g->buf.addr + ((g->h - g->mp.h
-					- 30 + y) * g->buf.bpr) + ((30 + x) * 4));
-			if (*s != 0x00FF00FF)
+			d = (unsigned int *)(g->mp.addr + (y * g->mp.bpr) + (x * 4));
+			if (*s != 0xFF00FF)
 				*d = *s;
 			x++;
 		}
@@ -127,7 +135,7 @@ static void cp_build_map(t_game *g, t_mp *m, t_img *sqr)
 		}
 		y++;
 	}
-	cb_blackpink(&m->map, m->map.h, g->flor_c);
+	cb_blackpink(&m->map, m->map.h, 0xFF00FF);
 }
 
 static void	cb_get_mapsize(t_game *g, t_mp *mp)

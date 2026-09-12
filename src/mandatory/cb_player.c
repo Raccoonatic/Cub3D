@@ -13,6 +13,7 @@
 #include "../../inc/cb_main_header.h"
 
 void		cb_innit_player(t_game *game);
+static void	cb_camera_plane_init(t_player *player);
 static void	cb_get_player_dir(t_player *player, char dir);
 void		cb_get_player_pos(t_game *game, t_player *player);
 
@@ -47,8 +48,35 @@ void cb_get_player_pos(t_game *game, t_player *player)
 
 void    cb_innit_player(t_game *game)
 {
-    cb_zero_player(&game->player);
-    cb_get_player_pos(game, &game->player);
+    cb_zero_player(&game->ply);
+    cb_get_player_pos(game, &game->ply);
+	cb_camera_plane_init(&game->ply);
+	return ;
+}
+
+static void cb_camera_plane_init(t_player *player)
+{
+	if (player->dir.x == 0 && player->dir.y == -1)
+	{
+		player->plne.x = FOV;
+		player->plne.y = 0;
+	}
+	else if (player->dir.x == 0 && player->dir.y == 1)
+	{
+		player->plne.x = FOV * -1;
+		player->plne.y = 0;
+	}
+	else if (player->dir.x == 1 && player->dir.y == 0)
+	{
+		player->plne.x = 0;
+		player->plne.y = FOV;
+	}
+	else if (player->dir.x == -1 && player->dir.y == 0)
+	{
+		player->plne.x = 0;
+		player->plne.y = FOV * -1;
+	}
+	return ;
 }
 
 static void cb_get_player_dir(t_player *player, char dir)
@@ -73,4 +101,5 @@ static void cb_get_player_dir(t_player *player, char dir)
         player->dir.x = -1;
         player->dir.y = 0;
     }
+	return ;
 }

@@ -6,12 +6,27 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 15:36:18 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 23:21:42 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CB_STRUCTS_H
 # define CB_STRUCTS_H
+
+# include "./cb_settings.h"
+
+typedef enum e_kys
+{
+	K_W = 119,
+	K_A = 97,
+	K_S = 115,
+	K_D = 100,
+	K_ESC = 65307,
+	K_LFT = 65361,
+	K_RGT = 65363,
+	K_UP = 65362,
+	K_DOW = 65364
+}	t_kys;
 
 typedef struct s_cord
 {
@@ -40,6 +55,7 @@ typedef struct s_player
 	t_vi		map;
 	t_vd		ren;
 	t_vd		dir;
+	t_vd		plne;
 	double		acel;
 } t_player;
 
@@ -83,6 +99,7 @@ typedef struct s_mp
 	int     x;
 	int     y;
 	int		ray_color;
+	int		flor_color;
 } 	t_mp;
 
 typedef struct s_game
@@ -104,9 +121,11 @@ typedef struct s_game
 	t_img		ewall;
 	t_img		wwall;
 
-	t_player	player;
+	t_player	ply;
 	long long	tstamp;
 	char		l; // -- Just testing the different facing options for the player sprite
+
+	t_vd		hits[WW];
 
 	bool	kw;
 	bool	ka;

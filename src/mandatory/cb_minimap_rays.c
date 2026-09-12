@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 16:03:18 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 16:07:59 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 21:19:58 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,10 @@ int		cb_get_ray_color(t_game *g);
 static void cb_put_mmap_pixel(t_game *g, int x, int y, int color)
 {
     char    *dst;
-    int     offset_x;
-    int     offset_y;
 
     if (x < 0 || y < 0 || x >= g->mp.w || y >= g->mp.h)
         return ;
-    offset_x = 30 + x;
-    offset_y = g->h - g->mp.h - 30 + y;
-    dst = g->buf.addr + (offset_y * g->buf.bpr) + (offset_x * (g->buf.bpx / 8));
+    dst = g->mp.addr + (y * g->mp.bpr) + (x * (g->mp.bpx / 8));
     *(unsigned int *)dst = color;
     return ;
 }
@@ -53,14 +49,14 @@ static void cb_bresenham_loop(t_game *g, t_vi start, t_vi end, t_line line)
 	return ;
 }
 
-void    cb_draw_ray_minimap(t_game *g, t_vd hit)
+void	cb_draw_ray_minimap(t_game *g, t_vd hit)
 {
 	t_vi	start;
 	t_vi	end;
 	t_line	line;
 
-	start.x = (int)((g->player.ren.x * TSZ) - g->mp.x);
-	start.y = (int)((g->player.ren.y * TSZ) - g->mp.y);
+	start.x = (int)((g->ply.ren.x * TSZ) - g->mp.x);
+	start.y = (int)((g->ply.ren.y * TSZ) - g->mp.y);
 	end.x = (int)((hit.x * TSZ) - g->mp.x);
 	end.y = (int)((hit.y * TSZ) - g->mp.y);
 	line.len.x = abs(end.x - start.x);

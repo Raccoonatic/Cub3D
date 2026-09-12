@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:11 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/11 19:53:42 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 23:21:45 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ bool	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit)
 	t_vd_equal(&ray.raylen, &ray_dir);
 	ray.stps.x = sqrt(1 + (ray_dir.y / ray_dir.x) * (ray_dir.y / ray_dir.x));
 	ray.stps.y = sqrt(1 + (ray_dir.x / ray_dir.y) * (ray_dir.x / ray_dir.y));
-	t_vd_toint(&g->player.map, &ray_start);
-	t_vi_equal(&ray.vmap, &g->player.map);
+	t_vd_toint(&g->ply.map, &ray_start);
+	t_vi_equal(&ray.vmap, &g->ply.map);
 	found = false;
 	cb_get_step_dir(g, ray_start, ray_dir, &ray);
 	while (!found && ray.distance < RAYMX)

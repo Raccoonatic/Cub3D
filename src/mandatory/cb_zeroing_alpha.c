@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cb_zeroing.c                                       :+:      :+:    :+:   */
+/*   cb_zeroing_alpha.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 15:37:24 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 21:19:48 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void		cb_null_ptrs(t_img *i);
 void		cb_zero_ints(t_img *i);
 void		cb_zeroing(t_game *game);
-void		cb_zero_player(t_player *player);
-static void	cb_zero_mp(t_mp *mp);
 static void	cb_zero_img(t_game *game);
 
 void	cb_zeroing(t_game *game)
@@ -32,8 +30,6 @@ void	cb_zeroing(t_game *game)
 	game->l = 'R';
 	cb_zero_img(game);
 	cb_zero_mp(&(game->mp));
-
-	// -- testing keypress and release
 	game->kw = false;
 	game->ka = false;
 	game->ks = false;
@@ -88,34 +84,4 @@ void	cb_zero_ints(t_img *i)
 	i->mx_index = 0;
 	i->crnt_frm = 0;
 	return ;
-}
-
-void cb_zero_player(t_player *player)
-{
-	player->map.x = 0;
-	player->map.y = 0;
-	player->ren.x = 0.0;
-	player->ren.y = 0.0;
-	player->dir.x = 0.0;
-	player->dir.y = 0.0;
-	player->acel = 0.05;
-	return ;
-}
-
-static void	cb_zero_mp(t_mp *mp)
-{
-	mp->pov = NULL;
-	mp->addr = NULL;
-	mp->bpr = 0;
-	mp->bpx = 0;
-	mp->bpr = 0;
-	mp->e = 0;
-	mp->h = MXMPH;
-	mp->w = MXMPW;
-	mp->x = 0;
-	mp->y = 0;
-	mp->ray_color = 0x00000000;
-	mp->ph.path = ft_strdup("./textures/p_head.xpm");
-	if (!mp->ph.path)
-		cb_fail(1, 1, "Allocation Error"NOR" p_head sprite");
 }

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:32:42 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 15:46:31 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 23:21:41 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int			cb_colorshift(int c);
 void		cb_blackpink(t_img *img, int h, int pink);
 void		cb_push_bkgrnd_to_frame(t_img *d, t_img *s);
 void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
+void		cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f);
 
 void	cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f)
 {
@@ -44,6 +45,35 @@ void	cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f)
 		y++;
 	}
 }
+
+void	cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f)
+{
+	int		x;
+	int		y;
+	char	*d_ptr;
+	char	*s_ptr;
+
+	if (!dst || !src)
+	    return ;
+	y = 0;
+	while (y < c.th)
+	{
+		x = 0;
+		while (x < c.tw)
+		{
+			if (f == 'L')
+				s_ptr = src->addr + (y * src->bpr) + ((c.tw - 1 - x) * 4);
+			else
+				s_ptr = src->addr + (y * src->bpr) + (x * 4);
+			d_ptr = dst->addr + ((c.y + y) * dst->bpr) + ((c.x + x) * 4);
+			if (*(unsigned int *)s_ptr != 0x00FF00FF)
+				*(unsigned int *)d_ptr = *(unsigned int *)s_ptr;
+			x++;
+		}
+		y++;
+	}
+}
+
 
 void	cb_push_bkgrnd_to_frame(t_img *d, t_img *s)
 {

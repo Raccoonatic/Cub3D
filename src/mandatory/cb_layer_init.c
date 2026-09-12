@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 10:48:10 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/08 00:28:35 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/12 23:08:38 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	cb_layer_init(t_game *g, int *bpx, int *bpr, int *e)
 	g->buf.w = g->w;
 	cb_get_bkgrnd(g, &g->bkg.bpx, &g->bkg.bpr, &g->bkg.e);
 	cb_minimap_init(g, &g->mp);
+	g->mp.flor_color = cb_colorshift(g->flor_c);
 	return ;
 }
 
