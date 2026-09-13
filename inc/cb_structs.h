@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 18:05:41 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 21:56:01 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef enum e_kys
 	K_UP = 65362,
 	K_DOW = 65364
 }	t_kys;
+
+typedef enum e_card
+{
+	FN = 0,
+	FS = 1,
+	FE = 2,
+	FW = 3
+}	t_card;
 
 typedef struct s_cord
 {
@@ -57,8 +65,6 @@ typedef struct s_player
 	t_vd		dir;
 	t_vd		plne;
 	double		acel;
-	double		plane_x;
-	double		plane_Y;
 } t_player;
 
 typedef struct s_line
@@ -67,6 +73,13 @@ typedef struct s_line
     t_vi	len;
     int		err;
 }   t_line;
+
+typedef struct s_col
+{
+	double	perp_dist;
+	t_card	face;
+	t_vd	hit;
+}	t_col;
 
 typedef struct s_img
 {
@@ -126,8 +139,9 @@ typedef struct s_game
 	t_player	ply;
 	long long	tstamp;
 	char		looking;
+	int			raymx;
 
-	t_vd		hits[WW];
+	t_col		columns[WW];
 
 	bool	kw;
 	bool	ka;
@@ -135,8 +149,6 @@ typedef struct s_game
 	bool	kd;
 	bool	klft;
 	bool	krgt;
-	double 	perp_wall_dist;
-
 }	t_game;
 
 typedef	struct s_ray
@@ -146,7 +158,6 @@ typedef	struct s_ray
 	t_vi	vmap;
 	t_vd	raylen;
 	double	distance;
-	int		side;
 	t_game	*g;
 }	t_ray;
 

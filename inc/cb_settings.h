@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 19:04:12 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 23:21:43 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 22:21:58 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 # define FOV	0.66f		// Field of View.
 # define WH		2160		// Window Height. At school: 900
 # define WW		3840		// Window Width. At school: 1600
-# define RAYMX	100.0f	 	// Max Ray Distance.
-# define ROTSPD	0.03f		// Player Rotation Speed. At school: 0.01
-# define MVMSPD	0.04f		// Player Movement Speed. At school: 0.02
+# define ROTSPD	0.06f		// Player Rotation Speed. At school: 0.01
+# define MVMSPD	0.1f		// Player Movement Speed. At school: 0.02
 # define MXMPH	500			// Max Minimap Height. At school: 200
 # define MXMPW	400			// Max Minimap Width. At school: 300
 # define MNMWC	0xFFFFFFFF	// Minimap Wall Color.

@@ -6,16 +6,15 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 19:38:17 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 18:05:42 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 21:56:01 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
 void	cb_zero_mp(t_mp *mp);
-void	cb_zero_hit(t_vd *hit);
 void	cb_ray_init(t_ray *ray);
-void	cb_zero_hits(t_vd hits[]);
+void	cb_zero_columns(t_col clmn[]);
 void	cb_zero_player(t_player *player);
 
 void cb_zero_player(t_player *player)
@@ -51,21 +50,17 @@ void	cb_zero_mp(t_mp *mp)
 		cb_fail(1, 1, "Allocation Error"NOR" p_head sprite");
 }
 
-void	cb_zero_hit(t_vd *hit)
-{
-	hit->x = 0.0f;
-	hit->y = 0.0f;
-	return ;
-}
-
-void	cb_zero_hits(t_vd hits[])
+void	cb_zero_columns(t_col clmn[])
 {
 	unsigned int i;
 
 	i = 0;
 	while (i < WW)
 	{
-		cb_zero_hit(&hits[i]);
+		clmn->perp_dist = 0.0f;
+		clmn->face = FN;
+		clmn->hit.x = 0.0f;
+		clmn->hit.y = 0.0f;
 		i++;
 	}
 	return ;

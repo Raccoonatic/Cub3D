@@ -54,9 +54,8 @@ void 		cb_zero_player(t_player *player);
 
 // ----	cb_zeroing_beta.c
 void	cb_zero_mp(t_mp *mp);
-void	cb_zero_hit(t_vd *hit);
 void	cb_zero_ray(t_ray *ray);
-void	cb_zero_hits(t_vd hits[]);
+void	cb_zero_columns(t_col clmn[]);
 void	cb_zero_player(t_player *player);
 
 // ----	cb_map_pars_utils.c
@@ -119,11 +118,11 @@ void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
 void		cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f);
 
 // ----	cb_render_utils_beta.c
+void    cb_render_walls(t_game *g);
 
-void		cb_raycast_render(t_game *g);
-double		cb_dist(t_vd *ply, t_vd *hit);
-void		sl_clear_map_buffer(t_mp *mp);
-void		cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
+// ----	cb_render_utils_gamma.c
+void	sl_clear_map_buffer(t_mp *mp);
+void	cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
 
 // ----	cb_coordinate.c
 void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
@@ -135,7 +134,7 @@ void    	move_player(t_game *game);
 void 		cb_rotate_player(t_game *game);
 
 // ----	cb_raycast.c
-bool		cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
+void	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_col *clmn);
 
 // ----	cb_vector_utils.c
 void		t_vd_equal(t_vd *v1, t_vd *v2);

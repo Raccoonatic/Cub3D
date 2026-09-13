@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 15:35:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 18:05:39 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 21:55:50 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ int	cb_render(t_game *g)
 	cb_rotate_player(g);
 	cb_get_coords(g, &mmp);
 	cb_push_bkgrnd_to_frame(&g->buf, &g->bkg);
-	cb_raycast_render(g);
 	cb_minimap_compose(g, &g->mp);
 
 	// -- Here's where the wall drawing magic happens
-
-	cb_draw_walls(g, g->hits);
-
+	cb_render_walls(g);
 
 	cb_push_map_to_frame(&g->buf, &g->mp, mmp, 'R');
 	mlx_put_image_to_window(g->mlx, g->win, g->buf.main, 0, 0);

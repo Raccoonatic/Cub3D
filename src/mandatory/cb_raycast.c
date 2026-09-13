@@ -6,39 +6,45 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:11 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 18:23:33 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 21:30:11 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-bool		cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
-static void	cb_get_step_dir(t_vd rstart, t_vd rdir, t_ray *ray);
-static void	cb_raydis(t_ray *ray);
+void			cb_castray(t_game *g, t_vd raystart, t_vd raydir, t_col *clmn);
+static void		cb_get_step_dir(t_vd rstart, t_vd rdir, t_ray *ray);
+static void		cb_raydis(t_ray *ray, t_col *clmn);
+static double	cb_get_perp_dist(t_ray *ray, t_col *clmn);
 
-static double	cb_get_perp_wall_dist(t_ray *ray)
+static double	cb_get_perp_dist(t_ray *ray, t_col *clmn)
 {
-	if (ray->side == 0)
+	if (clmn->face == FE || clmn->face == FW)
 		return (ray->raylen.x - ray->stps.x);
-	else
-		return (ray->raylen.y - ray->stps.y);
+	return (ray->raylen.y - ray->stps.y);
 }
 
-static void	cb_raydis(t_ray *ray)
+static void	cb_raydis(t_ray *ray, t_col *clmn)
 {
 	if (ray->raylen.x < ray->raylen.y)
 	{
 		ray->vmap.x += ray->stpdir.x;
 		ray->distance = ray->raylen.x;
 		ray->raylen.x += ray->stps.x;
-		ray->side = 0;
+		if (ray->stpdir.x < 0)
+			clmn->face = FE;
+		else
+			clmn->face = FW;
 	}
 	else
 	{
 		ray->vmap.y += ray->stpdir.y;
 		ray->distance = ray->raylen.y;
 		ray->raylen.y += ray->stps.y;
-		ray->side = 1;
+		if (ray->stpdir.y < 0)
+			clmn->face = FS;
+		else
+			clmn->face = FN;
 	}
 	return ;
 }
@@ -68,31 +74,31 @@ static void	cb_get_step_dir(t_vd rstart, t_vd rdir, t_ray *ray)
 	return ;
 }
 
-bool	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit)
+void	cb_castray(t_game *g, t_vd raystart, t_vd raydir, t_col *clmn)
 {
 	t_ray	ray;
 	bool	found;
 
 	cb_zero_ray(&ray);
 	ray.g = g;
-	t_vd_equal(&ray.raylen, &ray_dir);
-	ray.stps.x = sqrt(1 + (ray_dir.y / ray_dir.x) * (ray_dir.y / ray_dir.x));
-	ray.stps.y = sqrt(1 + (ray_dir.x / ray_dir.y) * (ray_dir.x / ray_dir.y));
-	t_vd_toint(&g->ply.map, &ray_start);
+	t_vd_equal(&ray.raylen, &raydir);
+	ray.stps.x = fabs(1.0 / raydir.x);
+	ray.stps.y = fabs(1.0 / raydir.y);
+	t_vd_toint(&g->ply.map, &raystart);
 	t_vi_equal(&ray.vmap, &g->ply.map);
 	found = false;
-	cb_get_step_dir(ray_start, ray_dir, &ray);
-	while (!found && ray.distance < RAYMX)
+	cb_get_step_dir(raystart, raydir, &ray);
+	while (!found && ray.distance < g->raymx)
 	{
-		cb_raydis(&ray);
-		hit->x = ray_start.x + ray_dir.x * ray.distance;
-		hit->y = ray_start.y + ray_dir.y * ray.distance;
-		cb_draw_ray_minimap(ray.g, *hit);
+		cb_raydis(&ray, clmn);
+		clmn->hit.x = raystart.x + raydir.x * ray.distance;
+		clmn->hit.y = raystart.y + raydir.y * ray.distance;
+		cb_draw_ray_minimap(ray.g, clmn->hit);
 		if (g->map[ray.vmap.y][ray.vmap.x] == '1')
 		{
 			found = true;
-			g->perp_wall_dist = cb_get_perp_wall_dist(&ray); // TODO: What's going on here?
+			clmn->perp_dist = cb_get_perp_dist(&ray, clmn);
 		}
 	}
-	return (found);
+	return ;
 }
