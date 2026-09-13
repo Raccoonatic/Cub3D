@@ -42,11 +42,11 @@ typedef enum e_kys
 }	t_kys;
 
 // Macro Definitions:
-# define TSZ	50		// Tile Size at school: 20
-# define WH		2160	// Window Height at school: 900
-# define WW		3840	// Window Width at school: 1600
-# define MXMPH	600		// Max Minimap Height at school: 200
-# define MXMPW	900		// Max Minimap Width at school: 300
+# define TSZ	20		// Tile Size at school: 20
+# define WH		900	// Window Height at school: 900
+# define WW		1600	// Window Width at school: 1600
+# define MXMPH	200		// Max Minimap Height at school: 200
+# define MXMPW	300		// Max Minimap Width at school: 300
 # define MNMWC	0xFFFFFFFF
 # define RAYMX	100.0f
 # define ROTSPD	0.01f
@@ -141,6 +141,10 @@ int			cb_colorshift(int c);
 void		cb_blackpink(t_img *img, int h, int pink);
 void		cb_push_bkgrnd_to_frame(t_img *d, t_img *s);
 void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
+
+// ----	cb_render_utils_beta.c
+
+void		cb_raycast_render(t_game *g);
 
 // ----	cb_coordinate.c
 void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);

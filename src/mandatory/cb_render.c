@@ -19,6 +19,7 @@ int	cb_render(t_game *g)
 	cb_rotate_player(g);
 
 	cb_push_bkgrnd_to_frame(&g->buf, &g->bkg);
+	cb_raycast_render(g);
 	cb_minimap_compose(g, &g->mp);
 	mlx_put_image_to_window(g->mlx, g->win, g->buf.main, 0, 0);
 	mlx_do_sync(g -> mlx);

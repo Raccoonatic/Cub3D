@@ -56,6 +56,7 @@ MANDA += cb_layer_init.c
 MANDA += cb_minimap.c
 MANDA += cb_render.c
 MANDA += cb_render_utils_alpha.c
+MANDA += cb_render_utils_beta.c
 MANDA += cb_coordinate.c
 MANDA += cb_movement.c
 MANDA += cb_rotate.c

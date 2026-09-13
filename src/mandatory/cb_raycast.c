@@ -16,6 +16,14 @@ bool			cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
 static void		cb_get_step_dir(t_game *g, t_vd rstart, t_vd rdir, t_ray *ray);
 static double	cb_raydis(t_ray *ray);
 
+static double	cb_get_perp_wall_dist(t_ray *ray)
+{
+	if (ray->side == 0)
+		return (ray->raylen.x - ray->stps.x);
+	else
+		return (ray->raylen.y - ray->stps.y);
+}
+
 static double	cb_raydis(t_ray *ray)
 {
 	double	distance;
@@ -26,12 +34,14 @@ static double	cb_raydis(t_ray *ray)
 		ray->vmap.x += ray->stpdir.x;
 		distance = ray->raylen.x;
 		ray->raylen.x += ray->stps.x;
+		ray->side = 0;
 	}
 	else
 	{
 		ray->vmap.y += ray->stpdir.y;
 		distance = ray->raylen.y;
 		ray->raylen.y += ray->stps.y;
+		ray->side = 1;
 	}
 	return (distance);
 }
@@ -84,7 +94,10 @@ bool	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit)
 		hit->y = ray_start.y + ray_dir.y * ray.distance;
 		cb_draw_ray_minimap(ray.g, *hit);
 		if (g->map[ray.vmap.y][ray.vmap.x] == '1')
+		{
 			found = true;
+			g->perp_wall_dist = cb_get_perp_wall_dist(&ray);
+		}
 	}
 	return (found);
 }
