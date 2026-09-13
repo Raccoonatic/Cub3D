@@ -12,7 +12,7 @@
 
 #include "../../inc/cb_main_header.h"
 
-static void cb_rotate_left(t_game *game, double rotate_speed)
+static void	cb_rotate_left(t_game *game, double rotate_speed)
 {
 	double	old_dir_x;
 	double	old_plne_x;
@@ -32,7 +32,7 @@ static void cb_rotate_left(t_game *game, double rotate_speed)
 	return ;
 }
 
-static void cb_rotate_right(t_game *game, double rotate_speed)
+static void	cb_rotate_right(t_game *game, double rotate_speed)
 {
 	double	old_dir_x;
 	double	old_plne_x;

@@ -57,6 +57,7 @@ If you made it this far…
 
 Merry Christmas.
 Take a break. Drink water. Maybe eat an alheira arepa.
+Keep calm and eat alheira!!
 
 The Verdant Veil is only safe because of you.
 

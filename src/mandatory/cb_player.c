@@ -101,5 +101,6 @@ static void cb_get_player_dir(t_player *player, char dir)
         player->dir.x = -1;
         player->dir.y = 0;
     }
-	return ;
+    player->plane_x = -player->dir.y * 0.66; // TODO: Check why he is multiplying by the playerdir while you just potentially leave it to 0
+    player->plane_Y = player->dir.x * 0.66;
 }

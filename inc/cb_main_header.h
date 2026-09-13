@@ -119,6 +119,8 @@ void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
 void		cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f);
 
 // ----	cb_render_utils_beta.c
+
+void		cb_raycast_render(t_game *g);
 double		cb_dist(t_vd *ply, t_vd *hit);
 void		sl_clear_map_buffer(t_mp *mp);
 void		cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);

@@ -57,6 +57,8 @@ typedef struct s_player
 	t_vd		dir;
 	t_vd		plne;
 	double		acel;
+	double		plane_x;
+	double		plane_Y;
 } t_player;
 
 typedef struct s_line
@@ -133,6 +135,7 @@ typedef struct s_game
 	bool	kd;
 	bool	klft;
 	bool	krgt;
+	double 	perp_wall_dist;
 
 }	t_game;
 
@@ -143,6 +146,7 @@ typedef	struct s_ray
 	t_vi	vmap;
 	t_vd	raylen;
 	double	distance;
+	int		side;
 	t_game	*g;
 }	t_ray;
 
