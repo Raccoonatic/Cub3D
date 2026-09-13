@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 23:21:42 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 18:05:41 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ typedef struct s_game
 
 	t_player	ply;
 	long long	tstamp;
-	char		l; // -- Just testing the different facing options for the player sprite
+	char		looking;
 
 	t_vd		hits[WW];
 

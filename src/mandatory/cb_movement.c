@@ -19,6 +19,10 @@ static void cb_move_foward(t_game *game, double move_speed, double *new_x, doubl
 
 	if (!game->kw)
 		return ;
+	if (game->ply.dir.x < 0)
+		game->looking = 'L';
+	else
+		game->looking = 'R';
 	new_new_x = game->ply.ren.x + game->ply.dir.x * move_speed;
 	new_new_y = game->ply.ren.y + game->ply.dir.y * move_speed;
 
@@ -42,6 +46,10 @@ static void cb_move_backward(t_game *game, double move_speed, double *new_x, dou
 
 	if (!game->ks)
 		return ;
+	if (game->ply.dir.x < 0)
+		game->looking = 'L';
+	else
+		game->looking = 'R';
 	new_new_x = game->ply.ren.x - game->ply.dir.x * move_speed;
 	new_new_y = game->ply.ren.y - game->ply.dir.y * move_speed;
 
@@ -65,6 +73,10 @@ static void cb_move_left(t_game *game, double move_speed, double *new_x, double 
 
 	if (!game->ka)
 		return ;
+	if (game->ply.dir.x < 0)
+		game->looking = 'L';
+	else
+		game->looking = 'R';
 	new_new_x = game->ply.ren.x + game->ply.dir.y * move_speed;
 	new_new_y = game->ply.ren.y - game->ply.dir.x * move_speed;
 
@@ -88,6 +100,10 @@ static void cb_move_right(t_game *game, double move_speed, double *new_x, double
 
 	if (!game->kd)
 		return ;
+	if (game->ply.dir.x < 0)
+		game->looking = 'L';
+	else
+		game->looking = 'R';
 	new_new_x = game->ply.ren.x - game->ply.dir.y * move_speed;
 	new_new_y = game->ply.ren.y + game->ply.dir.x * move_speed;
 

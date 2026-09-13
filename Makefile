@@ -38,7 +38,7 @@ SRC_DIR_BON = src/bonus/
 OBJ_DIR_MAN = obj/mandatory/
 OBJ_DIR_BON = obj/bonus/
 
-MANDA = cb_destroy.c
+MANDA =	cb_destroy.c
 MANDA += cb_exit.c
 MANDA += cb_getborders.c
 MANDA += cb_getcolors.c
@@ -64,6 +64,7 @@ MANDA += cb_vector_utils.c
 MANDA += cb_minimap_rays.c
 MANDA += cb_zeroing_alpha.c
 MANDA += cb_zeroing_beta.c
+MANDA += cb_walls.c
 
 
 BONUS = cb_template_bonus.c

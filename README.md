@@ -19,12 +19,14 @@ An homage to the legendary Wolfenstein 3D. Cub3D is a project that explores the 
 - Calculating Wall Height:
 	- 👉 [Raycasting in C. <i>by: Beqa Tvildiani</i>](https://www.youtube.com/watch?v=G9i78WoBBIU)
 
-- De-mistifying the Engine:
+- Demystifying the Engine:
 	- 👉 [Make Your Own Raycaster. <i>by: 3DSage</i>](https://www.youtube.com/watch?v=gYRrGTC7GtA&t=4s)
 
 - Re-Learning Minilibx:
 	- 👉 [42 Docs (Unofficial Page). <i>by: harm-smits</i>](https://harm-smits.github.io/42docs/libs/minilibx)
 	- 👉 [Previous Project using Minilibx. <i>by: Luis "Mapache" Torcate</i>](https://github.com/Raccoonatic/Glutto-The-Fox/)
+- Drawing lines:
+  - 👉 [Bresenham's Line Algorithm. <i>by: NoBS Code</i>](https://www.youtube.com/watch?v=CceepU1vIKo)
 
 - Coffee:
 	- 👉 ☕.
@@ -38,6 +40,16 @@ An homage to the legendary Wolfenstein 3D. Cub3D is a project that explores the 
 	- [Background Noise](https://www.youtube.com/watch?v=kN-iEJ3Sbsc&list=PLcL9r1K3TSwpOVyQKP1MruSuY-NS99iQY)
 	- [Foreground Noise](https://open.spotify.com/playlist/5O5q1xG6hNt7NDA8tmT2KJ?si=14d27a3440ee461b&pt=2d7cc61b518abad19be28b2c99cf7bd6)
 
+## 🤖 AI Usage
+
+AI was used as a **supporting tool**, mainly for:
+
+ - 📘 General documentation lookup *(e.g. signals, system behavior)*
+ - 🔍 Code reviewing and Critiquing. *(With unnecesary sass)*
+ - 💣 Preventing unnecessary compile attempts *(a.k.a. “yes, you forgot a semicolon again”)*
+ - 🧮 Explaining Math *(Don't trust us with a long division)*
+
+---
 
 ## 🧾 Final Notes 🐆🦝
 

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 23:21:39 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 18:05:38 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	cb_minimap_compose(t_game *g, t_mp *m)
 	c.tw = g->mp.ph.w;
 	c.x = ((g->ply.ren.x * TSZ) - g->mp.x) - ((float)c.tw / 2);
 	c.y = ((g->ply.ren.y * TSZ) - g->mp.y) - ((float)c.th / 2);
-	cb_push_ph_to_map(&g->mp, &m->ph, c, g->l);
+	cb_push_ph_to_map(&g->mp, &m->ph, c, g->looking);
 	return ;
 }
 

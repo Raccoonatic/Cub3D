@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 19:38:17 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 23:21:38 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 18:05:42 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	cb_zero_mp(t_mp *mp);
 void	cb_zero_hit(t_vd *hit);
+void	cb_ray_init(t_ray *ray);
 void	cb_zero_hits(t_vd hits[]);
 void	cb_zero_player(t_player *player);
 
@@ -67,5 +68,20 @@ void	cb_zero_hits(t_vd hits[])
 		cb_zero_hit(&hits[i]);
 		i++;
 	}
+	return ;
+}
+
+void	cb_zero_ray(t_ray *ray)
+{
+	ray->stps.x = 0.0f;
+	ray->stps.y = 0.0f;
+	ray->stpdir.x = 0;
+	ray->stpdir.y = 0;
+	ray->vmap.x = 0;
+	ray->vmap.y = 0;
+	ray->raylen.x = 0.0f;
+	ray->raylen.y = 0.0f;
+	ray->distance = 0.0f;
+	ray->g = NULL;
 	return ;
 }

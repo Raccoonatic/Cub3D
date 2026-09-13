@@ -6,12 +6,13 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 21:24:41 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 23:21:41 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/13 18:05:41 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
+double	cb_dist(t_vd *ply, t_vd *hit);
 void	sl_clear_map_buffer(t_mp *mp);
 void	cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
 
@@ -56,4 +57,16 @@ void	sl_clear_map_buffer(t_mp *mp)
 		start += (mp->bpx / 8);
 	}
 	return ;
+}
+
+double cb_dist(t_vd *ply, t_vd *hit)
+{
+	double	delta_x;
+	double	delta_y;
+
+	delta_x = hit->x - ply->x;
+	delta_y = hit->y - ply->y;
+	delta_x *= delta_x;
+	delta_y *= delta_y;
+	return (sqrt(delta_x + delta_y));
 }

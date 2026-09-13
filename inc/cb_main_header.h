@@ -55,6 +55,7 @@ void 		cb_zero_player(t_player *player);
 // ----	cb_zeroing_beta.c
 void	cb_zero_mp(t_mp *mp);
 void	cb_zero_hit(t_vd *hit);
+void	cb_zero_ray(t_ray *ray);
 void	cb_zero_hits(t_vd hits[]);
 void	cb_zero_player(t_player *player);
 
@@ -118,6 +119,7 @@ void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
 void		cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f);
 
 // ----	cb_render_utils_beta.c
+double		cb_dist(t_vd *ply, t_vd *hit);
 void		sl_clear_map_buffer(t_mp *mp);
 void		cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
 
@@ -134,7 +136,6 @@ void 		cb_rotate_player(t_game *game);
 bool		cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_vd *hit);
 
 // ----	cb_vector_utils.c
-void		cb_ray_init(t_ray *ray);
 void		t_vd_equal(t_vd *v1, t_vd *v2);
 void		t_vi_equal(t_vi *v1, t_vi *v2);
 void		t_vd_toint(t_vi *v1, t_vd *v2);
@@ -143,5 +144,8 @@ void		t_vi_tofloat(t_vd *v1, t_vi *v2);
 // ----	cb_minimap_line.c
 int			cb_get_ray_color(t_game *g);
 void		cb_draw_ray_minimap(t_game *g, t_vd hit);
+
+// ----	cb_walls.c
+void		cb_draw_walls(t_game *g, t_vd *hits);
 
 #endif
