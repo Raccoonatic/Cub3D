@@ -22,13 +22,13 @@ static void	cb_rotate_left(t_game *game, double rotate_speed)
 	old_dir_x = game->ply.dir.x;
 	old_plne_x = game->ply.plne.x;
 	game->ply.dir.x = game->ply.dir.x * cos(rotate_speed * -1)
-					- game->ply.dir.y * sin(rotate_speed * -1);
+		- game->ply.dir.y * sin(rotate_speed * -1);
 	game->ply.dir.y = old_dir_x * sin(rotate_speed * -1)
-					+ game->ply.dir.y * cos(rotate_speed * -1);
+		+ game->ply.dir.y * cos(rotate_speed * -1);
 	game->ply.plne.x = game->ply.plne.x * cos(rotate_speed * -1)
-					- game->ply.plne.y * sin(rotate_speed * -1);
+		- game->ply.plne.y * sin(rotate_speed * -1);
 	game->ply.plne.y = old_plne_x * sin(rotate_speed * -1)
-					+ game->ply.plne.y * cos(rotate_speed * -1);
+		+ game->ply.plne.y * cos(rotate_speed * -1);
 	return ;
 }
 
@@ -42,19 +42,19 @@ static void	cb_rotate_right(t_game *game, double rotate_speed)
 	old_dir_x = game->ply.dir.x;
 	old_plne_x = game->ply.plne.x;
 	game->ply.dir.x = game->ply.dir.x * cos(rotate_speed)
-					- game->ply.dir.y * sin(rotate_speed);
+		- game->ply.dir.y * sin(rotate_speed);
 	game->ply.dir.y = old_dir_x * sin(rotate_speed)
-					+ game->ply.dir.y * cos(rotate_speed);
+		+ game->ply.dir.y * cos(rotate_speed);
 	game->ply.plne.x = game->ply.plne.x * cos(rotate_speed)
-					- game->ply.plne.y * sin(rotate_speed);
+		- game->ply.plne.y * sin(rotate_speed);
 	game->ply.plne.y = old_plne_x * sin(rotate_speed)
-					+ game->ply.plne.y * cos(rotate_speed);
+		+ game->ply.plne.y * cos(rotate_speed);
 	return ;
 }
 
-void cb_rotate_player(t_game *game)
+void	cb_rotate_player(t_game *game)
 {
-	double rotate_speed;
+	double	rotate_speed;
 
 	rotate_speed = ROTSPD;
 	cb_rotate_left(game, rotate_speed);

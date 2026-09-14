@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:56:02 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:50:29 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void		cb_minimap_init(t_game *g, t_mp *m);
 void		cb_minimap_compose(t_game *g, t_mp *m);
-static void	cb_get_mapsize(t_game *g, t_mp *mp);
-static void	cp_build_map(t_game *g, t_mp *m, t_img *sqr);
 static void	cb_apply_pov(t_game *g);
+static void	cp_build_map(t_game *g, t_mp *m, t_img *sqr);
 
 void	cb_minimap_compose(t_game *g, t_mp *m)
 {
@@ -74,7 +73,7 @@ void	cb_minimap_init(t_game *g, t_mp *m)
 	return ;
 }
 
-static void cb_clamp_pov(t_game *g)
+static void	cb_clamp_pov(t_game *g)
 {
 	g->mp.x = (g->ply.ren.x * TSZ) - ((float)g->mp.w / 2) + ((float)TSZ / 2);
 	g->mp.y = (g->ply.ren.y * TSZ) - ((float)g->mp.h / 2) + ((float)TSZ / 2);
@@ -89,12 +88,12 @@ static void cb_clamp_pov(t_game *g)
 	return ;
 }
 
-static void cb_apply_pov(t_game *g)
+static void	cb_apply_pov(t_game *g)
 {
-	int             x;
-	int             y;
-	unsigned int    *s;
-	unsigned int    *d;
+	int				x;
+	int				y;
+	unsigned int	*s;
+	unsigned int	*d;
 
 	cb_clamp_pov(g);
 	y = 0;
@@ -104,7 +103,7 @@ static void cb_apply_pov(t_game *g)
 		while (x < g->mp.w)
 		{
 			s = (unsigned int *)(g->mp.map.addr + ((g->mp.y + y)
-					* g->mp.map.bpr) + ((g->mp.x + x) * 4));
+						* g->mp.map.bpr) + ((g->mp.x + x) * 4));
 			d = (unsigned int *)(g->mp.addr + (y * g->mp.bpr) + (x * 4));
 			if (*s != 0xFF00FF)
 				*d = *s;
@@ -114,7 +113,7 @@ static void cb_apply_pov(t_game *g)
 	}
 }
 
-static void cp_build_map(t_game *g, t_mp *m, t_img *sqr)
+static void	cp_build_map(t_game *g, t_mp *m, t_img *sqr)
 {
 	int		x;
 	int		y;
@@ -135,20 +134,4 @@ static void cp_build_map(t_game *g, t_mp *m, t_img *sqr)
 		y++;
 	}
 	cb_blackpink(&m->map, m->map.h, 0xFF00FF);
-}
-
-static void	cb_get_mapsize(t_game *g, t_mp *mp)
-{
-	int	guide;
-
-	mp->map.w = TSZ * ft_strlen(g->map[0]);
-	guide = 0;
-	while (g->map[guide])
-		guide++;
-	mp->map.h = TSZ * guide;
-	if (mp->w > mp->map.w)
-		mp->w = mp->map.w;
-	if (mp->h > mp->map.h)
-		mp->h = mp->map.h;
-	return ;
 }

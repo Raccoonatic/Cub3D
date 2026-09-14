@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:55:53 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:36:22 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ char	**cb_matrixalloc(int columns, int rows, int c)
 
 void	cb_map_populate(char **raw, char **dest, int miny, int minx)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (dest[i] && raw[miny + i])

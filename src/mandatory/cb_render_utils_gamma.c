@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 21:29:04 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:55:51 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:30:28 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
 
 void	cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f)
 {
-	int     x;
-	int     y;
-	char    *d_ptr;
-	char    *s_ptr;
+	int		x;
+	int		y;
+	char	*d_ptr;
+	char	*s_ptr;
 
 	if (!dst || !src)
-	    return ;
+		return ;
 	y = 0;
 	while (y < c.th)
 	{
@@ -45,8 +45,8 @@ void	cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f)
 
 void	sl_clear_map_buffer(t_mp *mp)
 {
-	char		*end;
-	char		*start;
+	char	*end;
+	char	*start;
 
 	start = mp->addr;
 	end = mp->addr + (mp->bpr * mp->h);

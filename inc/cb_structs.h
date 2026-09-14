@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:56:01 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:46:25 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,19 @@ typedef struct s_vi
 
 typedef struct s_player
 {
-	t_vi		map;
-	t_vd		ren;
-	t_vd		dir;
-	t_vd		plne;
-	double		acel;
-} t_player;
+	t_vi	map;
+	t_vd	ren;
+	t_vd	dir;
+	t_vd	plne;
+	double	acel;
+}	t_player;
 
 typedef struct s_line
 {
-    t_vi	step;
-    t_vi	len;
-    int		err;
-}   t_line;
+	t_vi	step;
+	t_vi	len;
+	int		err;
+}	t_line;
 
 typedef struct s_col
 {
@@ -85,7 +85,7 @@ typedef struct s_img
 {
 	void	*main;
 	char	*addr;
-	char 	*path;
+	char	*path;
 	int		bpx;
 	int		bpr;
 	int		e;
@@ -103,19 +103,19 @@ typedef struct s_img
 typedef struct s_mp
 {
 	void	*pov;
-	char    *addr;
+	char	*addr;
 	t_img	map;
 	t_img	ph;
-	int     bpx;
-	int     bpr;
-	int     e;
+	int		bpx;
+	int		bpr;
+	int		e;
 	int		h;
 	int		w;
-	int     x;
-	int     y;
+	int		x;
+	int		y;
 	int		ray_color;
 	int		flor_color;
-} 	t_mp;
+}	t_mp;
 
 typedef struct s_game
 {
@@ -125,33 +125,28 @@ typedef struct s_game
 	int			h;
 	int			w;
 	int			flor_c;
-	int 		ceil_c;
-
+	int			ceil_c;
+	t_col		columns[WW];
 	t_mp		mp;
-
 	t_img		bkg;
 	t_img		buf;
 	t_img		nwall;
 	t_img		swall;
 	t_img		ewall;
 	t_img		wwall;
-
 	t_player	ply;
-	long long	tstamp;
 	char		looking;
+	long long	tstamp;
 	int			raymx;
-
-	t_col		columns[WW];
-
-	bool	kw;
-	bool	ka;
-	bool	ks;
-	bool	kd;
-	bool	klft;
-	bool	krgt;
+	bool		kw;
+	bool		ka;
+	bool		ks;
+	bool		kd;
+	bool		klft;
+	bool		krgt;
 }	t_game;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	t_vd	stps;
 	t_vi	stpdir;

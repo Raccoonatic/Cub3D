@@ -50,17 +50,19 @@ void		cb_imgdata_wipe(t_game *g, t_img *i);
 void		cb_null_ptrs(t_img *i);
 void		cb_zero_ints(t_img *i);
 void		cb_zeroing(t_game *game);
-void 		cb_zero_player(t_player *player);
+void		cb_zero_player(t_player *player);
 
 // ----	cb_zeroing_beta.c
-void	cb_zero_mp(t_mp *mp);
-void	cb_zero_ray(t_ray *ray);
-void	cb_zero_columns(t_col clmn[]);
-void	cb_zero_player(t_player *player);
+void		cb_zero_mp(t_mp *mp);
+void		cb_zero_ray(t_ray *ray);
+void		cb_zero_columns(t_col clmn[]);
+void		cb_zero_player(t_player *player);
 
 // ----	cb_map_pars_utils.c
-int			cb_map_height(char **map);
+int			dispmap(char **map);
 int			cb_map_width(char **map);
+int			cb_map_height(char **map);
+void		cb_get_mapsize(t_game *g, t_mp *mp);
 int			cb_check_surr(char **map, int i, int j);
 
 // ----	cb_map_pars.c
@@ -93,7 +95,7 @@ void		cb_map_populate(char **raw, char **dest, int miny, int minx);
 int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
 
 // ---- cb_player.c
-void    	cb_innit_player(t_game *game);
+void		cb_innit_player(t_game *game);
 void		cb_get_player_pos(t_game *game, t_player *player);
 
 // ----	cb_define_playable_map.c
@@ -118,23 +120,23 @@ void		cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f);
 void		cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f);
 
 // ----	cb_render_utils_beta.c
-void    cb_render_walls(t_game *g);
+void		cb_render_walls(t_game *g);
 
 // ----	cb_render_utils_gamma.c
-void	sl_clear_map_buffer(t_mp *mp);
-void	cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
+void		sl_clear_map_buffer(t_mp *mp);
+void		cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
 
 // ----	cb_coordinate.c
 void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
 
 // ----	cb_movement.c
-void    	move_player(t_game *game);
+void		move_player(t_game *game);
 
 // ---- cb_rotate.c
-void 		cb_rotate_player(t_game *game);
+void		cb_rotate_player(t_game *game);
 
 // ----	cb_raycast.c
-void	cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_col *clmn);
+void		cb_castray(t_game *g, t_vd ray_start, t_vd ray_dir, t_col *clmn);
 
 // ----	cb_vector_utils.c
 void		t_vd_equal(t_vd *v1, t_vd *v2);
@@ -145,8 +147,5 @@ void		t_vi_tofloat(t_vd *v1, t_vi *v2);
 // ----	cb_minimap_line.c
 int			cb_get_ray_color(t_game *g);
 void		cb_draw_ray_minimap(t_game *g, t_vd hit);
-
-// ----	cb_walls.c
-void		cb_draw_walls(t_game *g, t_vd *hits);
 
 #endif

@@ -13,37 +13,36 @@
 #include "../../inc/cb_main_header.h"
 
 void		cb_innit_player(t_game *game);
-static void cb_camera_plane_init(t_player *player);
+static void	cb_camera_plane_init(t_player *player);
 static void	cb_get_player_dir(t_player *player, char dir);
 void		cb_get_player_pos(t_game *game, t_player *player);
 
-void cb_get_player_pos(t_game *game, t_player *player)
+void	cb_get_player_pos(t_game *game, t_player *player)
 {
-    char **map;
-    int i;
-    int j;
+	int		i;
+	int		j;
 
-    map = game->map;
-    i = 0;
-    while(map[i])
-    {
-        j = 0;
-        while(map[i][j])
-        {
-            if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
-            {
-                player->map.x = j;
-                player->map.y = i;
-                player->ren.x = j + 0.5;
-                player->ren.y = i + 0.5;
-                cb_get_player_dir(player, map[i][j]);
-                return ;
-            }
-            j++;
-        }
-        i++;
-    }
-    return ;
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'N' || game->map[i][j] == 'S'
+				|| game->map[i][j] == 'W' || game->map[i][j] == 'E')
+			{
+				player->map.x = j;
+				player->map.y = i;
+				player->ren.x = j + 0.5;
+				player->ren.y = i + 0.5;
+				cb_get_player_dir(player, game->map[i][j]);
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+	return ;
 }
 
 void	cb_innit_player(t_game *game)
@@ -61,27 +60,27 @@ static void	cb_camera_plane_init(t_player *player)
 	return ;
 }
 
-static void cb_get_player_dir(t_player *player, char dir)
+static void	cb_get_player_dir(t_player *player, char dir)
 {
-    if (dir == 'N')
-    {
-        player->dir.x = 0;
-        player->dir.y = -1;
-    }
-    else if (dir == 'S')
-    {
-        player->dir.x = 0;
-        player->dir.y = 1;
-    }
-    else if (dir == 'E')
-    {
-        player->dir.x = 1;
-        player->dir.y = 0;
-    }
-    else if (dir == 'W')
-    {
-        player->dir.x = -1;
-        player->dir.y = 0;
-    }
+	if (dir == 'N')
+	{
+		player->dir.x = 0;
+		player->dir.y = -1;
+	}
+	else if (dir == 'S')
+	{
+		player->dir.x = 0;
+		player->dir.y = 1;
+	}
+	else if (dir == 'E')
+	{
+		player->dir.x = 1;
+		player->dir.y = 0;
+	}
+	else if (dir == 'W')
+	{
+		player->dir.x = -1;
+		player->dir.y = 0;
+	}
 	return ;
 }

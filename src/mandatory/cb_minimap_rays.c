@@ -6,28 +6,31 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 16:03:18 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:30:12 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:10:14 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-int		cb_get_ray_color(t_game *g);
+int			cb_get_ray_color(t_game *g);
+void		cb_draw_ray_minimap(t_game *g, t_vd hit);
+static void	cb_put_mmap_pixel(t_game *g, int x, int y, int color);
+static void	cb_bresenham_loop(t_game *g, t_vi start, t_vi end, t_line line);
 
-static void cb_put_mmap_pixel(t_game *g, int x, int y, int color)
+static void	cb_put_mmap_pixel(t_game *g, int x, int y, int color)
 {
-    char    *dst;
+	char	*dst;
 
-    if (x < 0 || y < 0 || x >= g->mp.w || y >= g->mp.h)
-        return ;
-    dst = g->mp.addr + (y * g->mp.bpr) + (x * (g->mp.bpx / 8));
-    *(unsigned int *)dst = color;
-    return ;
+	if (x < 0 || y < 0 || x >= g->mp.w || y >= g->mp.h)
+		return ;
+	dst = g->mp.addr + (y * g->mp.bpr) + (x * (g->mp.bpx / 8));
+	*(unsigned int *)dst = color;
+	return ;
 }
 
-static void cb_bresenham_loop(t_game *g, t_vi start, t_vi end, t_line line)
+static void	cb_bresenham_loop(t_game *g, t_vi start, t_vi end, t_line line)
 {
-	int     err_twice;
+	int	err_twice;
 
 	while (true)
 	{
@@ -74,9 +77,9 @@ void	cb_draw_ray_minimap(t_game *g, t_vd hit)
 	return ;
 }
 
-int cb_get_ray_color(t_game *g)
+int	cb_get_ray_color(t_game *g)
 {
-	int color;
+	int	color;
 
 	color = cb_colorshift(g->ceil_c);
 	if (g->flor_c == g->ceil_c || g->flor_c == color)

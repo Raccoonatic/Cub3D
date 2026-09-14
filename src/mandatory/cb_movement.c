@@ -12,119 +12,121 @@
 
 #include "../../inc/cb_main_header.h"
 
-static void cb_move_foward(t_game *game, double move_speed, double *new_x, double *new_y)
+void		move_player(t_game *game);
+static void	cb_move_left(t_game *g, double mvspd, double *nwx, double *nwy);
+static void	cb_move_right(t_game *g, double mvspd, double *nwx, double *nwy);
+static void	cb_move_foward(t_game *g, double mvspd, double *nwx, double *nwy);
+static void	cb_move_backward(t_game *g, double mvspd, double *nwx, double *nwy);
+
+static void	cb_move_foward(t_game *g, double mvspd, double *nwx, double *nwy)
 {
-	double new_new_x;
-	double new_new_y;
+	double	new_new_x;
+	double	new_new_y;
 
-	if (!game->kw)
+	if (!g->kw)
 		return ;
-	if (game->ply.dir.x < 0)
-		game->looking = 'L';
+	if (g->ply.dir.x < 0)
+		g->looking = 'L';
 	else
-		game->looking = 'R';
-	new_new_x = game->ply.ren.x + game->ply.dir.x * move_speed;
-	new_new_y = game->ply.ren.y + game->ply.dir.y * move_speed;
-
-	if (game->map[(int)new_new_y][(int)new_new_x] != '1')
+		g->looking = 'R';
+	new_new_x = g->ply.ren.x + g->ply.dir.x * mvspd;
+	new_new_y = g->ply.ren.y + g->ply.dir.y * mvspd;
+	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
 	{
-		*new_x = new_new_x;
-		*new_y = new_new_y;
+		*nwx = new_new_x;
+		*nwy = new_new_y;
 	}
 	else
 	{
-		*new_x = game->ply.ren.x;
-		*new_y = game->ply.ren.y;
+		*nwx = g->ply.ren.x;
+		*nwy = g->ply.ren.y;
 	}
 	return ;
 }
 
-static void cb_move_backward(t_game *game, double move_speed, double *new_x, double *new_y)
+static void	cb_move_backward(t_game *g, double mvspd, double *nwx, double *nwy)
 {
-	double new_new_x;
-	double new_new_y;
+	double	new_new_x;
+	double	new_new_y;
 
-	if (!game->ks)
+	if (!g->ks)
 		return ;
-	if (game->ply.dir.x < 0)
-		game->looking = 'L';
+	if (g->ply.dir.x < 0)
+		g->looking = 'L';
 	else
-		game->looking = 'R';
-	new_new_x = game->ply.ren.x - game->ply.dir.x * move_speed;
-	new_new_y = game->ply.ren.y - game->ply.dir.y * move_speed;
-
-	if (game->map[(int)new_new_y][(int)new_new_x] != '1')
+		g->looking = 'R';
+	new_new_x = g->ply.ren.x - g->ply.dir.x * mvspd;
+	new_new_y = g->ply.ren.y - g->ply.dir.y * mvspd;
+	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
 	{
-		*new_x = new_new_x;
-		*new_y = new_new_y;
+		*nwx = new_new_x;
+		*nwy = new_new_y;
 	}
 	else
 	{
-		*new_x = game->ply.ren.x;
-		*new_y = game->ply.ren.y;
+		*nwx = g->ply.ren.x;
+		*nwy = g->ply.ren.y;
 	}
 	return ;
 }
 
-static void cb_move_left(t_game *game, double move_speed, double *new_x, double *new_y)
+static void	cb_move_left(t_game *g, double mvspd, double *nwx, double *nwy)
 {
-	double new_new_x;
-	double new_new_y;
+	double	new_new_x;
+	double	new_new_y;
 
-	if (!game->ka)
+	if (!g->ka)
 		return ;
-	if (game->ply.dir.x < 0)
-		game->looking = 'L';
+	if (g->ply.dir.x < 0)
+		g->looking = 'L';
 	else
-		game->looking = 'R';
-	new_new_x = game->ply.ren.x + game->ply.dir.y * move_speed;
-	new_new_y = game->ply.ren.y - game->ply.dir.x * move_speed;
-
-	if (game->map[(int)new_new_y][(int)new_new_x] != '1')
+		g->looking = 'R';
+	new_new_x = g->ply.ren.x + g->ply.dir.y * mvspd;
+	new_new_y = g->ply.ren.y - g->ply.dir.x * mvspd;
+	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
 	{
-		*new_x = new_new_x;
-		*new_y = new_new_y;
+		*nwx = new_new_x;
+		*nwy = new_new_y;
 	}
 	else
 	{
-		*new_x = game->ply.ren.x;
-		*new_y = game->ply.ren.y;
+		*nwx = g->ply.ren.x;
+		*nwy = g->ply.ren.y;
 	}
 	return ;
 }
 
-static void cb_move_right(t_game *game, double move_speed, double *new_x, double *new_y)
+static void	cb_move_right(t_game *g, double mvspd, double *nwx, double *nwy)
 {
-	double new_new_x;
-	double new_new_y;
+	double	new_new_x;
+	double	new_new_y;
 
-	if (!game->kd)
+	if (!g->kd)
 		return ;
-	if (game->ply.dir.x < 0)
-		game->looking = 'L';
+	if (g->ply.dir.x < 0)
+		g->looking = 'L';
 	else
-		game->looking = 'R';
-	new_new_x = game->ply.ren.x - game->ply.dir.y * move_speed;
-	new_new_y = game->ply.ren.y + game->ply.dir.x * move_speed;
-
-	if (game->map[(int)new_new_y][(int)new_new_x] != '1')
+		g->looking = 'R';
+	new_new_x = g->ply.ren.x - g->ply.dir.y * mvspd;
+	new_new_y = g->ply.ren.y + g->ply.dir.x * mvspd;
+	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
 	{
-		*new_x = new_new_x;
-		*new_y = new_new_y;
+		*nwx = new_new_x;
+		*nwy = new_new_y;
 	}
 	else
 	{
-		*new_x = game->ply.ren.x;
-		*new_y = game->ply.ren.y;
+		*nwx = g->ply.ren.x;
+		*nwy = g->ply.ren.y;
 	}
 	return ;
 }
 
-void    move_player(t_game *game)
+void	move_player(t_game *game)
 {
-	double move_speed;
-	double new_x;
-	double new_y;
+	double	move_speed;
+	double	new_x;
+	double	new_y;
 
 	move_speed = MVMSPD;
 	new_x = game->ply.ren.x;

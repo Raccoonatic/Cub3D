@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:32:42 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:29:52 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:28:14 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void		cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f);
 
 void	cb_push_tile_to_frame(t_img *dst, t_img *src, t_cord c, char f)
 {
-	int     x;
-	int     y;
-	char    *d_ptr;
-	char    *s_ptr;
+	int		x;
+	int		y;
+	char	*d_ptr;
+	char	*s_ptr;
 
 	if (!dst || !src)
-	    return ;
+		return ;
 	y = 0;
 	while (y < c.th)
 	{
@@ -54,7 +54,7 @@ void	cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f)
 	char	*s_ptr;
 
 	if (!dst || !src)
-	    return ;
+		return ;
 	y = 0;
 	while (y < c.th)
 	{
@@ -73,7 +73,6 @@ void	cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f)
 		y++;
 	}
 }
-
 
 void	cb_push_bkgrnd_to_frame(t_img *d, t_img *s)
 {
@@ -105,13 +104,13 @@ void	cb_push_bkgrnd_to_frame(t_img *d, t_img *s)
 
 int	cb_colorshift(int c)
 {
-	int r;
-	int g;
-	int b;
-	int v_shift;
+	int	r;
+	int	g;
+	int	b;
+	int	v_shift;
 
 	v_shift = 20;
-	if (c == 0x00FF00FF || c == (int)MNMWC || c < 0 )
+	if (c == 0x00FF00FF || c == (int)MNMWC || c < 0)
 		return (0x00FF00FF);
 	r = ((c >> 16) & 0xFF) + v_shift;
 	g = ((c >> 8) & 0xFF) + v_shift;

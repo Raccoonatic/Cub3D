@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 19:38:17 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:56:01 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:37:24 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	cb_ray_init(t_ray *ray);
 void	cb_zero_columns(t_col clmn[]);
 void	cb_zero_player(t_player *player);
 
-void cb_zero_player(t_player *player)
+void	cb_zero_player(t_player *player)
 {
 	player->map.x = 0;
 	player->map.y = 0;
@@ -52,7 +52,7 @@ void	cb_zero_mp(t_mp *mp)
 
 void	cb_zero_columns(t_col clmn[])
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < WW)

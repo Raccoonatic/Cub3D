@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 17:37:38 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/12 23:21:47 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 11:44:29 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static char	**cb_allocate_playable_map(char **map, int maxy, int maxx);
 
 void	cb_define_playable_map(t_game *g, char **map)
 {
-	int	maxy;
-	int	maxx;
-	int	i;
-	char dir;
+	int		maxy;
+	int		maxx;
+	int		i;
+	char	dir;
 
 	maxy = 0;
 	maxx = 0;

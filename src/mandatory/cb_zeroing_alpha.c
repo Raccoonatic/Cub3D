@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/13 21:29:43 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:36:56 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	cb_zeroing(t_game *game)
 	game->kd = false;
 	game->klft = false;
 	game->krgt = false;
-
 	return ;
 }
 
