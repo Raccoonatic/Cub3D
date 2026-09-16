@@ -44,6 +44,8 @@ typedef struct s_cord
 	int	tw;
 	int	x;
 	int	y;
+	int	tex_x;
+	int	line_height;
 }	t_cord;
 
 typedef struct s_vd

@@ -1,7 +1,7 @@
-NO ./textures/tests/a_texture.xpm
-SO ./textures/tests/a_texture.xpm
-WE ./textures/tests/a_texture.xpm
-EA ./textures/tests/a_texture.xpm
+NO ./textures/boring_texture_N.xpm
+SO ./textures/boring_texture_S.xpm
+EA ./textures/boring_texture_E.xpm
+WE ./textures/boring_texture_W.xpm
 
 F 4, 73, 79
 C 0, 220, 205

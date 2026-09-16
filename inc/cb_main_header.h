@@ -105,6 +105,9 @@ void		cb_define_playable_map(t_game *g, char **map);
 void		cb_imgmain_init(t_game *g, t_img *i, char *path);
 void		cb_layer_init(t_game *g, int *bpx, int *bpr, int *e);
 
+// ---- cb_load_tex.c
+bool        cb_load_textures(t_game *g);
+
 // ----	cb_minimap.c
 void		cb_minimap_init(t_game *g, t_mp *m);
 void		cb_minimap_compose(t_game *g, t_mp *m);

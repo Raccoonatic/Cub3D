@@ -58,6 +58,7 @@ MANDA += cb_getpaths.c
 MANDA += cb_getcolors.c
 MANDA += cb_getborders.c
 MANDA += cb_layer_init.c
+MANDA += cb_load_tex.c
 MANDA += cb_coordinate.c
 MANDA += cb_scenetomap.c
 MANDA += cb_scenetomap_utils_alpha.c

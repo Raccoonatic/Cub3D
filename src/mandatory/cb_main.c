@@ -96,6 +96,8 @@ static void	cb_game_init(t_game *g)
 	g->win = mlx_new_window(g->mlx, g->w, g->h, (char *)"Verdant Veil");
 	if (!g->win)
 		cb_kill_the_game(g, 0, 1, 1);
+	if (!cb_load_textures(g))
+		cb_kill_the_game(g, 0, 3, 1);
 	cb_layer_init(g, &g->buf.bpx, &g->buf.bpr, &g->buf.e);
 	return ;
 }

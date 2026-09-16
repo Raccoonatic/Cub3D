@@ -13,18 +13,53 @@
 #include "../../inc/cb_main_header.h"
 
 void		cb_render_walls(t_game *g);
-static void	cb_draw_column(t_img *img, t_cord *cords, int color);
+static void	cb_draw_column(t_img *img, t_img *tex, t_cord *cords);
+static t_img    *cb_get_wall_tex(t_game *g, t_card face);
 
-static void	cb_draw_column(t_img *img, t_cord *cords, int color)
+static int	cb_get_tex_x(t_col *clmn, t_img *tex)
+{
+	double	wall_x;
+
+	if (clmn->face == FN || clmn->face == FS)
+		wall_x = clmn->hit.x;
+	else
+		wall_x = clmn->hit.y;
+	wall_x -= floor(wall_x);
+	return ((int)(wall_x * tex->w));
+}
+
+static t_img    *cb_get_wall_tex(t_game *g, t_card face)
+{
+    if (face == FN)
+        return (&g->nwall);
+    if (face == FS)
+        return (&g->swall);
+    if (face == FE)
+        return (&g->ewall);
+    return (&g->wwall);
+}
+
+static void	cb_draw_column(t_img *img, t_img *tex, t_cord *cords)
 {
 	char	*tmp;
+	char	*src;
+	double	step;
+	double	pos;
 	int		y;
+	int		tex_y;
 
+	step = (double)tex->h / cords->line_height;
+	pos = (cords->y - img->h / 2 + cords->line_height / 2) * step;
 	y = cords->y;
 	while (y <= cords->th)
 	{
+		tex_y = (int)pos;
+		if (tex_y >= tex->h)
+			tex_y = tex->h - 1;
+		src = tex->addr + (tex_y * tex->bpr) + (cords->tex_x * (tex->bpx / 8));
 		tmp = img->addr + (y * img->bpr) + (cords->x * (img->bpx / 8));
-		*(unsigned int *)tmp = color;
+		*(unsigned int *)tmp = *(unsigned int *)src;
+		pos += step;
 		y++;
 	}
 }
@@ -33,12 +68,16 @@ void	cb_render_walls(t_game *g)
 {
 	int		i;
 	int		line_height;
+	int		tex_x;
+	t_img	*tex;
 	t_cord	cords;
 
 	i = 0;
 	while (i < g->w)
 	{
 		line_height = (int)(g->h / g->columns[i].perp_dist);
+		tex = cb_get_wall_tex(g, g->columns[i].face);
+		tex_x = cb_get_tex_x(&g->columns[i], tex);
 		cords.y = (line_height * -1) / 2 + g->h / 2;
 		if (cords.y < 0)
 			cords.y = 0;
@@ -47,9 +86,10 @@ void	cb_render_walls(t_game *g)
 			cords.th = g->h - 1;
 		cords.fh = g->h;
 		cords.fw = g->w;
-		cords.tw = 1;
+		cords.tex_x = tex_x;
+		cords.line_height = line_height;
 		cords.x = i;
-		cb_draw_column(&g->buf, &cords, 0x000000);
+		cb_draw_column(&g->buf, tex, &cords);
 		i++;
 	}
 	return ;
