@@ -1,7 +1,7 @@
-NO ./textures/boring_texture_N.xpm
-SO ./textures/boring_texture_S.xpm
-EA ./textures/boring_texture_E.xpm
-WE ./textures/boring_texture_W.xpm
+NO ./textures/temple_wall_N.xpm
+SO ./textures/temple_wall_S.xpm
+EA ./textures/temple_wall_E.xpm
+WE ./textures/temple_wall_W.xpm
 
 F 4, 73, 79
 C 0, 220, 205
@@ -11,7 +11,7 @@ C 0, 220, 205
         1011000001110000000000001
         1001000000000000000000001
 111111111011000001110000000000001
-100000000011000001110111111111111
+100000000011000001110111110111111
 11110111111111011100000010001
 11110111111111011101010010001
 11000000110101011100000010001

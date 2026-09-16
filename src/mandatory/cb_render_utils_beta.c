@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 21:24:41 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/14 13:50:58 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/16 20:36:59 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static void	cb_draw_column(t_img *img, t_img *tex, t_cord *cords)
 			tex_y = tex->h - 1;
 		src = tex->addr + (tex_y * tex->bpr) + (cords->tex_x * (tex->bpx / 8));
 		tmp = img->addr + (y * img->bpr) + (cords->x * (img->bpx / 8));
-		*(unsigned int *)tmp = *(unsigned int *)src;
+		if (*(unsigned int *)src != 0xFF00FF)
+			*(unsigned int *)tmp = *(unsigned int *)src;
 		pos += step;
 		y++;
 	}
