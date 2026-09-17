@@ -19,13 +19,17 @@ static t_img    *cb_get_wall_tex(t_game *g, t_card face);
 static int	cb_get_tex_x(t_col *clmn, t_img *tex)
 {
 	double	wall_x;
+	int		tex_x;
 
-	if (clmn->face == FN || clmn->face == FS)
+	if	(clmn->face == FN || clmn->face == FS)
 		wall_x = clmn->hit.x;
 	else
 		wall_x = clmn->hit.y;
 	wall_x -= floor(wall_x);
-	return ((int)(wall_x * tex->w));
+	tex_x = (int)(wall_x * tex->w);
+	if (clmn->face == FN || clmn->face == FE)
+		tex_x = tex->w - tex_x - 1;
+	return (tex_x);
 }
 
 static t_img    *cb_get_wall_tex(t_game *g, t_card face)
