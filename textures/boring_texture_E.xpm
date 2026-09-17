@@ -1,5 +1,5 @@
 /* XPM */
-static const char *boring_texture_N[] = {
+static const char *boring_texture_E[] = {
 /* columns rows colors chars-per-pixel */
 "128 128 61 2 ",
 "FF c #000000",
