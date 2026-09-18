@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Cr#    Created: 2026/09/03 12:55:42 by lde-san-          #+#    #+#              #
-#    Updated: 2026/09/03 12:55:42 by lde-san-         ###   ########.fr        #
+#    Created: 2026/09/03 12:55:42 by lde-san-          #+#    #+#              #
+#    Updated: 2026/09/18 14:21:08 by lde-san-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-BONO = cub3D_bonus
+BONUS = cub3D_bonus
 
 LEAK_ARGS ?= ""
 
@@ -19,16 +19,16 @@ LIBFT = ./inc/libft/libft.a
 CUB_LIB_MAN = ./inc/libcub.a
 CUB_LIB_BON = ./inc/libcubon.a
 
-NEOR	= \033[3m\033[38;2;255;153;51m
-MINT	= \033[1;38;2;55;250;133m
-ORNG	= \033[1;38;2;255;153;51m
-PURP	= \033[1;38;2;174;5;252m
-PINK	= \033[1;38;2;255;0;251m
-BABY	= \033[1;38;2;0;255;247m
-BLOD	= \033[1;38;2;255;0;0m
-LIME	= \033[1;38;2;0;255;0m
-B_WI	= \033[1;37m
-RSET	= \033[0m
+NEOR = \033[3m\033[38;2;255;153;51m
+MINT = \033[1;38;2;55;250;133m
+ORNG = \033[1;38;2;255;153;51m
+PURP = \033[1;38;2;174;5;252m
+PINK = \033[1;38;2;255;0;251m
+BABY = \033[1;38;2;0;255;247m
+BLOD = \033[1;38;2;255;0;0m
+LIME = \033[1;38;2;0;255;0m
+B_WI = \033[1;37m
+RSET = \033[0m
 
 MAIN_MAN = src/mandatory/cb_main.c
 MAIN_BON = src/bonus/cb_main_bonus.c
@@ -67,32 +67,52 @@ MANDA += cb_vector_utils.c
 MANDA += cb_zeroing_alpha.c
 MANDA += cb_zeroing_beta.c
 
-BONUS = cb_template_bonus.c
-# BONUS +=
-# BONUS +=
-# BONUS +=
-# BONUS +=
-# BONUS +=
-# BONUS +=
-# BONUS +=
+BONO += cb_exit_bonus.c
+BONO += cb_time_bonus.c
+BONO += cb_render_bonus.c
+BONO += cb_render_utils_alpha_bonus.c
+BONO += cb_render_utils_beta_bonus.c
+BONO += cb_render_utils_gamma_bonus.c
+BONO += cb_player_bonus.c
+BONO += cb_rotate_bonus.c
+BONO += cb_destroy_bonus.c
+BONO += cb_raycast_bonus.c
+BONO += cb_minimap_bonus.c
+BONO += cb_map_pars_bonus.c
+BONO += cb_minimap_rays_bonus.c
+BONO += cb_map_pars_utils_bonus.c
+BONO += cb_define_playable_map_bonus.c
+BONO += cb_movement_bonus.c
+BONO += cb_getpaths_bonus.c
+BONO += cb_getcolors_bonus.c
+BONO += cb_getborders_bonus.c
+BONO += cb_layer_init_bonus.c
+BONO += cb_load_tex_bonus.c
+BONO += cb_coordinate_bonus.c
+BONO += cb_scenetomap_bonus.c
+BONO += cb_scenetomap_utils_alpha_bonus.c
+BONO += cb_scenetomap_utils_beta_bonus.c
+BONO += cb_vector_utils_bonus.c
+BONO += cb_zeroing_alpha_bonus.c
+BONO += cb_zeroing_beta_bonus.c
 
 INC_MAN = ./inc/cb_main_header.h ./inc/cb_structs.h ./inc/cb_settings.h
-INC_BON =
+INC_BON = ./inc/cb_main_header_bonus.h ./inc/cb_structs_bonus.h ./inc/cb_settings_bonus.h
 
 SRC_MAN = $(addprefix $(SRC_DIR_MAN),$(MANDA))
 OBJ_MAN = $(SRC_MAN:$(SRC_DIR_MAN)%.c=$(OBJ_DIR_MAN)%.o)
 
-SRC_BON = $(addprefix $(SRC_DIR_BON),$(BONUS))
+SRC_BON = $(addprefix $(SRC_DIR_BON),$(BONO))
 OBJ_BON = $(SRC_BON:$(SRC_DIR_BON)%.c=$(OBJ_DIR_BON)%.o)
 
-.PRECIOUS: $(BONUS) $(FILE) $(MAIN_MAN) $(MAIN_BON)
+.PRECIOUS: $(BONO) $(FILE) $(MAIN_MAN) $(MAIN_BON)
 
 COMPILE = cc -g -O0 -Wall -Werror -Wextra -I./inc -I./inc/mlx_linux
 LEAK_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
 
 all: $(NAME)
 
-bonus: $(BONO)
+bonus: $(BONUS)
 
 $(NAME): $(LIBFT) ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(CUB_LIB_MAN) $(INC_MAN)
 	@printf "$(BABY)"
@@ -101,10 +121,10 @@ $(NAME): $(LIBFT) ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(CUB_
 	@ls -la
 	@printf "$(RSET)"
 
-$(BONO): $(LIBFT) ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(CUB_LIB_BON) $(INC_BON)
+$(BONUS): $(LIBFT) ./inc/mlx_linux/libmlx.a ./inc/mlx_linux/libmlx_Linux.a $(CUB_LIB_BON) $(INC_BON)
 	@printf "$(BABY)"
-	$(COMPILE) $(MAIN_BON) $(CUB_LIB_BON) $(LIBFT) -L./inc/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(BONO)
-	@mv $(BONO) $(NAME)
+	$(COMPILE) $(MAIN_BON) $(CUB_LIB_BON) $(LIBFT) -L./inc/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(BONUS)
+	@mv $(BONUS) $(NAME)
 	@printf "$(MINT)"
 	@ls -la
 	@printf "$(RSET)"
@@ -158,6 +178,7 @@ clean: rm_parse_test_permit
 	rm -rf obj
 	rm -rf $(CUB_LIB_MAN)
 	rm -rf $(CUB_LIB_BON)
+	rm -rf showcase.sh
 	@sleep 0.3
 	@printf "$(RSET)"
 
@@ -174,7 +195,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re leaks wipe mlx_dependencies
+.PHONY: all clean fclean re leaks wipe mlx_dependencies add_parse_test_permit rm_parse_test_permit parse_tests val_parse_tests normloop showcase
 
 # /////////////////////// -- * Functionalities * -- ////////////////////// #
 
@@ -505,117 +526,86 @@ normloop:
 	@chmod 777 normloop.sh
 	@printf "$(RESET)\t\t\t🦝"
 
-# path_of_gluttony: $(NAME)
-# 	@printf "🦝 \001\033[3m\033[38;2;255;153;51m\002Building path_of_gluttony.sh... 🦝\\n"
-# 	@> path_of_gluttony.sh
-# 	@printf "%s\n" '#!/bin/bash' >> path_of_gluttony.sh
-# 	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '# **************************************************************************** #' '\001\033[0m\002'
-# 	@printf "%s\n" '# **************************************************************************** #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                                              #' '\001\033[0m\002'
-# 	@printf "%s\n" '#                                                                              #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                         :::      ::::::::    #' '\001\033[0m\002'
-# 	@printf "%s\n" '#                                                         :::      ::::::::    #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;55;250;133m\002' 'path_of_gluttony.sh                           ' '\001\033[1;38;2;0;255;247m\002' '     :+:      :+:    :+:    #' '\001\033[0m\002'
-# 	@printf "%s\n" '#    path_of_gluttony.sh                                :+:      :+:    :+:    #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                     +:+ +:+         +:+      #' '\001\033[0m\002'
-# 	@printf "%s\n" '#                                                     +:+ +:+         +:+      #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;55;250;133m\002' 'By: lde-san- <lde-san-@student.42porto.co     ' '\001\033[1;38;2;0;255;247m\002' ' +#+  +:+       +#+         #' '\001\033[0m\002'
-# 	@printf "%s\n" '#    By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+         #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                 +#+#+#+#+#+   +#+            #' '\001\033[0m\002'
-# 	@printf "%s\n" '#                                                 +#+#+#+#+#+   +#+            #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;0;255;0m\002' 'Created: 2026/04/07 12:44:59 by lde-san-      ' '\001\033[1;38;2;0;255;247m\002' '    #+#    #+#              #' '\001\033[0m\002'
-# 	@printf "%s\n" '#    Created: 2026/04/07 12:44:59 by lde-san-          #+#    #+#              #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;0;255;0m\002' 'Updated: 2026/04/07 12:44:59 by lde-san-      ' '\001\033[1;38;2;0;255;247m\002' '   ###   ########.fr        #' '\001\033[0m\002'
-# 	@printf "%s\n" '#    Updated: 2026/04/07 12:44:59 by lde-san-         ###   ########.fr        #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                                              #' '\001\033[0m\002'
-# 	@printf "%s\n" '#                                                                              #' >> path_of_gluttony.sh
-# 	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '# **************************************************************************** #' '\001\033[0m\002'
-# 	@printf "%s\n" '# **************************************************************************** #' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'NEOR='\''\001\033[3m\033[38;2;255;153;51m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'MINT='\''\001\033[1;38;2;55;250;133m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'ORNG='\''\001\033[1;38;2;255;153;51m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'PURP='\''\001\033[1;38;2;174;5;252m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'PINK='\''\001\033[1;38;2;255;0;251m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'BABY='\''\001\033[1;38;2;0;255;247m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'BLOD='\''\001\033[1;38;2;255;0;0m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'LIME='\''\001\033[1;38;2;0;255;0m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'RSET='\''\001\033[0m\002'\''' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'EXEC="./so_long"' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'MAP_DIR="maps"' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'START_LEVEL=$${1:-0}' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'if [ ! -x "$$EXEC" ]; then' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    echo -e "\n❌ $${BLOD}Error: $${ORNG}Could not find the executable $${MINT}'\''$$EXEC'\'' $${ORNG}or it is missing execution rights!\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    echo -e "              🦝$${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>$${PINK} Did you forget to run $${ORNG}'\''$${MINT}make$${ORNG}'\''$${PINK}? $${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}🦝\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    exit 1' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'fi' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'GLUTTORES=$$(xrandr | awk '\''/\*/ {print $$1}'\'')' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'MAP_SIZES=(' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"$${GLUTTORES}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"$${GLUTTORES}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"$${GLUTTORES}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"480x480"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"$${GLUTTORES}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"$${GLUTTORES}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"$${GLUTTORES}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"600x600"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"1900x800"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"1500x1000"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"$${GLUTTORES}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" ')' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'BACKGROUNDS=(' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/sunsety.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/Herculy.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/bluey.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/nighty.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/Herculy.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/Seventy.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/sunsety.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/Tranquill.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/Woody.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/nighty.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	"./textures/Tranquill.xpm"' >> path_of_gluttony.sh
-# 	@printf "%s\n" ')' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'echo -e "\n\t\t🦊 $${LIME}Starting the $${NEOR}Path of Gluttony $${LIME}Gauntlet... $${RSET}🦝\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'sleep 1' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'for (( i=$$START_LEVEL; i<=10; i++ )); do' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    MAP_FILE="$${MAP_DIR}/lvl_$${i}.ber"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    if [ ! -f "$$MAP_FILE" ]; then' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        echo -e "❌ $${BLOD}Error: $${ORNG}Could not find $${MINT}$$MAP_FILE$${ORNG}! Did you delete the by any chance?$${RSET}\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        exit 1' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    fi' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        echo -e "\t              $${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>$${MINT}===========$${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	echo -e "\n\t\t     🦝🗺️     $${BABY}LOADING LEVEL$${MINT} $$i    🗺️ 🦝\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        echo -e "\t              $${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>$${MINT}===========$${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	make re_path BKGRND=$${BACKGROUNDS[$$i]} &> /dev/null' >> path_of_gluttony.sh
-# 	@printf "%s\n" '#################################### Calling the map over here boy!' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	CURRENT_SIZE="$${MAP_SIZES[$$i]}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	$$EXEC "$$MAP_FILE" $$CURRENT_SIZE' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	EXIT_CODE=$$?' >> path_of_gluttony.sh
-# 	@printf "%s\n" '####################################    ' >> path_of_gluttony.sh
-# 	@printf "%s\n" '	if [ $$EXIT_CODE -eq 42 ]; then' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        echo -e "\t $${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>✅ $${MINT}SUCCESS! $${LIME}Moving to the next level... $${RSET}🦝$${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        sleep 0.5' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    elif [ $$EXIT_CODE -eq 69 ]; then' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        echo -e "\n\t\t🦝💀 $${BLOD}You failed! $${PURP}Game Over on level$${PINK} $$i$${PURP}. 💀🦝\n"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        exit 0' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    else' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        echo -e "❌$${BLOD} Game terminated unexpectedly $${PURP}(Exit Code: $$EXIT_CODE). $${NEOR}Aborting gauntlet.$${RSET}🦝"' >> path_of_gluttony.sh
-# 	@printf "%s\n" '        exit 1' >> path_of_gluttony.sh
-# 	@printf "%s\n" '    fi' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'done' >> path_of_gluttony.sh
-# 	@printf "%s\n" '' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'echo -e "\t\t🦝🏆 $${MINT}CONGRATULATIONS! $${LIME}You cleared all the maps! 🏆🦝$${RSET}"' >> path_of_gluttony.sh
-# 	@printf "%s\n" 'echo -e "\t              $${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>$${BABY}Glutto $${LIME}now lives free of guilt! $${RSET}$${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}"' >> path_of_gluttony.sh
-# 	@chmod +x path_of_gluttony.sh
-# 	@printf "\033[0m\t🦝\n"
+showcase: fclean bonus
+	@printf "🦝 \001\033[3m\033[38;2;255;153;51m\002Building showcase.sh... 🦝\\n"
+	@> showcase.sh
+	@printf "%s\n" '#!/bin/bash' >> showcase.sh
+	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '# **************************************************************************** #' '\001\033[0m\002'
+	@printf "%s\n" '# **************************************************************************** #' >> showcase.sh
+	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                                              #' '\001\033[0m\002'
+	@printf "%s\n" '#                                                                              #' >> showcase.sh
+	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                         :::      ::::::::    #' '\001\033[0m\002'
+	@printf "%s\n" '#                                                         :::      ::::::::    #' >> showcase.sh
+	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;55;250;133m\002' 'showcase.sh                                   ' '\001\033[1;38;2;0;255;247m\002' '     :+:      :+:    :+:    #' '\001\033[0m\002'
+	@printf "%s\n" '#    showcase.sh                                        :+:      :+:    :+:    #' >> showcase.sh
+	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                     +:+ +:+         +:+      #' '\001\033[0m\002'
+	@printf "%s\n" '#                                                     +:+ +:+         +:+      #' >> showcase.sh
+	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;55;250;133m\002' 'By: lde-san- <lde-san-@student.42porto.com>   ' '\001\033[1;38;2;0;255;247m\002' ' +#+  +:+       +#+         #' '\001\033[0m\002'
+	@printf "%s\n" '#    By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+         #' >> showcase.sh
+	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                 +#+#+#+#+#+   +#+            #' '\001\033[0m\002'
+	@printf "%s\n" '#                                                 +#+#+#+#+#+   +#+            #' >> showcase.sh
+	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;0;255;0m\002' 'Created: 2026/09/18 11:18:40 by lde-san-      ' '\001\033[1;38;2;0;255;247m\002' '    #+#    #+#              #' '\001\033[0m\002'
+	@printf "%s\n" '#    Created: 2026/09/18 11:18:40 by lde-san-          #+#    #+#              #' >> showcase.sh
+	@printf "%b%s%b%s%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#    ' '\001\033[1;38;2;0;255;0m\002' 'Updated: 2026/09/18 11:18:40 by lde-san-      ' '\001\033[1;38;2;0;255;247m\002' '   ###   ########.fr        #' '\001\033[0m\002'
+	@printf "%s\n" '#    Updated: 2026/09/18 11:18:40 by lde-san-         ###   ########.fr        #' >> showcase.sh
+	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '#                                                                              #' '\001\033[0m\002'
+	@printf "%s\n" '#                                                                              #' >> showcase.sh
+	@printf "%b%s%b\n" '\001\033[1;38;2;0;255;247m\002' '# **************************************************************************** #' '\001\033[0m\002'
+	@printf "%s\n" '# **************************************************************************** #' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" 'NEOR='\''\001\033[3m\033[38;2;255;153;51m\002'\''' >> showcase.sh
+	@printf "%s\n" 'MINT='\''\001\033[1;38;2;55;250;133m\002'\''' >> showcase.sh
+	@printf "%s\n" 'ORNG='\''\001\033[1;38;2;255;153;51m\002'\''' >> showcase.sh
+	@printf "%s\n" 'PURP='\''\001\033[1;38;2;174;5;252m\002'\''' >> showcase.sh
+	@printf "%s\n" 'PINK='\''\001\033[1;38;2;255;0;251m\002'\''' >> showcase.sh
+	@printf "%s\n" 'BABY='\''\001\033[1;38;2;0;255;247m\002'\''' >> showcase.sh
+	@printf "%s\n" 'BLOD='\''\001\033[1;38;2;255;0;0m\002'\''' >> showcase.sh
+	@printf "%s\n" 'LIME='\''\001\033[1;38;2;0;255;0m\002'\''' >> showcase.sh
+	@printf "%s\n" 'RSET='\''\001\033[0m\002'\''' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" 'EXEC="./cub3D"' >> showcase.sh
+	@printf "%s\n" 'MAP_DIR="maps"' >> showcase.sh
+	@printf "%s\n" 'START_LEVEL=$${1:-0}' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" 'if [ ! -x "$$EXEC" ]; then' >> showcase.sh
+	@printf "%s\n" '    echo -e "\n❌ $${BLOD}Error: $${ORNG}Could not find the executable $${MINT}'\''$$EXEC'\'' $${ORNG}or it is missing execution rights!\n"' >> showcase.sh
+	@printf "%s\n" '    echo -e "              🦝$${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>$${PINK} Did you forget to run $${ORNG}'\''$${MINT}make$${ORNG}'\''$${PINK}? $${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}🦝\n"' >> showcase.sh
+	@printf "%s\n" '    exit 1' >> showcase.sh
+	@printf "%s\n" 'fi' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" 'echo -e "\n\t               🦝 $${LIME}Starting the $${NEOR}Show$${LIME}... $${RSET}🦝\n"' >> showcase.sh
+	@printf "%s\n" 'sleep 1' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" 'for (( i=$$START_LEVEL; i<=3; i++ )); do' >> showcase.sh
+	@printf "%s\n" '    MAP_FILE="$${MAP_DIR}/scene_$${i}.cub"' >> showcase.sh
+	@printf "%s\n" '    if [ ! -f "$$MAP_FILE" ]; then' >> showcase.sh
+	@printf "%s\n" '        echo -e "❌ $${BLOD}Error: $${ORNG}Could not find $${MINT}$$MAP_FILE$${ORNG}! Did you delete it by any chance?$${RSET}\n"' >> showcase.sh
+	@printf "%s\n" '        exit 1' >> showcase.sh
+	@printf "%s\n" '    fi' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" '        echo -e "\t              $${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>$${MINT}===========$${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}"' >> showcase.sh
+	@printf "%s\n" '	echo -e "\n\t\t     🦝🗺️     $${BABY}LOADING SCENE$${MINT} $$i    🗺️ 🦝\n"' >> showcase.sh
+	@printf "%s\n" '        echo -e "\t              $${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>$${MINT}===========$${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}\n"' >> showcase.sh
+	@printf "%s\n" '	make re_path BKGRND=$${BACKGROUNDS[$$i]} &> /dev/null' >> showcase.sh
+	@printf "%s\n" '#################################### Calling the map over here boy!' >> showcase.sh
+	@printf "%s\n" '	$$EXEC "$$MAP_FILE"' >> showcase.sh
+	@printf "%s\n" '	EXIT_CODE=$$?' >> showcase.sh
+	@printf "%s\n" '####################################' >> showcase.sh
+	@printf "%s\n" '	if [ $$EXIT_CODE -eq 0 ]; then' >> showcase.sh
+	@printf "%s\n" '        echo -e "\n\t $${PURP}..*$${LIME}#$${PINK}>$${BABY}--$${LIME}>$${BABY}>✅ $${MINT}SUCCESS! $${LIME}Moving to the next Scene... $${RSET}🦝$${BABY}<$${LIME}<$${BABY}--$${PINK}<$${LIME}#$${PURP}*..$${RSET}\n"' >> showcase.sh
+	@printf "%s\n" '        sleep 1' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" '    elif [ $$EXIT_CODE -eq 1 ]; then' >> showcase.sh
+	@printf "%s\n" '        echo -e "\n\t\t🦝💀 $${BLOD}Program failed! $${PURP}Game Over on Scene$${PINK} $$i$${PURP}. 💀🦝\n"' >> showcase.sh
+	@printf "%s\n" '        exit 0' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" '    else' >> showcase.sh
+	@printf "%s\n" '        echo -e "❌$${BLOD} Program terminated unexpectedly $${PURP}Game Over on Scene$${PINK} $$i. $${PURP}(Exit Code: $$EXIT_CODE). $${NEOR}Aborting Showcase.$${RSET}🦝"' >> showcase.sh
+	@printf "%s\n" '        exit 1' >> showcase.sh
+	@printf "%s\n" '    fi' >> showcase.sh
+	@printf "%s\n" 'done' >> showcase.sh
+	@printf "%s\n" '' >> showcase.sh
+	@printf "%s\n" 'echo -e "\t   🦝🏆 $${MINT}CONGRATULATIONS! $${LIME}All Scenes ran successfully! 🏆🦝$${RSET}"' >> showcase.sh
+	@chmod +x showcase.sh
+	@printf "\033[0m🦝\n\n"
+	@./showcase.sh

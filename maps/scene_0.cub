@@ -1,0 +1,13 @@
+NO ./textures/boring_texture_N.xpm
+SO ./textures/boring_texture_S.xpm
+EA ./textures/boring_texture_E.xpm
+WE ./textures/boring_texture_W.xpm
+
+F 220,100,0
+C 225,30,0
+
+111111
+100101
+101001
+1100W1
+111111
