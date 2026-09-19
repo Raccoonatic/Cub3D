@@ -26,10 +26,10 @@
 # include <math.h>
 
 // Project typedefs:
-# include "./cb_structs.h"
+# include "./cb_structs_bonus.h"
 
 // Project defines:
-# include "./cb_settings.h"
+# include "./cb_settings_bonus.h"
 
 // Prototypes:
 

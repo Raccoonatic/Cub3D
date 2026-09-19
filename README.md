@@ -37,7 +37,7 @@ make showcase
 Following any of the compilation instructions above, will leave you with a **"cub3D"** binary, that you can run passing the path to a scene file as a parameter.
 
 ```bash
-./cub3D ./maps/scene_X.cub
+./cub3D ./maps/scene_n.cub
 ```
 
 Furthermore, if you compiled with the **make showcase** command, you can simply run the **"showcase.sh"** shell script as it is.
@@ -68,41 +68,43 @@ C 225,225,225
 11111
 ```
 >The program is designed to accept only this information. However, the pieces on information will be able to be interpreted in any other and even with spaces in the middle as long as:
-
+>
 > - The *map* (The region with ones and zeroes), is at the end of the file.
 > - The *Identifiers* (NO, SO, WE, EA, F, C), are exacly as shown in the example. For example, for the identifier "NO", if the scene only contains "N", "N   O" or "no", the scene will be considered invalid.
 > - The paths to the textures are not separated by spaces. (Unless the name of the textures or directories have them).
 > - The colors are within the valid values (0 - 255). these colors should be defined with the typical RGB format, however, they can have any number or white spaces around or in between the values.
-
+>
 > **The information is interpreted as follows:**
-
-#### 🗺️ Scene Format (.cub)
-
+>
+> #### 🎬 Scene Identifiers
+>
 > - **NO** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_north-facing_texture**.
 > - **SO** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_south-facing_texture**.
 > - **WE** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_west-facing_texture**.
 > - **EA** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_east-facing_texture**.
 > - **F** : This *Identifier* Marks the line where the color for the floor is defined.
 > - **C** : This *Identifier* Marks the line where the color for the ceiling is defined.
-
-##### 🗺️ Map Format
+>
+> #### 🗺️ Map Format
 > The characters in the map are interpreted as follows:
+>
 > - **[1]**	Wall.
 > - **[0]**	Empty space.
 > - **[P]**	The Player's starting position. Facing North.
 > - **[S]**	The Player's starting position. Facing South.
 > - **[W]**	The Player's starting position. Facing West.
 > - **[E]**	The Player's starting position. Facing East.
-
+>
 > The map can have any shape, and it can be separated by blank rows or columns, as long as all regions described are completely surrounded by walls.
 > The map must include a starting position for the player. This position will be marked by a character *(N, S, W, or E)*, that will define "Where" the player will be looking at the start of the program.
 > The program will analyze the region that the player can access. If there are remote areas or inaccesible rooms, defined in the map, they will not be part of the final render.
 
 ### 🎮 Controls
-- **WASD**	→ Move The Player
-- **Arrow Keys Left and Right**	→ Rotate point of view.
-- **ESC**	→ Exit game
-- **Window Close Button**	→ Exit game
+- **WASD**					→	*Move The Player.*
+- **Arrow Key Left**		→	*Rotate point of view Left.*
+- **Arrow Key Right**		→	*Rotate point of view Right.*
+- **ESC**					→	*Exit game.*
+- **Window Close Button**	→	*Exit game.*
 
 ---
 

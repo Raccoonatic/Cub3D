@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 19:04:12 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:43:39 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 11:08:58 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,15 @@
 # define CB_SETTINGS_H
 
 // Main Settings Definition:
-# ifndef TSZ
-#  define TSZ		20			// Tile Size.
-# endif
-# ifndef FOV
-#  define FOV		0.86f		// Field of View.
-# endif
-# ifndef WH
-#  define WH		900			// Window Height.
-# endif
-# ifndef WW
-#  define WW		1700		// Window Width.
-# endif
-# ifndef ROTSPD
-#  define ROTSPD	0.02f		// Player Rotation Speed.
-# endif
-# ifndef MVMSPD
-#  define MVMSPD	0.04f		// Player Movement Speed.
-# endif
-# ifndef MXMPH
-#  define MXMPH		200			// Max Minimap Height.
-# endif
-# ifndef MXMPW
-#  define MXMPW		300			// Max Minimap Width.
-# endif
-# ifndef MNMWC
-#  define MNMWC		0xFFFFFFFF	// Minimap Wall Color.
-# endif
+# define TSZ	20			// Tile Size.
+# define FOV	0.86f		// Field of View.
+# define WH		900			// Window Height.
+# define WW		1700		// Window Width.
+# define ROTSPD	0.02f		// Player Rotation Speed.
+# define MVMSPD	0.04f		// Player Movement Speed.
+# define MXMPH	200			// Max Minimap Height.
+# define MXMPW	300			// Max Minimap Width.
+# define MNMWC	0xFFFFFFFF	// Minimap Wall Color.
 
 // Text Color:
 # define RST	"\033[0m"

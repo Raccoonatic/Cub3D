@@ -6,14 +6,14 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 14:01:25 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 11:08:59 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CB_STRUCTS_H
 # define CB_STRUCTS_H
 
-# include "./cb_settings.h"
+# include "./cb_settings_bonus.h"
 
 typedef enum e_kys
 {
