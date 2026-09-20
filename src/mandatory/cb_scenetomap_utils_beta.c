@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/16 20:25:29 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:44:50 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,19 @@ void	cb_map_populate(char **raw, char **dest, int miny, int minx)
 
 void	cb_flood_fill(char **map, int y, int x)
 {
-	if (map[y][x] == '1' || map[y][x] == 'F')
-		return ;
-	map[y][x] = 'F';
-	cb_flood_fill(map, y, x + 1);
-	cb_flood_fill(map, y, x - 1);
-	cb_flood_fill(map, y + 1, x);
-	cb_flood_fill(map, y - 1, x);
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '0')
+				map[y][x] = 'F';
+			if (map[y][x] == 'B')
+				map[y][x] = '1';
+			x++;
+		}
+		y++;
+	}
 	return ;
 }

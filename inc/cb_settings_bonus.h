@@ -6,12 +6,12 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 19:04:12 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 11:08:58 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:59:34 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CB_SETTINGS_H
-# define CB_SETTINGS_H
+#ifndef CB_SETTINGS_BONUS_H
+# define CB_SETTINGS_BONUS_H
 
 // Main Settings Definition:
 # define TSZ	20			// Tile Size.

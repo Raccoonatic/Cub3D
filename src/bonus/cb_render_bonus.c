@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 15:35:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 12:13:37 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 18:58:07 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	cb_render(t_game *g)
 {
 	t_cord	mmp;
 
-	move_player(g);
+	cb_move_player(g);
 	cb_rotate_player(g);
 	cb_get_coords(g, &mmp);
 	cb_push_bkgrnd_to_frame(&g->buf, &g->bkg);

@@ -43,7 +43,6 @@ MANDA += cb_time.c
 MANDA += cb_render.c
 MANDA += cb_render_utils_alpha.c
 MANDA += cb_render_utils_beta.c
-MANDA += cb_render_utils_gamma.c
 MANDA += cb_player.c
 MANDA += cb_rotate.c
 MANDA += cb_destroy.c

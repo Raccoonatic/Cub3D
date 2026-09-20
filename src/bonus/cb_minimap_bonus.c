@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 12:13:24 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 18:58:04 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	cb_minimap_compose(t_game *g, t_mp *m)
 	unsigned int	i;
 	t_vd			ray_dir;
 
-	sl_clear_map_buffer(m);
+	cb_clear_map_buffer(m);
 	i = 0;
 	cb_zero_columns(g->columns);
 	while (i < WW)

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:11 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/14 12:37:28 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:26:36 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	cb_castray(t_game *g, t_vd raystart, t_vd raydir, t_col *clmn)
 		clmn->hit.x = raystart.x + raydir.x * ray.distance;
 		clmn->hit.y = raystart.y + raydir.y * ray.distance;
 		cb_draw_ray_minimap(ray.g, clmn->hit);
-		if (g->map[ray.vmap.y][ray.vmap.x] == '1')
+		if (ft_strchr("12", g->map[ray.vmap.y][ray.vmap.x]))
 		{
 			found = true;
 			clmn->perp_dist = cb_get_perp_dist(&ray, clmn);

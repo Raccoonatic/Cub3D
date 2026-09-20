@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CB_MAIN_HEADER_H
-# define CB_MAIN_HEADER_H
+#ifndef CB_MAIN_HEADER_BONUS_H
+# define CB_MAIN_HEADER_BONUS_H
 
 // External Libraries:
 # include "./libft/includes/libft.h"
@@ -59,7 +59,7 @@ void		cb_zero_columns(t_col clmn[]);
 void		cb_zero_player(t_player *player);
 
 // ----	cb_map_pars_utils.c
-int			dispmap(char **map);
+int			cb_dispmap(char **map);
 int			cb_map_width(char **map);
 int			cb_map_height(char **map);
 void		cb_get_mapsize(t_game *g, t_mp *mp);
@@ -106,7 +106,7 @@ void		cb_imgmain_init(t_game *g, t_img *i, char *path);
 void		cb_layer_init(t_game *g, int *bpx, int *bpr, int *e);
 
 // ---- cb_load_tex.c
-bool        cb_load_textures(t_game *g);
+bool		cb_load_textures(t_game *g);
 
 // ----	cb_minimap.c
 void		cb_minimap_init(t_game *g, t_mp *m);
@@ -126,14 +126,14 @@ void		cb_push_ph_to_map(t_mp *dst, t_img *src, t_cord c, char f);
 void		cb_render_walls(t_game *g);
 
 // ----	cb_render_utils_gamma.c
-void		sl_clear_map_buffer(t_mp *mp);
+void		cb_clear_map_buffer(t_mp *mp);
 void		cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f);
 
 // ----	cb_coordinate.c
 void		cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl);
 
 // ----	cb_movement.c
-void		move_player(t_game *game);
+void		cb_move_player(t_game *game);
 
 // ---- cb_rotate.c
 void		cb_rotate_player(t_game *game);

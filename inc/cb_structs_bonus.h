@@ -6,12 +6,12 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 12:10:26 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:59:33 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CB_STRUCTS_H
-# define CB_STRUCTS_H
+#ifndef CB_STRUCTS_BONUS_H
+# define CB_STRUCTS_BONUS_H
 
 # include "./cb_settings_bonus.h"
 

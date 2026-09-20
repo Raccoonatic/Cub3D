@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:53:06 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/14 11:44:07 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 13:54:16 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,6 @@ void	cb_coordinate(t_cord *vessel, int c_unit, t_game *g, int ctrl)
 		vessel->th = TSZ;
 		vessel->tw = TSZ;
 		vessel->x = ctrl;
-	}
-	else if (c_unit == 2)
-	{
-		vessel->fw = g->w;
-		vessel->fh = g->h;
-		vessel->th = g->mp.h;
-		vessel->tw = g->mp.w;
-		vessel->x = 30;
-		vessel->y = (g->h - g->mp.h) - 30;
 	}
 	return ;
 }

@@ -6,43 +6,14 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/16 20:25:25 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:29:15 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
 void		cb_minimap_init(t_game *g, t_mp *m);
-void		cb_minimap_compose(t_game *g, t_mp *m);
-static void	cb_apply_pov(t_game *g);
 static void	cp_build_map(t_game *g, t_mp *m, t_img *sqr);
-
-void	cb_minimap_compose(t_game *g, t_mp *m)
-{
-	t_cord			c;
-	unsigned int	i;
-	t_vd			ray_dir;
-
-	sl_clear_map_buffer(m);
-	i = 0;
-	cb_zero_columns(g->columns);
-	while (i < WW)
-	{
-		ray_dir.x = g->ply.dir.x + (g->ply.plne.x * ((i / (double)WW) * 2 - 1));
-		ray_dir.y = g->ply.dir.y + (g->ply.plne.y * ((i / (double)WW) * 2 - 1));
-		cb_castray(g, g->ply.ren, ray_dir, &(g->columns[i]));
-		i++;
-	}
-	cb_apply_pov(g);
-	c.fh = g->h;
-	c.fw = g->w;
-	c.th = g->mp.ph.h;
-	c.tw = g->mp.ph.w;
-	c.x = ((g->ply.ren.x * TSZ) - g->mp.x) - ((float)c.tw / 2);
-	c.y = ((g->ply.ren.y * TSZ) - g->mp.y) - ((float)c.th / 2);
-	cb_push_ph_to_map(&g->mp, &m->ph, c, g->looking);
-	return ;
-}
 
 void	cb_minimap_init(t_game *g, t_mp *m)
 {
@@ -73,46 +44,6 @@ void	cb_minimap_init(t_game *g, t_mp *m)
 	return ;
 }
 
-static void	cb_clamp_pov(t_game *g)
-{
-	g->mp.x = (g->ply.ren.x * TSZ) - ((float)g->mp.w / 2) + ((float)TSZ / 2);
-	g->mp.y = (g->ply.ren.y * TSZ) - ((float)g->mp.h / 2) + ((float)TSZ / 2);
-	if (g->mp.x < 0)
-		g->mp.x = 0;
-	if (g->mp.y < 0)
-		g->mp.y = 0;
-	if (g->mp.x > g->mp.map.w - g->mp.w)
-		g->mp.x = g->mp.map.w - g->mp.w;
-	if (g->mp.y > g->mp.map.h - g->mp.h)
-		g->mp.y = g->mp.map.h - g->mp.h;
-	return ;
-}
-
-static void	cb_apply_pov(t_game *g)
-{
-	int				x;
-	int				y;
-	unsigned int	*s;
-	unsigned int	*d;
-
-	cb_clamp_pov(g);
-	y = 0;
-	while (y < g->mp.h)
-	{
-		x = 0;
-		while (x < g->mp.w)
-		{
-			s = (unsigned int *)(g->mp.map.addr + ((g->mp.y + y)
-						* g->mp.map.bpr) + ((g->mp.x + x) * 4));
-			d = (unsigned int *)(g->mp.addr + (y * g->mp.bpr) + (x * 4));
-			if (*s != 0xFF00FF)
-				*d = *s;
-			x++;
-		}
-		y++;
-	}
-}
-
 static void	cp_build_map(t_game *g, t_mp *m, t_img *sqr)
 {
 	int		x;
@@ -127,7 +58,7 @@ static void	cp_build_map(t_game *g, t_mp *m, t_img *sqr)
 		{
 			cb_coordinate(&c, 1, g, x * TSZ);
 			c.y = y * TSZ;
-			if (g->map[y][x] == '1')
+			if (g->map[y][x] == '1' || g->map[y][x] == '2')
 				cb_push_tile_to_frame(&m->map, sqr, c, 'R');
 			x++;
 		}

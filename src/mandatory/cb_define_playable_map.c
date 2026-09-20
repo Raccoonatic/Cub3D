@@ -6,14 +6,14 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 17:37:38 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/16 20:25:28 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:53:33 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-static int	cb_is_border(char **map, int y, int x);
 void		cb_define_playable_map(t_game *g, char **map);
+static void	cb_perimeter(char **map);
 static void	cb_upgrade_border(char **map, int *maxy, int *maxx);
 static void	cb_mapdatafill(char **des, char **src, int miny, int minx);
 static char	**cb_allocate_playable_map(char **map, int maxy, int maxx);
@@ -28,7 +28,7 @@ void	cb_define_playable_map(t_game *g, char **map)
 	maxy = 0;
 	maxx = 0;
 	dir = g->map[g->ply.map.y][g->ply.map.x];
-	g->map[g->ply.map.y][g->ply.map.x] = '5';
+	g->map[g->ply.map.y][g->ply.map.x] = '0';
 	cb_flood_fill(map, g->ply.map.y, g->ply.map.x);
 	cb_upgrade_border(map, &maxy, &maxx);
 	map = cb_allocate_playable_map(map, maxy, maxx);
@@ -40,9 +40,39 @@ void	cb_define_playable_map(t_game *g, char **map)
 	g->map[g->ply.map.y][g->ply.map.x] = dir;
 	cb_mapdatafill(map, g->map, maxy - i + 1, maxx - ft_strlen(map[0]) + 1);
 	cb_free_matrix(g->map);
+	cb_perimeter(map);
 	g->map = map;
 	cb_get_player_pos(g, &g->ply);
 	g->map[g->ply.map.y][g->ply.map.x] = '0';
+	return ;
+}
+
+static void	cb_perimeter(char **map)
+{
+	int	y;
+	int	x;
+	int	mx;
+
+	y = 0;
+	mx = ft_strlen(map[y]);
+	while (map[y])
+	{
+		x = 0;
+		if (y == 0 || !map[y + 1])
+		{
+			while (map[y][x])
+			{
+				map[y][x] = '2';
+				x++;
+			}
+		}
+		else
+		{
+			map[y][x] = '2';
+			map[y][mx - 1] = '2';
+		}
+		y++;
+	}
 	return ;
 }
 
@@ -99,33 +129,6 @@ static char	**cb_allocate_playable_map(char **map, int maxy, int maxx)
 	return (cb_matrixalloc((maxy - miny) + 1, (maxx - minx) + 1, '1'));
 }
 
-static int	cb_is_border(char **map, int y, int x)
-{
-	int	i;
-	int	j;
-
-	i = y - 1;
-	while (i <= y + 1)
-	{
-		if (i >= 0 && map[i])
-		{
-			j = x - 1;
-			while (j <= x + 1)
-			{
-				if (j >= 0 && j < (int)ft_strlen(map[i])
-					&& map[i][j] == 'F')
-				{
-					map[y][x] = '5';
-					return (1);
-				}
-				j++;
-			}
-		}
-		i++;
-	}
-	return (0);
-}
-
 static void	cb_upgrade_border(char **map, int *maxy, int *maxx)
 {
 	int	y;
@@ -139,13 +142,11 @@ static void	cb_upgrade_border(char **map, int *maxy, int *maxx)
 		{
 			if (map[y][x] == '1')
 			{
-				if (cb_is_border(map, y, x))
-				{
-					if (y > *maxy)
-						*maxy = y;
-					else if (x > *maxx)
-						*maxx = x;
-				}
+				if (y > *maxy)
+					*maxy = y;
+				else if (x > *maxx)
+					*maxx = x;
+				map[y][x] = '5';
 			}
 			x++;
 		}

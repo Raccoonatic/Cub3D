@@ -12,7 +12,7 @@
 
 #include "../../inc/cb_main_header_bonus.h"
 
-void		move_player(t_game *game);
+void		cb_move_player(t_game *game);
 static void	cb_move_left(t_game *g, double mvspd, double *nwx, double *nwy);
 static void	cb_move_right(t_game *g, double mvspd, double *nwx, double *nwy);
 static void	cb_move_foward(t_game *g, double mvspd, double *nwx, double *nwy);
@@ -122,7 +122,7 @@ static void	cb_move_right(t_game *g, double mvspd, double *nwx, double *nwy)
 	return ;
 }
 
-void	move_player(t_game *game)
+void	cb_move_player(t_game *game)
 {
 	double	move_speed;
 	double	new_x;

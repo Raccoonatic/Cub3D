@@ -12,7 +12,7 @@
 
 #include "../../inc/cb_main_header.h"
 
-void		move_player(t_game *game);
+void		cb_move_player(t_game *game);
 static void	cb_move_left(t_game *g, double mvspd, double *nwx, double *nwy);
 static void	cb_move_right(t_game *g, double mvspd, double *nwx, double *nwy);
 static void	cb_move_foward(t_game *g, double mvspd, double *nwx, double *nwy);
@@ -31,7 +31,7 @@ static void	cb_move_foward(t_game *g, double mvspd, double *nwx, double *nwy)
 		g->looking = 'R';
 	new_new_x = g->ply.ren.x + g->ply.dir.x * mvspd;
 	new_new_y = g->ply.ren.y + g->ply.dir.y * mvspd;
-	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
+	if (g->map[(int)new_new_y][(int)new_new_x] != '2')
 	{
 		*nwx = new_new_x;
 		*nwy = new_new_y;
@@ -57,7 +57,7 @@ static void	cb_move_backward(t_game *g, double mvspd, double *nwx, double *nwy)
 		g->looking = 'R';
 	new_new_x = g->ply.ren.x - g->ply.dir.x * mvspd;
 	new_new_y = g->ply.ren.y - g->ply.dir.y * mvspd;
-	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
+	if (g->map[(int)new_new_y][(int)new_new_x] != '2')
 	{
 		*nwx = new_new_x;
 		*nwy = new_new_y;
@@ -83,7 +83,7 @@ static void	cb_move_left(t_game *g, double mvspd, double *nwx, double *nwy)
 		g->looking = 'R';
 	new_new_x = g->ply.ren.x + g->ply.dir.y * mvspd;
 	new_new_y = g->ply.ren.y - g->ply.dir.x * mvspd;
-	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
+	if (g->map[(int)new_new_y][(int)new_new_x] != '2')
 	{
 		*nwx = new_new_x;
 		*nwy = new_new_y;
@@ -109,7 +109,7 @@ static void	cb_move_right(t_game *g, double mvspd, double *nwx, double *nwy)
 		g->looking = 'R';
 	new_new_x = g->ply.ren.x - g->ply.dir.y * mvspd;
 	new_new_y = g->ply.ren.y + g->ply.dir.x * mvspd;
-	if (g->map[(int)new_new_y][(int)new_new_x] != '1')
+	if (g->map[(int)new_new_y][(int)new_new_x] != '2')
 	{
 		*nwx = new_new_x;
 		*nwy = new_new_y;
@@ -122,7 +122,7 @@ static void	cb_move_right(t_game *g, double mvspd, double *nwx, double *nwy)
 	return ;
 }
 
-void	move_player(t_game *game)
+void	cb_move_player(t_game *game)
 {
 	double	move_speed;
 	double	new_x;

@@ -12,7 +12,7 @@
 
 #include "../../inc/cb_main_header_bonus.h"
 
-int		dispmap(char **map);
+int		cb_dispmap(char **map);
 int		cb_map_width(char **map);
 int		cb_map_height(char **map);
 void	cb_get_mapsize(t_game *g, t_mp *mp);
@@ -44,7 +44,7 @@ int	cb_check_surr(char **map, int i, int j)
 	return (1);
 }
 
-int	dispmap(char **map)
+int	cb_dispmap(char **map)
 {
 	int	i;
 	int	j;

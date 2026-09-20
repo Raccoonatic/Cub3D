@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 21:29:04 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 12:13:44 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 13:14:12 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	cb_push_map_to_frame(t_img *dst, t_mp *src, t_cord c, char f)
 	}
 }
 
-void	sl_clear_map_buffer(t_mp *mp)
+void	cb_clear_map_buffer(t_mp *mp)
 {
 	char	*end;
 	char	*start;

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 12:23:01 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 12:13:17 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 13:04:13 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	main(int ac, char **av)
 		cb_fail(1, 1, "Invalid map.");
 	if (!g.map)
 		cb_fail(1, 1, "Failed to create map.");
-	dispmap(g.map);
+	cb_dispmap(g.map);
 	cb_innit_player(&g);
 	cb_define_playable_map(&g, map);
-	dispmap(g.map);
+	cb_dispmap(g.map);
 	cb_game_init(&g);
 	mlx_hook(g.win, 17, 1L << 0, (int (*)(void))(void (*)(void))cb_doclose, &g);
 	mlx_hook(g.win, 2, 1L << 0, (int (*)(void))(void (*)(void))cb_dokeydow, &g);

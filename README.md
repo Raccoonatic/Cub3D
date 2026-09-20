@@ -135,7 +135,7 @@ Alternatively, you can pass a number **`n`** as an argument to start the script 
 
 ## 📚 Resources
 
-- General Documentation:
+- General Raycasting Documentation:
 	- 👉 [Lode's Raycasting Tutorial](https://lodev.org/cgtutor/raycasting.html)
 
 - Exploring the math behind Raycasting:

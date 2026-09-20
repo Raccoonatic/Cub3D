@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 21:24:41 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 12:11:55 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:55:35 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	cb_get_tex_x(t_col *clmn, t_img *tex)
 	double	wall_x;
 	int		tex_x;
 
-	if	(clmn->face == FN || clmn->face == FS)
+	if (clmn->face == FN || clmn->face == FS)
 		wall_x = clmn->hit.x;
 	else
 		wall_x = clmn->hit.y;
@@ -32,15 +32,15 @@ static int	cb_get_tex_x(t_col *clmn, t_img *tex)
 	return (tex_x);
 }
 
-static t_img    *cb_get_wall_tex(t_game *g, t_card face)
+static t_img	*cb_get_wall_tex(t_game *g, t_card face)
 {
-    if (face == FN)
-        return (&g->nwall);
-    if (face == FS)
-        return (&g->swall);
-    if (face == FE)
-        return (&g->ewall);
-    return (&g->wwall);
+	if (face == FN)
+		return (&g->nwall);
+	if (face == FS)
+		return (&g->swall);
+	if (face == FE)
+		return (&g->ewall);
+	return (&g->wwall);
 }
 
 static void	cb_draw_column(t_img *img, t_img *tex, t_cord *crd, double stp)
