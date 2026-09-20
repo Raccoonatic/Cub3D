@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:32:42 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:56:26 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:40 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 int			cb_colorshift(int c);
 void		cb_blackpink(t_img *img, int h, int pink);

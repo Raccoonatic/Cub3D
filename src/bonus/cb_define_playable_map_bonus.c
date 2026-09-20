@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/06 17:37:38 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:53:38 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:12:51 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 static int	cb_is_border(char **map, int y, int x);
 void		cb_define_playable_map(t_game *g, char **map);

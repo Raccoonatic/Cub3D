@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 19:38:17 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:57:12 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:14:07 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void	cb_zero_mp(t_mp *mp);
 void	cb_ray_init(t_ray *ray);

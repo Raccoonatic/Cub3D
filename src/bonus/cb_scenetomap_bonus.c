@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:15:26 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:56:45 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:48 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 static char	**cb_refine_map(t_game *g, char **raw);
 static char	**cb_read_the_scene(t_game *g, int fd);

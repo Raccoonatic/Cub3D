@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:38:18 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:56:48 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:51 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 char		*cb_skip_blank(char *line);
 static int	cb_check_missing_data(t_game *g);

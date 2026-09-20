@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 11:41:13 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:54:57 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:24 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void		cb_minimap_init(t_game *g, t_mp *m);
 void		cb_minimap_compose(t_game *g, t_mp *m);

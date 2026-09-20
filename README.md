@@ -11,101 +11,106 @@ Cub3D is an homage to the legendary Wolfenstein 3D. The project explores the mat
 
 ## ⚙️ Instructions
 
-There are 3 executables that you can create with the provided makefile:
+The provided Makefile includes three primary compilation rules:
 
 ### 🛠️ Compilation
 
-- **make** : Will compile the binary **"cub3D"** as intended by the project's mandatory section of the subject.
+- **`make`** : Compiles the standard **"`cub3D`"** binary, fulfilling the mandatory requirements of the project.
 
 ```bash
 make
 ```
 
-- **make bonus** : Will compile the previous binary **"cub3D"**, with some additional features from the project's bonus section of the subject.
+- **`make bonus`** : Compiles the **"`cub3D`"** binary, with some additional features specified in the project's bonus section.
 
 ```bash
 make bonus
 ```
 
-- **make showcase** : Will compile the previous binary **"cub3D"**, with the additional features from the bonus section, along with an executable shell script **"showcase.sh"**. That will immediately begin running, iterating through 4 maps designed to explore the capabilities of the project.
+- **`make showcase`** : Compiles the **"`cub3D`"** binary, with the additional features from the bonus section, and executes a shell script **"`showcase.sh`"**. that automatically iterates through four custom maps designed to explore the engine's capabilities.
 
 ```bash
 make showcase
 ```
-### 🛠️ Running the Game
+## 🛠️ Running the Game
 
-Following any of the compilation instructions above, will leave you with a **"cub3D"** binary, that you can run passing the path to a scene file as a parameter.
+Completing any of the compilation steps above generates a **"`cub3D`"** binary. You can run it by passing the path to a scene file as an argument:
 
 ```bash
 ./cub3D ./maps/scene_n.cub
 ```
 
-Furthermore, if you compiled with the **make showcase** command, you can simply run the **"showcase.sh"** shell script as it is.
+Furthermore, if you compiled using the **`make showcase`** rule, you can execute the generated **"`showcase.sh`"** shell script directly.
 
 ```bash
 ./showcase.sh
 ```
 
-Or run it passing a number **n** as a parameter, to start the script from a specific scene.
+Alternatively, you can pass a number **`n`** as an argument to start the script from a specific scene:
 
 ```bash
 ./showcase.sh n
 ```
 
->The scene file needs to fulfill a series of conditions specified in the project's subject. In summary, it is a text file with the .cub suffix, that will be interpreted by the program. Below is an example of the contents of the file:
-
-```bash
-NO ./path_to_the_north-facing_texture
-SO ./path_to_the_south-facing_texture
-WE ./path_to_the_west-facing_texture
-EA ./path_to_the_east-facing_texture
-
-F 0,0,0
-C 225,225,225
-
-11111
-10N01
-11111
-```
->The program is designed to accept only this information. However, the pieces on information will be able to be interpreted in any other and even with spaces in the middle as long as:
+><br>
+>The scene file must fulfill specific conditions outlined in the project subject. This file, in short, is a text file with the *.cub* extension, that the engine interprets to build the 3D environment. Below is an example of a valid scene file:
 >
-> - The *map* (The region with ones and zeroes), is at the end of the file.
-> - The *Identifiers* (NO, SO, WE, EA, F, C), are exacly as shown in the example. For example, for the identifier "NO", if the scene only contains "N", "N   O" or "no", the scene will be considered invalid.
-> - The paths to the textures are not separated by spaces. (Unless the name of the textures or directories have them).
-> - The colors are within the valid values (0 - 255). these colors should be defined with the typical RGB format, however, they can have any number or white spaces around or in between the values.
+>```text
+>NO ./path_to_the_north-facing_texture
+>SO ./path_to_the_south-facing_texture
+>WE ./path_to_the_west-facing_texture
+>EA ./path_to_the_east-facing_texture
 >
-> **The information is interpreted as follows:**
+>F 0,0,0
+>C 225,225,225
+>
+>11111
+>10N01
+>11111
+>```
+>The engine is designed to validate this information strictly. However, elements can be arranged in any other and even include spaces in the middle as long as the following conditions are met:
+>
+> - The *map* grid (The region with ones, zeroes and the player position), must be the last element in the file.
+> - The *Identifiers* (*NO*, *SO*, *WE*, *EA*, *F*, *C*), are exacly as shown in the example. For example, for the identifier "NO", variations like "N", "N   O" or "no", will invalidate the scene.
+> - Texture paths must not be separated by spaces (unless the directory or file name explicitly contains them).
+> - Color values must fall within the valid range (0 - 255). These colors should be defined with the typical RGB format, however, they can have any number or white spaces around or in between the values.
+>
+> **This information will be interpreted as follows:**
 >
 > #### 🎬 Scene Identifiers
 >
-> - **NO** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_north-facing_texture**.
-> - **SO** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_south-facing_texture**.
-> - **WE** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_west-facing_texture**.
-> - **EA** : This *Identifier* Marks the line where the path to the north texture is stored. Next to it at some point it should have the **./path_to_the_east-facing_texture**.
-> - **F** : This *Identifier* Marks the line where the color for the floor is defined.
-> - **C** : This *Identifier* Marks the line where the color for the ceiling is defined.
+> - **`NO`** :	This *Identifier* Marks the line where the **./path_to_the_north-facing_texture** is stored.
+> - **`SO`** :	This *Identifier* Marks the line where the **./path_to_the_south-facing_texture** is stored.
+> - **`WE`** :	This *Identifier* Marks the line where the **./path_to_the_west-facing_texture** is stored.
+> - **`EA`** :	This *Identifier* Marks the line where the **./path_to_the_east-facing_texture** is stored.
+> - **`F`** :	This *Identifier* Marks the line where the color for the **floor** is defined.
+> - **`C`** :	This *Identifier* Marks the line where the color for the **ceiling** is defined.
 >
 > #### 🗺️ Map Format
-> The characters in the map are interpreted as follows:
+> The characters within the map grid are interpreted as follows:
 >
-> - **[1]**	Wall.
-> - **[0]**	Empty space.
-> - **[P]**	The Player's starting position. Facing North.
-> - **[S]**	The Player's starting position. Facing South.
-> - **[W]**	The Player's starting position. Facing West.
-> - **[E]**	The Player's starting position. Facing East.
+> - **`[1]`**	Wall.
+> - **`[0]`**	Empty space.
+> - **`[N]`**	The Player's starting position. Facing *North*.
+> - **`[S]`**	The Player's starting position. Facing *South*.
+> - **`[W]`**	The Player's starting position. Facing *West*.
+> - **`[E]`**	The Player's starting position. Facing *East*.
 >
-> The map can have any shape, and it can be separated by blank rows or columns, as long as all regions described are completely surrounded by walls.
-> The map must include a starting position for the player. This position will be marked by a character *(N, S, W, or E)*, that will define "Where" the player will be looking at the start of the program.
-> The program will analyze the region that the player can access. If there are remote areas or inaccesible rooms, defined in the map, they will not be part of the final render.
+>The map can have any shape, and it can be separated by blank rows or columns, as long as all described regions are completely surrounded by walls, and the spaces are constructed from `' '` characters *(ASCII 32)*.
+>
+> The map must include exactly one starting position for the player. This position will be marked by a character *(N, S, W, or E)*, which defines *"where"* the player will be facing at the start.
+>
+> The engine analyzes accessible regions. If there are remote areas or inaccessible rooms defined in the map, they will not be rendered.
+<br></br>
+---
 
 ### 🎮 Controls
-- **WASD**					→	*Move The Player.*
-- **Arrow Key Left**		→	*Rotate point of view Left.*
-- **Arrow Key Right**		→	*Rotate point of view Right.*
-- **ESC**					→	*Exit game.*
-- **Window Close Button**	→	*Exit game.*
-
+- **`WASD`**				→	*Move the Player.*
+- **`Arrow Key Left`**		→	*Rotate point of view Left.*
+- **`Arrow Key Right`**		→	*Rotate point of view Right.*
+- **`ESC`**					→	*Exit game.*
+- **`Window Close Button`**	→	*Exit game.*
+<br></br>
 ---
 
 ## 🧠 Technical Overview
@@ -114,17 +119,17 @@ C 225,225,225
 
 - Graphics API: **MiniLibX (mlx)**
 
-	- **Dynamic 2D Camera:** Viewport offset system for rendering massive, scrolling levels.
-	- **Direct Buffer Rendering:** Bypasses standard grid-drawing by pushing pixels directly to the image data buffer.
-	- **Visual Lerping:** Separates logical grid coordinates from visual coordinates for fluid, sub-tile sprite gliding.
-	- **Real-Time Sprite Flipping:** Inverts texture byte-reading mathematically to face moving directions without duplicated assets.
-	- **Procedural Autotiling:** Evaluates neighboring matrix characters to dynamically assign corner and border textures.
-	- **Padded AABB Collision:** Custom hitboxes with pixel tolerances for snug and fair interactions.
-	- **Pseudo-Random AI:** Independent enemy movement logic and pathing.
-	- **Event Handling:** Fluid window management and asynchronous keypress listening.
-	- **Map Parsing & Validation:** Strict error-checking and flood-fill pathfinding.
-	- **Resource Management:** Bulletproof allocation and cleanup *(because leaks, am I right?)*.
-
+	- **Dynamic 2D Camera:** Minimap viewport offset system for rendering massive maps.
+	- **DDA (Digital Differential Analysis):** Core raycasting algorithm used to detect wall intersections.
+	- **Camera Plane:** Perpendicular distance calculation to prevent Euclidean "fisheye" distortion.
+	- **1D Affine Texture Mapping:** Dynamically scales wall textures based on distance and perspective.
+	- **Vector-Based Camera Logic:** Calculates smooth player movement and point-of-view rotation.
+	- **Bresenham's Line Algorithm:** Ensures efficient line drawing.
+	- **Direct Buffer Rendering:** Bypasses standard grid-drawing by pushing pixels directly to the image data buffer for maximum performance.
+	- **Real-Time Sprite Flipping:** Mathematically inverts texture byte-reading to face moving directions without requiring duplicated image assets.
+	- **Event Handling:** Fluid window management and synchronous keypress listening.
+	- **Map Parsing & Validation:** Strict error-checking and flood-fill validation to refine accessible areas.
+	- **Resource Management:** Bulletproof heap allocation and memory cleanup *(because leaks, am I right?)*.
 ---
 
 
@@ -174,30 +179,60 @@ AI was used as a **supporting tool**, mainly for:
 ## 🚨 Other Makefile Utilities
 
 ```bash
-make dependencies
+make mlx_dependencies
 ```
-> Minilibx requires some dependencies that you might not have installed. If that's the case, this rule should fix your compilation issues. **Requires sudo access**.
-
-```bash
-make open
-```
-> Opens all the source files that were created for this project.
+> Installs system dependencies required by MiniLibX to resolve compilation issues. **Requires sudo access**.
 
 ```bash
 make clean
 ```
-> Removes the object files, created during compilation.
+> Removes the object files created during compilation.
 
 ```bash
 make fclean
 ```
-> Runs **make clean** and removes the **so_long** executable.
+> Runs **`make clean`** and removes the compiled **`cub3D`** binary.
 
 ```bash
 make re
 ```
-> Runs **make fclean** and re-compiles the **so_long** executable.
+> Runs **`make fclean`** and recompiles the standard **`cub3D`** binary.
 
+```bash
+make rebon
+```
+> Runs **`make fclean`** and recompiles the **`cub3D`** binary with the bonus features.
+
+```bash
+make wipe
+```
+> Removes the MiniLibX (mlx) library files, forcing the compilation sequence to re-download them.
+
+```bash
+make leaks LEAK_ARGS="./path/to/scene.cub"
+```
+> Runs the **`cub3D`** binary through ***Valgrind*** to check for memory leaks. The *LEAK_ARGS* variable allows you to specify the target scene.
+
+```bash
+make parse_tests
+```
+> Runs the **`cub3D`** binary with various custom test scenes. Each test gives a breif description of the map being tested, and the execution will be interrupted if an unexpected output occurs.
+
+```bash
+make add_parse_test_permit
+make rm_parse_test_permit
+```
+> Creates or removes, respectively, specific problematic scene files and invalid textures. Primarily designed for the *`parse_tests`* sequence, but can be run independently to manually examine the test cases.
+
+```bash
+make val_parse_tests
+```
+> Runs the **`cub3D`** binary with various custom test scenes while using ***Valgrind***. It is essentially equivalent to the *`parse_tests`* rule, with the added benefit of memory leak analysis.
+
+```bash
+make normloop
+```
+> Creates a *'normloop.sh'* shell script to run the 42 Norminette in a continuous loop, allowing you to see formatting errors disappear in real time as you fix them.
 ---
 
 ## 🧾 Final Notes 🐆🦝

@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:11 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:56:19 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:35 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void			cb_castray(t_game *g, t_vd raystart, t_vd raydir, t_col *clmn);
 static void		cb_get_step_dir(t_vd rstart, t_vd rdir, t_ray *ray);

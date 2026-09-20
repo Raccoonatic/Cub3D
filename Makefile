@@ -195,7 +195,9 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re leaks wipe mlx_dependencies add_parse_test_permit rm_parse_test_permit parse_tests val_parse_tests normloop showcase
+rebon: fclean bonus
+
+.PHONY: all clean fclean re rebon leaks wipe mlx_dependencies add_parse_test_permit rm_parse_test_permit parse_tests val_parse_tests normloop showcase
 
 # /////////////////////// -- * Functionalities * -- ////////////////////// #
 

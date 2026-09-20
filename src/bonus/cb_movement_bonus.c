@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void		move_player(t_game *game);
 static void	cb_move_left(t_game *g, double mvspd, double *nwx, double *nwy);

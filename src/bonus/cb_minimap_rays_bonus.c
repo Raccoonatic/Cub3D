@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 16:03:18 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:55:00 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:28 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 int			cb_get_ray_color(t_game *g);
 void		cb_draw_ray_minimap(t_game *g, t_vd hit);

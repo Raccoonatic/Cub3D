@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:47:55 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:53:44 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:12:54 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void		cb_frink(t_game *g);
 void		cb_free_matrix(char **matrix);

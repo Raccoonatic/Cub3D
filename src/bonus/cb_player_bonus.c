@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void		cb_innit_player(t_game *game);
 static void	cb_camera_plane_init(t_player *player);

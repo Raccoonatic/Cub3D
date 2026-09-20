@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 13:47:41 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:57:08 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:14:02 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void	t_vd_equal(t_vd *v1, t_vd *v2);
 void	t_vi_equal(t_vi *v1, t_vi *v2);

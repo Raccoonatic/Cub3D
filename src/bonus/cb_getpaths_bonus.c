@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:33:50 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:54:11 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:09 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 int	cb_get_north(t_game *g, char *cursor, char *line, int fd);
 int	cb_get_south(t_game *g, char *cursor, char *line, int fd);

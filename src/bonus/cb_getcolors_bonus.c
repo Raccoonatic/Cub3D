@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:30:12 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:54:07 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:07 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 int			cb_get_flor(t_game *g, char *cursor, char *line, int fd);
 int			cb_get_ceil(t_game *g, char *cursor, char *line, int fd);

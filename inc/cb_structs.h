@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/19 11:08:59 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:02:57 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_cord
 	int	x;
 	int	y;
 	int	tex_x;
-	int	line_height;
+	int	lh;
 }	t_cord;
 
 typedef struct s_vd

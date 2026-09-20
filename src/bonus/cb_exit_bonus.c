@@ -6,11 +6,11 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:48:46 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:54:00 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:01 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
 void	cb_fail(int errn, int code, const char *msg);
 void	cb_kill_the_game(t_game *gm, int flag, int errn, int code);

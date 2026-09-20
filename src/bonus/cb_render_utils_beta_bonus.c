@@ -6,15 +6,15 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 21:24:41 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/18 13:56:29 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/19 12:13:42 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cb_main_header.h"
+#include "../../inc/cb_main_header_bonus.h"
 
-void		cb_render_walls(t_game *g);
-static void	cb_draw_column(t_img *img, t_img *tex, t_cord *cords);
-static t_img    *cb_get_wall_tex(t_game *g, t_card face);
+void			cb_render_walls(t_game *g);
+static void		cb_draw_column(t_img *img, t_img *tex, t_cord *crd, double stp);
+static t_img	*cb_get_wall_tex(t_game *g, t_card face);
 
 static int	cb_get_tex_x(t_col *clmn, t_img *tex)
 {
@@ -43,28 +43,26 @@ static t_img    *cb_get_wall_tex(t_game *g, t_card face)
     return (&g->wwall);
 }
 
-static void	cb_draw_column(t_img *img, t_img *tex, t_cord *cords)
+static void	cb_draw_column(t_img *img, t_img *tex, t_cord *crd, double stp)
 {
 	char	*tmp;
 	char	*src;
-	double	step;
 	double	pos;
 	int		y;
 	int		tex_y;
 
-	step = (double)tex->h / cords->line_height;
-	pos = (cords->y - img->h / 2 + cords->line_height / 2) * step;
-	y = cords->y;
-	while (y <= cords->th)
+	pos = (crd->y - (double)img->h / 2 + (double)crd->lh / 2) * stp;
+	y = crd->y;
+	while (y <= crd->th)
 	{
 		tex_y = (int)pos;
 		if (tex_y >= tex->h)
 			tex_y = tex->h - 1;
-		src = tex->addr + (tex_y * tex->bpr) + (cords->tex_x * (tex->bpx / 8));
-		tmp = img->addr + (y * img->bpr) + (cords->x * (img->bpx / 8));
+		src = tex->addr + (tex_y * tex->bpr) + (crd->tex_x * (tex->bpx / 8));
+		tmp = img->addr + (y * img->bpr) + (crd->x * (img->bpx / 8));
 		if (*(unsigned int *)src != 0xFF00FF)
 			*(unsigned int *)tmp = *(unsigned int *)src;
-		pos += step;
+		pos += stp;
 		y++;
 	}
 }
@@ -90,9 +88,9 @@ void	cb_render_walls(t_game *g)
 			cords.th = g->h - 1;
 		cords.fh = g->h;
 		cords.fw = g->w;
-		cords.line_height = line_height;
+		cords.lh = line_height;
 		cords.x = i;
-		cb_draw_column(&g->buf, tex, &cords);
+		cb_draw_column(&g->buf, tex, &cords, ((double)tex->h / cords.lh));
 		i++;
 	}
 	return ;
