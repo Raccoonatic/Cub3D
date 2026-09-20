@@ -119,13 +119,13 @@ Alternatively, you can pass a number **`n`** as an argument to start the script 
 
 - Graphics API: **MiniLibX (mlx)**
 
-	- **Dynamic 2D Camera:** Minimap viewport offset system for rendering massive maps.
 	- **DDA (Digital Differential Analysis):** Core raycasting algorithm used to detect wall intersections.
 	- **Camera Plane:** Perpendicular distance calculation to prevent Euclidean "fisheye" distortion.
 	- **1D Affine Texture Mapping:** Dynamically scales wall textures based on distance and perspective.
 	- **Vector-Based Camera Logic:** Calculates smooth player movement and point-of-view rotation.
 	- **Bresenham's Line Algorithm:** Ensures efficient line drawing.
 	- **Direct Buffer Rendering:** Bypasses standard grid-drawing by pushing pixels directly to the image data buffer for maximum performance.
+	- **Dynamic 2D Camera:** Minimap viewport offset system for rendering massive maps.
 	- **Real-Time Sprite Flipping:** Mathematically inverts texture byte-reading to face moving directions without requiring duplicated image assets.
 	- **Event Handling:** Fluid window management and synchronous keypress listening.
 	- **Map Parsing & Validation:** Strict error-checking and flood-fill validation to refine accessible areas.
