@@ -6,13 +6,19 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 15:51:16 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 14:06:03 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/16 20:25:27 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-static void cb_get_max_len(char **raw, int maxy, int *max_len)
+static void	cb_find_maxy(char **raw, int miny, int *maxy);
+static void	cb_get_max_len(char **raw, int maxy, int *max_len);
+static void	cb_find_minx(char **raw, int miny, int maxy, int *minx);
+static void	cb_find_maxx(char **raw, int minx, int maxy, int *maxx);
+int			cb_define_borders(char **raw, int *maxy, int *minx, int *maxx);
+
+static void	cb_get_max_len(char **raw, int maxy, int *max_len)
 {
 	int	y;
 
@@ -29,9 +35,9 @@ static void cb_get_max_len(char **raw, int maxy, int *max_len)
 
 static void	cb_find_maxx(char **raw, int minx, int maxy, int *maxx)
 {
-	int max_len;
-	int y;
-	bool is_blank;
+	int		max_len;
+	int		y;
+	bool	is_blank;
 
 	cb_get_max_len(raw, maxy, &max_len);
 	while (minx < max_len)
@@ -43,7 +49,7 @@ static void	cb_find_maxx(char **raw, int minx, int maxy, int *maxx)
 			if ((size_t)minx < ft_strlen(raw[y]) && !ft_isspace(raw[y][minx]))
 			{
 				is_blank = false;
-				break;
+				break ;
 			}
 			y++;
 		}
@@ -58,35 +64,35 @@ static void	cb_find_maxx(char **raw, int minx, int maxy, int *maxx)
 
 static void	cb_find_minx(char **raw, int miny, int maxy, int *minx)
 {
-	int column;
+	int	column;
 
 	column = 0;
-	while(raw[miny][column] && ft_isspace(raw[miny][column]))
+	while (raw[miny][column] && ft_isspace(raw[miny][column]))
 		column++;
 	*minx = column;
 	while (++miny <= maxy)
 	{
 		column = 0;
-		while(raw[miny][column] && ft_isspace(raw[miny][column]))
+		while (raw[miny][column] && ft_isspace(raw[miny][column]))
 			column++;
 		if (column < *minx)
 			*minx = column;
 	}
-	return;
+	return ;
 }
 
 static void	cb_find_maxy(char **raw, int miny, int *maxy)
 {
-	char *trav;
+	char	*trav;
 
 	trav = cb_skip_blank(raw[miny]);
-	while(*trav)
+	while (*trav)
 	{
 		miny++;
 		if (raw[miny])
 			trav = cb_skip_blank(raw[miny]);
 		else
-		 	break ;
+			break ;
 	}
 	*maxy = miny - 1;
 	return ;
@@ -99,7 +105,7 @@ int	cb_define_borders(char **raw, int *maxy, int *minx, int *maxx)
 
 	miny = 0;
 	trav = cb_skip_blank(raw[miny]);
-	while(!*trav)
+	while (!*trav)
 	{
 		miny++;
 		trav = cb_skip_blank(raw[miny]);

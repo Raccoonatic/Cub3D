@@ -6,17 +6,17 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 17:03:36 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 16:13:42 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:44:50 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cb_main_header.h"
 
-char	**cb_matrixalloc(int columns, int rows);
-void	cb_remove_trailing_blanks(t_game *g, char **map);
+void	cb_flood_fill(char **map, int y, int x);
+char	**cb_matrixalloc(int columns, int rows, int c);
 void	cb_map_populate(char **raw, char **dest, int miny, int minx);
 
-char	**cb_matrixalloc(int columns, int rows)
+char	**cb_matrixalloc(int columns, int rows, int c)
 {
 	char	**ret;
 	int		guide;
@@ -37,7 +37,7 @@ char	**cb_matrixalloc(int columns, int rows)
 			}
 			return (free(ret), NULL);
 		}
-		ft_memset(ret[guide], 'B', rows);
+		ft_memset(ret[guide], c, rows);
 		guide++;
 	}
 	ret[guide] = NULL;
@@ -46,8 +46,8 @@ char	**cb_matrixalloc(int columns, int rows)
 
 void	cb_map_populate(char **raw, char **dest, int miny, int minx)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (dest[i] && raw[miny + i])
@@ -60,6 +60,25 @@ void	cb_map_populate(char **raw, char **dest, int miny, int minx)
 			j++;
 		}
 		i++;
+	}
+	return ;
+}
+
+void	cb_flood_fill(char **map, int y, int x)
+{
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '0')
+				map[y][x] = 'F';
+			if (map[y][x] == 'B')
+				map[y][x] = '1';
+			x++;
+		}
+		y++;
 	}
 	return ;
 }

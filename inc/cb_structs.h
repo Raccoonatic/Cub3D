@@ -6,18 +6,88 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:46:43 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/04 01:04:58 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/23 13:50:35 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CB_STRUCTS_H
 # define CB_STRUCTS_H
 
+# include "./cb_settings.h"
+
+typedef enum e_kys
+{
+	K_W = 119,
+	K_A = 97,
+	K_S = 115,
+	K_D = 100,
+	K_ESC = 65307,
+	K_LFT = 65361,
+	K_RGT = 65363,
+	K_UP = 65362,
+	K_DOW = 65364
+}	t_kys;
+
+typedef enum e_card
+{
+	FN = 0,
+	FS = 1,
+	FE = 2,
+	FW = 3
+}	t_card;
+
+typedef struct s_cord
+{
+	int	fh;
+	int	fw;
+	int	th;
+	int	tw;
+	int	x;
+	int	y;
+	int	tex_x;
+	int	lh;
+}	t_cord;
+
+typedef struct s_vd
+{
+	double	x;
+	double	y;
+}	t_vd;
+
+typedef struct s_vi
+{
+	int	x;
+	int	y;
+}	t_vi;
+
+typedef struct s_player
+{
+	t_vi	map;
+	t_vd	ren;
+	t_vd	dir;
+	t_vd	plne;
+	double	acel;
+}	t_player;
+
+typedef struct s_line
+{
+	t_vi	step;
+	t_vi	len;
+	int		err;
+}	t_line;
+
+typedef struct s_col
+{
+	double	perp_dist;
+	t_card	face;
+	t_vd	hit;
+}	t_col;
+
 typedef struct s_img
 {
 	void	*main;
 	char	*addr;
-	char 	*path;
+	char	*path;
 	int		bpx;
 	int		bpr;
 	int		e;
@@ -32,6 +102,23 @@ typedef struct s_img
 	int		crnt_frm;
 }	t_img;
 
+typedef struct s_mp
+{
+	void	*pov;
+	char	*addr;
+	t_img	map;
+	t_img	ph;
+	int		bpx;
+	int		bpr;
+	int		e;
+	int		h;
+	int		w;
+	int		x;
+	int		y;
+	int		ray_color;
+	int		flor_color;
+}	t_mp;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -40,28 +127,35 @@ typedef struct s_game
 	int			h;
 	int			w;
 	int			flor_c;
-	int 		ceil_c;
-
+	int			ceil_c;
+	t_col		columns[WW];
+	t_mp		mp;
+	t_img		bkg;
 	t_img		buf;
-	t_img		flor;
-	t_img		ceil;
-	t_img		minimap;
 	t_img		nwall;
 	t_img		swall;
 	t_img		ewall;
 	t_img		wwall;
-
+	t_player	ply;
+	char		looking;
 	long long	tstamp;
+	int			raymx;
+	bool		kw;
+	bool		ka;
+	bool		ks;
+	bool		kd;
+	bool		klft;
+	bool		krgt;
 }	t_game;
 
-typedef struct s_player
+typedef struct s_ray
 {
-	int			x;
-	int			y;
-	double		ren_x;
-	double		ren_y;
-	char		dir;
-	double		acel;
-} t_player;
+	t_vd	stps;
+	t_vi	stpdir;
+	t_vi	vmap;
+	t_vd	raylen;
+	double	distance;
+	t_game	*g;
+}	t_ray;
 
 #endif

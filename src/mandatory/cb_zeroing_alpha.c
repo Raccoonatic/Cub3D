@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cb_zeroing.c                                       :+:      :+:    :+:   */
+/*   cb_zeroing_alpha.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 12:54:35 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 14:06:02 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:36:56 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,38 @@ void	cb_zeroing(t_game *game)
 	game->mlx = NULL;
 	game->win = NULL;
 	game->map = NULL;
-	game->h = 0;
-	game->w = 0;
+	game->h = WH;
+	game->w = WW;
 	game->flor_c = -1;
 	game->ceil_c = -1;
 	game->tstamp = cb_now();
+	game->looking = 'R';
+	game->raymx = WH + WW;
 	cb_zero_img(game);
+	cb_zero_mp(&(game->mp));
+	game->kw = false;
+	game->ka = false;
+	game->ks = false;
+	game->kd = false;
+	game->klft = false;
+	game->krgt = false;
 	return ;
 }
 
 static void	cb_zero_img(t_game *game)
 {
+	cb_null_ptrs(&game->bkg);
 	cb_null_ptrs(&game->buf);
-	cb_null_ptrs(&game->flor);
-	cb_null_ptrs(&game->ceil);
-	cb_null_ptrs(&game->minimap);
+	cb_null_ptrs(&game->mp.map);
+	cb_null_ptrs(&game->mp.ph);
 	cb_null_ptrs(&game->nwall);
 	cb_null_ptrs(&game->swall);
 	cb_null_ptrs(&game->ewall);
 	cb_null_ptrs(&game->wwall);
 	cb_zero_ints(&game->buf);
-	cb_zero_ints(&game->flor);
-	cb_zero_ints(&game->ceil);
-	cb_zero_ints(&game->minimap);
+	cb_zero_ints(&game->bkg);
+	cb_zero_ints(&game->mp.map);
+	cb_zero_ints(&game->mp.ph);
 	cb_zero_ints(&game->nwall);
 	cb_zero_ints(&game->swall);
 	cb_zero_ints(&game->ewall);
@@ -75,14 +84,4 @@ void	cb_zero_ints(t_img *i)
 	i->mx_index = 0;
 	i->crnt_frm = 0;
 	return ;
-}
-
-void cb_zero_player(t_player *player)
-{
-	player-> x = 0;
-	player-> y = 0;
-	player-> ren_x = 0.0;
-	player-> ren_y = 0.0;
-	player-> dir = '\0';
-	player-> acel = 0.05;
 }

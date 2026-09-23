@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:30:12 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 15:55:39 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/23 13:50:33 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int			cb_get_flor(t_game *g, char *cursor, char *line, int fd);
 int			cb_get_ceil(t_game *g, char *cursor, char *line, int fd);
 static int	cb_rgb_check(char **rgb, t_game *g, char *line, int fd);
+static bool	cb_is_num_invalid(char *str, bool *inv);
 
 static bool	cb_is_num_invalid(char *str, bool *inv)
 {
 	int	j;
 
 	j = 0;
-	while(ft_isdigit(str[j]))
+	while (ft_isdigit(str[j]))
 		j++;
 	if (str[j] && !ft_isdigit(str[j]))
 	{
@@ -43,15 +44,18 @@ static int	cb_rgb_check(char **rgb, t_game *g, char *line, int fd)
 		return (1);
 	while (rgb[i])
 	{
-		if(cb_is_num_invalid(rgb[i], &invalid))
-			break;
-		i++;
+		if (cb_is_num_invalid(rgb[i++], &invalid))
+			break ;
 	}
 	if (invalid || i != 3)
 	{
 		close(fd);
-		while ((flush = get_next_line(fd)))
+		flush = get_next_line(fd);
+		while (flush)
+		{
 			free(flush);
+			flush = get_next_line(fd);
+		}
 		cb_frexit(g, line, rgb, "Incorrect color formatting");
 	}
 	return (0);
@@ -76,11 +80,11 @@ int	cb_get_flor(t_game *g, char *cursor, char *line, int fd)
 	free(color);
 	if (cb_rgb_check(rgb, g, line, fd))
 		return (1);
-	red =	atoi(rgb[0]);
-	gre = atoi(rgb[1]);
-	blu = atoi(rgb[2]);
+	red = ft_atoi(rgb[0]);
+	gre = ft_atoi(rgb[1]);
+	blu = ft_atoi(rgb[2]);
 	if (red > 255 || gre > 255 || blu > 255
-		|| red < 0 || gre < 0 || blu < 0 )
+		|| red < 0 || gre < 0 || blu < 0 || (g->flor_c != -1))
 		return (cb_free_matrix(rgb), 1);
 	g->flor_c = red << 16 | gre << 8 | blu;
 	return (cb_free_matrix(rgb), 0);
@@ -105,11 +109,11 @@ int	cb_get_ceil(t_game *g, char *cursor, char *line, int fd)
 	free(color);
 	if (cb_rgb_check(rgb, g, line, fd))
 		return (1);
-	red =	atoi(rgb[0]);
-	gre = atoi(rgb[1]);
-	blu = atoi(rgb[2]);
+	red = ft_atoi(rgb[0]);
+	gre = ft_atoi(rgb[1]);
+	blu = ft_atoi(rgb[2]);
 	if (red > 255 || gre > 255 || blu > 255
-		|| red < 0 || gre < 0 || blu < 0 )
+		|| red < 0 || gre < 0 || blu < 0 || (g->ceil_c != -1))
 		return (cb_free_matrix(rgb), 1);
 	g->ceil_c = red << 16 | gre << 8 | blu;
 	return (cb_free_matrix(rgb), 0);

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:38:18 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/06 14:06:02 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/16 20:25:30 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 char		*cb_skip_blank(char *line);
 static int	cb_check_missing_data(t_game *g);
 char		**cb_addline(char **raw_map, char **line);
-int			cb_scene_data_fill(t_game *g,char **line, int fd);
+int			cb_scene_data_fill(t_game *g, char **line, int fd);
 static int	cb_get_data(t_game *g, char *cursor, char *line, int fd);
 
-char **cb_addline(char **raw_map, char **line)
+char	**cb_addline(char **raw_map, char **line)
 {
 	static int	raw_lines = 0;
 	char		**ret;
@@ -43,12 +43,12 @@ char **cb_addline(char **raw_map, char **line)
 	if (!ret[guide])
 		return (cb_free_matrix(ret), cb_free_matrix(raw_map), NULL);
 	cb_free_matrix(raw_map);
-	return(ret);
+	return (ret);
 }
 
 int	cb_scene_data_fill(t_game *g, char **line, int fd)
 {
-	char *cursor;
+	char	*cursor;
 
 	cursor = NULL;
 	while (line && *line)
@@ -56,8 +56,8 @@ int	cb_scene_data_fill(t_game *g, char **line, int fd)
 		cursor = cb_skip_blank(*line);
 		if (cursor && *cursor)
 		{
-			if(cb_get_data(g, cursor, *line, fd))
-				break;
+			if (cb_get_data(g, cursor, *line, fd))
+				break ;
 		}
 		free(*line);
 		*line = get_next_line(fd);
