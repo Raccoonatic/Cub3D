@@ -150,6 +150,7 @@ Alternatively, you can pass a number **`n`** as an argument to start the script 
 - Re-Learning Minilibx:
 	- 👉 [42 Docs (Unofficial Page). <i>by: harm-smits</i>](https://harm-smits.github.io/42docs/libs/minilibx)
 	- 👉 [Previous Project using Minilibx. <i>by: Luis "Mapache" Torcate</i>](https://github.com/Raccoonatic/Glutto-The-Fox/)
+
 - Drawing lines:
   - 👉 [Bresenham's Line Algorithm. <i>by: NoBS Code</i>](https://www.youtube.com/watch?v=CceepU1vIKo)
 
@@ -160,10 +161,21 @@ Alternatively, you can pass a number **`n`** as an argument to start the script 
 	- 👉 Trial and Error.
 	> 🦝 *Break it. Fix it. Make it better.* <br>✨ *Repeat until enlightenment (or burnout). 💥*
 
-
  - Focus Boost:<br>
 	- [Background Noise](https://www.youtube.com/watch?v=kN-iEJ3Sbsc&list=PLcL9r1K3TSwpOVyQKP1MruSuY-NS99iQY)
 	- [Foreground Noise](https://open.spotify.com/playlist/5O5q1xG6hNt7NDA8tmT2KJ?si=14d27a3440ee461b&pt=2d7cc61b518abad19be28b2c99cf7bd6)
+
+ - Texture Inspiration:<br>
+   - [Grungy Dungeon Wall. <i>by: Hypnobius</i>](https://hypnobius.itch.io/grungy-wall-tiles>)
+   - [Gothic Castle Interior. <i>by: Godboyhappy</i>](https://godboyhappy.itch.io/gothic-castle-interior-pixel-pack)
+   - [Yokai Village. <i>by: Godboyhappy</i>](https://godboyhappy.itch.io/yokai-village-pixel-tileset-pack)
+   - [Wasteland Outpost. <i>by: Godboyhappy</i>](https://godboyhappy.itch.io/wasteland-outpost-pixel-tileset-pack)
+   - [Brick Breaker Start Kit. <i>by: 413games</i>](https://413games.itch.io/freebrickbreakerstartkit)
+   - [Pixel Art Platformer - Dungeon. <i>by: Cainos</i>](https://cainos.itch.io/pixel-art-platformer-dungeon)
+
+ - Non-Original Assets:<br>
+   - [Ocean and Clouds Pixel Backgrounds. <i>by: Free Game Assets</i>](https://free-game-assets.itch.io/ocean-and-clouds-free-pixel-art-backgrounds)
+   - [Pixel Cloud and Sky Backgrounds. <i>by: Free Game Assets</i>](https://free-game-assets.itch.io/free-pixel-art-cloud-and-sky-backgrounds)
 
 ## 🤖 AI Usage
 

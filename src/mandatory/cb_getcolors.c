@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 14:30:12 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/09/14 11:59:05 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/09/23 13:50:33 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int	cb_get_flor(t_game *g, char *cursor, char *line, int fd)
 	free(color);
 	if (cb_rgb_check(rgb, g, line, fd))
 		return (1);
-	red = atoi(rgb[0]);
-	gre = atoi(rgb[1]);
-	blu = atoi(rgb[2]);
+	red = ft_atoi(rgb[0]);
+	gre = ft_atoi(rgb[1]);
+	blu = ft_atoi(rgb[2]);
 	if (red > 255 || gre > 255 || blu > 255
-		|| red < 0 || gre < 0 || blu < 0)
+		|| red < 0 || gre < 0 || blu < 0 || (g->flor_c != -1))
 		return (cb_free_matrix(rgb), 1);
 	g->flor_c = red << 16 | gre << 8 | blu;
 	return (cb_free_matrix(rgb), 0);
@@ -109,11 +109,11 @@ int	cb_get_ceil(t_game *g, char *cursor, char *line, int fd)
 	free(color);
 	if (cb_rgb_check(rgb, g, line, fd))
 		return (1);
-	red = atoi(rgb[0]);
-	gre = atoi(rgb[1]);
-	blu = atoi(rgb[2]);
+	red = ft_atoi(rgb[0]);
+	gre = ft_atoi(rgb[1]);
+	blu = ft_atoi(rgb[2]);
 	if (red > 255 || gre > 255 || blu > 255
-		|| red < 0 || gre < 0 || blu < 0)
+		|| red < 0 || gre < 0 || blu < 0 || (g->ceil_c != -1))
 		return (cb_free_matrix(rgb), 1);
 	g->ceil_c = red << 16 | gre << 8 | blu;
 	return (cb_free_matrix(rgb), 0);
