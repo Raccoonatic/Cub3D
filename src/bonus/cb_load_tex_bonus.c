@@ -24,12 +24,24 @@ static bool	cb_tex_to_img(t_game *g, t_img *tex)
 bool	cb_load_textures(t_game *g)
 {
 	if (!cb_tex_to_img(g, &g->nwall))
+	{
 		printf("N failed: %s\n", g->nwall.path);
+		return (false);
+	}
 	if (!cb_tex_to_img(g, &g->swall))
+	{
 		printf("S failed: %s\n", g->swall.path);
+		return (false);
+	}
 	if (!cb_tex_to_img(g, &g->ewall))
+	{
 		printf("E failed: %s\n", g->ewall.path);
+		return (false);
+	}
 	if (!cb_tex_to_img(g, &g->wwall))
+	{
 		printf("W failed: %s\n", g->wwall.path);
+		return (false);
+	}
 	return (true);
 }
